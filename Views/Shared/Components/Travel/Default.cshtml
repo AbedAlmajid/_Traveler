@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Travel>
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+            <h1>Explore Top Destination</h1>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <a asp-action="AirLine" asp-controller="Home" asp-area=""><img class="img-fluid" src="..\@Url.Content(item.TravelImg)" alt="Image"></a>
+
+                        <a class="destination-overlay text-white text-decoration-none" asp-action="AirLine" asp-controller="Home" asp-area="">
+                            <h5 class="text-white">@item.TravelName</h5>
+                        </a>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

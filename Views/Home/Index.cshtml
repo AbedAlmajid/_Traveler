@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+
+@inject IOptions<RequestLocalizationOptions> locOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+@{
+    ViewData["Title"] = "Traveler";
+}
+
+@await Component.InvokeAsync("HomeImage")
+@await Component.InvokeAsync("AboutUs")
+@await Component.InvokeAsync("Travel")
+@await Component.InvokeAsync("Package")
+
+

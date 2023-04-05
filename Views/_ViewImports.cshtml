@@ -1,0 +1,12 @@
+﻿@using DemoTraveler
+@using DemoTraveler.Models
+@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Mvc.Localization
+
+
+@inject IOptions<RequestLocalizationOptions> locOptions
+@inject IViewLocalizer Localizer
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

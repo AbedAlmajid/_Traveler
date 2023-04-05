@@ -1,0 +1,41 @@
+﻿@model DemoTraveler.Models.Client
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Client</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label"></label>
+                <input asp-for="ClientName" class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientDesc" class="control-label"></label>
+                <input asp-for="ClientDesc" class="form-control" />
+                <span asp-validation-for="ClientDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientImg" class="control-label"></label>
+                <input asp-for="ClientImg" type="file" class="form-control" />
+                <span asp-validation-for="ClientImg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

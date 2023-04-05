@@ -1,0 +1,58 @@
+﻿@model DemoTraveler.Models.Contact
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container-fluid page-header">
+    <div class="container-fluid">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+            <h3 class="display-4 text-white text-uppercase">Contact</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Contact</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Contact</h4>
+<hr />
+<div class="container">
+    <div class="col-md-10">
+        <form asp-action="Contact" class="container">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="container btn btn-outline-primary" />
+            </div>
+            <div>
+                <a asp-action="Index" class="container btn btn-outline-warning">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

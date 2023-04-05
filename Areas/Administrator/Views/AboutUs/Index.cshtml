@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DemoTraveler.Models.AboutUs>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>About Us</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutUsDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutImg1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutImg2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutImg3)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutUsDescription)
+            </td>
+            <td>
+                <img width="120px" src="..\@Url.Content(item.AboutImg1)" alt="package-place">
+            </td>
+            <td>
+                <img width="120px" src="..\@Url.Content(item.AboutImg2)" alt="package-place">
+            </td>
+            <td>
+                <img width="120px" src="..\@Url.Content(item.AboutImg3)" alt="package-place">
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AboutUsId" class="btn btn-warning">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AboutUsId" class="btn btn-info">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AboutUsId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
