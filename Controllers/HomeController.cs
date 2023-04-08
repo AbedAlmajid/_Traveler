@@ -4,6 +4,7 @@ using DemoTraveler.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
@@ -89,6 +90,17 @@ namespace DemoTraveler.Controllers
                 });
 
             return LocalRedirect(returnUrl);
+        }
+
+        public IActionResult SearchData(string txtName)
+        {
+            if ( txtName == null )
+            {
+                return View("Index" , db.Packages.Include(d => d.CountryName));
+            }
+            var data = db.Packages.Where(x => x.CountryDesc.Contains(txtName)).
+                Include(d => d.CountryName);
+            return View("Index", data);
         }
         
     }

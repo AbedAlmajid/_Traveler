@@ -8267,11 +8267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ABOOD ALAMAYREH\\Source\\Repos\\_Traveler\\DemoTraveler.csproj",
+      "projectUniqueName": "C:\\Users\\ABOOD ALAMAYREH\\OneDrive\\سطح المكتب\\Traveler\\DemoTraveler.csproj",
       "projectName": "DemoTraveler",
-      "projectPath": "C:\\Users\\ABOOD ALAMAYREH\\Source\\Repos\\_Traveler\\DemoTraveler.csproj",
+      "projectPath": "C:\\Users\\ABOOD ALAMAYREH\\OneDrive\\سطح المكتب\\Traveler\\DemoTraveler.csproj",
       "packagesPath": "C:\\Users\\ABOOD ALAMAYREH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ABOOD ALAMAYREH\\Source\\Repos\\_Traveler\\obj\\",
+      "outputPath": "C:\\Users\\ABOOD ALAMAYREH\\OneDrive\\سطح المكتب\\Traveler\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
