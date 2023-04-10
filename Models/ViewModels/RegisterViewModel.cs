@@ -8,9 +8,9 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage ="Enter Email!")]
+        [Required(ErrorMessage ="Enter User Name!")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage ="Enter Password!")]
         [DataType(DataType.Password)]

@@ -45,8 +45,8 @@ namespace DemoTraveler.Controllers
 
                 ApplicationUser user = new ApplicationUser
                 {
-                    UserName = model.Email,
-                    Email = model.Email,
+                    UserName = model.UserName,
+                    Email = model.UserName,
                     PhoneNumber = model.PhoneNumber,
                 };
 

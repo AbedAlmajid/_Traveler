@@ -1,36 +1,72 @@
-﻿@model DemoTraveler.Models.ViewModels.LoginViewModel
+﻿@model RegisterViewModel
 
-@{
-    ViewData["Title"] = "Login";
-}
 
-<h1>Login</h1>
+    <link href="~/css/LoginStyle.css" rel="stylesheet" />
+<div class="cotn_principal">
+    <div class="cont_centrar">
 
-<h4>LoginViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="cont_login">
+            <div class="cont_info_log_sign_up">
+                <div class="col_md_login">
+                    <div class="cont_ba_opcitiy">
+
+                        <h2>LOGIN</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                    </div>
+                </div>
+                <div class="col_md_sign_up">
+                    <div class="cont_ba_opcitiy">
+                        <h2>SIGN UP</h2>
+
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+                        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
+
+
+            <div class="cont_back_info">
+                <div class="cont_img_back_grey">
+                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                </div>
+
             </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
+            <div class="cont_forms">
+                <div class="cont_img_back_">
+                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+                </div>
+                <form asp-action="Login" method="post">
+                    <div class="cont_form_login">
+                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>LOGIN</h2>
+                        <input asp-for="UserName" type="text" placeholder="Email" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                        <input asp-for="Password" type="password" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                    </div>
+                </form>
+                <form asp-action="Register" method="post">
+                    <div class="cont_form_sign_up">
+                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                        <h2>SIGN UP</h2>
+                        <input asp-for="UserName" type="text" placeholder="Email" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                        <input asp-for="Password" type="password" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        <input asp-for="PhoneNumber" type="text" placeholder="Phone Number" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        <button class="btn_sign_up" asp-action="Register" asp-controller="Account">SIGN UP</button>
+                    </div>
+                    </form>
             </div>
-        </form>
+
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Register">Register</a>
-</div>
-
-
+<script src="~/js/JavaScriptLogin.js"></script>

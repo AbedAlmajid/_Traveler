@@ -28,7 +28,11 @@
     <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/style.css" rel="stylesheet" />
-
+    <style>
+        /*.bg-dark {
+            background-color: #F3F3F3 !important;
+        }*/
+    </style>
 
 </head>
 
@@ -114,11 +118,12 @@
         </div>
     </div>
     <!-- Navbar End -->
+    <div class="container-fluid text-white-50" style="margin-top:90px">
 
-
-    <div>
         @RenderBody()
+
     </div>
+
 
     <!-- Registration Start -->
     <!--<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
@@ -242,7 +247,7 @@
     </div>-->
     <!--<!-- Blog End -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+    <div class="container-fluid bg-dark text-white-50 " style="margin-top: 170px;">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
@@ -307,6 +312,8 @@
     </div>
     <!-- Footer End -->
     <!-- Back to Top -->
+
+
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
