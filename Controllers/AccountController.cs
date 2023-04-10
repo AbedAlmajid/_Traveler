@@ -82,7 +82,7 @@ namespace DemoTraveler.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard", new { area = "Administrator"});
                 }
                 ModelState.AddModelError("", "Invalid User or Password");
                 return View(model);
