@@ -74,10 +74,18 @@ namespace DemoTraveler.Controllers
         {
             return View();
         }
-
-        public IActionResult Booking()
+        [HttpGet]
+        public IActionResult Ticket(Guid Id)
         {
-            return View();
+            var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).ToList();
+            return View(tickets);
+        }
+
+        [HttpGet]
+        public IActionResult Payment(int Id)
+        {
+            var ticket = db.Tickets.Where(x => x.Id == Id).SingleOrDefault();
+            return View(ticket);
         }
 
         [HttpPost]

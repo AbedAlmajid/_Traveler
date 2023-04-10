@@ -1,0 +1,8 @@
+﻿@model List<Tickets>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name - @item.Price</li>
+    }
+</ul>

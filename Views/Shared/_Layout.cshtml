@@ -84,11 +84,13 @@
                     <div class="navbar-nav ml-auto py-0">
                         <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a>
                         <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">About</a>
+                        <partial name="_SelectLanguagePartial" />
                         <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">Services</a>
                         <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">Tour Packages</a>
                         <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">Contact</a>
                         @if (signInManager.IsSignedIn(User))
-                        {
+                        { 
+
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu border-0 rounded-0 m-0">
@@ -118,10 +120,8 @@
         </div>
     </div>
     <!-- Navbar End -->
-    <div class="container-fluid text-white-50" style="margin-top:90px">
-
+    <div>
         @RenderBody()
-
     </div>
 
 

@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Areas",
+    "\\Areas\\Administrator",
+    "\\Areas\\Administrator\\Controllers",
+    "\\Areas\\Administrator\\Views",
+    "\\Areas\\Administrator\\Views\\Shared",
+    "\\Models",
+    "\\Models\\ViewModels",
+    "\\wwwroot",
+    "\\wwwroot\\js"
   ],
-  "SelectedNode": "\\DemoTraveler.sln",
+  "SelectedNode": "\\Views\\Account\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }

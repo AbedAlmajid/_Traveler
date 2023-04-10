@@ -77,7 +77,7 @@ namespace DemoTraveler.Controllers
             if (ModelState.IsValid)
             {
 
-                var result = await _signInManager.PasswordSignInAsync(model.Email,
+                var result = await _signInManager.PasswordSignInAsync(model.UserName,
                     model.Password, true, false);
 
                 if (result.Succeeded)

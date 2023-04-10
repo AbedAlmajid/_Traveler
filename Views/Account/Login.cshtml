@@ -46,7 +46,7 @@
                         <span asp-validation-for="UserName" class="text-danger"></span>
                         <input asp-for="Password" type="password" placeholder="Password" />
                         <span asp-validation-for="Password" class="text-danger"></span>
-                        <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                        <button class="btn_login" type="submit">LOGIN</button>
                     </div>
                 </form>
                 <form asp-action="Register" method="post">
@@ -61,7 +61,7 @@
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         <input asp-for="PhoneNumber" type="text" placeholder="Phone Number" />
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        <button class="btn_sign_up" asp-action="Register" asp-controller="Account">SIGN UP</button>
+                        <button class="btn_sign_up" type="submit" >SIGN UP</button>
                     </div>
                     </form>
             </div>
