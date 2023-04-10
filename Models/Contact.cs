@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class Contact : CommonProp
     {
         [Key]
-        public Guid ContactId { get; set; }
+        public int ContactId { get; set; }
 
         [Required(ErrorMessage ="Enter Full Name!")]
         [Display(Name ="Full Name")]

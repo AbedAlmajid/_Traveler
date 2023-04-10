@@ -11,7 +11,8 @@ namespace DemoTraveler.Migrations
                 name: "AboutUs",
                 columns: table => new
                 {
-                    AboutUsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AboutUsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AboutUsDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AboutImg1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -88,7 +89,8 @@ namespace DemoTraveler.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ClientId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ClientName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClientDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClientImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -106,7 +108,8 @@ namespace DemoTraveler.Migrations
                 name: "Contacts",
                 columns: table => new
                 {
-                    ContactId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ContactId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -125,7 +128,8 @@ namespace DemoTraveler.Migrations
                 name: "Countries",
                 columns: table => new
                 {
-                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CountryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -141,7 +145,8 @@ namespace DemoTraveler.Migrations
                 name: "HomeImages",
                 columns: table => new
                 {
-                    ImageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Imagea = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Imageb = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -155,10 +160,36 @@ namespace DemoTraveler.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Packages",
+                columns: table => new
+                {
+                    PackageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CountryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
+                    Person = table.Column<int>(type: "int", nullable: false),
+                    CountryDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prize = table.Column<int>(type: "int", nullable: false),
+                    HotelStars = table.Column<int>(type: "int", nullable: false),
+                    CountryImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Packages", x => x.PackageId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Travels",
                 columns: table => new
                 {
-                    TravelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TravelId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TravelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TravelImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
@@ -281,13 +312,15 @@ namespace DemoTraveler.Migrations
                 name: "Bookings",
                 columns: table => new
                 {
-                    BookingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BookingId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NationalNumber = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
                     CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId1 = table.Column<int>(type: "int", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PassportNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -300,40 +333,33 @@ namespace DemoTraveler.Migrations
                 {
                     table.PrimaryKey("PK_Bookings", x => x.BookingId);
                     table.ForeignKey(
-                        name: "FK_Bookings_Countries_CountryId",
-                        column: x => x.CountryId,
+                        name: "FK_Bookings_Countries_CountryId1",
+                        column: x => x.CountryId1,
                         principalTable: "Countries",
                         principalColumn: "CountryId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Packages",
+                name: "Tickets",
                 columns: table => new
                 {
-                    PackageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false),
-                    Person = table.Column<int>(type: "int", nullable: false),
-                    CountryDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Prize = table.Column<int>(type: "int", nullable: false),
-                    HotelStars = table.Column<int>(type: "int", nullable: false),
-                    CountryImg = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    From = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    To = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    TravelId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Packages", x => x.PackageId);
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Packages_Countries_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Countries",
-                        principalColumn: "CountryId",
+                        name: "FK_Tickets_Travels_TravelId",
+                        column: x => x.TravelId,
+                        principalTable: "Travels",
+                        principalColumn: "TravelId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -377,14 +403,14 @@ namespace DemoTraveler.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_CountryId",
+                name: "IX_Bookings_CountryId1",
                 table: "Bookings",
-                column: "CountryId");
+                column: "CountryId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Packages_CountryId",
-                table: "Packages",
-                column: "CountryId");
+                name: "IX_Tickets_TravelId",
+                table: "Tickets",
+                column: "TravelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -426,7 +452,7 @@ namespace DemoTraveler.Migrations
                 name: "Packages");
 
             migrationBuilder.DropTable(
-                name: "Travels");
+                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -436,6 +462,9 @@ namespace DemoTraveler.Migrations
 
             migrationBuilder.DropTable(
                 name: "Countries");
+
+            migrationBuilder.DropTable(
+                name: "Travels");
         }
     }
 }

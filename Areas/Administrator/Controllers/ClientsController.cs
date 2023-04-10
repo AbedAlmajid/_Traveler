@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
-using Microsoft.AspNetCore.Hosting;
-using DemoTraveler.Models.ViewModels;
-using System.IO;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
@@ -17,11 +14,10 @@ namespace DemoTraveler.Areas.Administrator.Controllers
     public class ClientsController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _hostEnvironment;
-        public ClientsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
+
+        public ClientsController(AppDbContext context)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/Clients
@@ -31,7 +27,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/Clients/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -59,50 +55,19 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ClientViewModel client)
+        public async Task<IActionResult> Create([Bind("ClientId,ClientName,ClientDesc,ClientImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Client client)
         {
             if (ModelState.IsValid)
             {
-                string imgName = UploadNewImage(client);
-
-                Client cc = new Client
-                {
-                    ClientName = client.ClientName,
-                    ClientDesc = client.ClientDesc,
-                    ClientImg = imgName,
-                    CreationDate = DateTime.Now,
-                    ModificationDate = DateTime.Now,
-                    IsActive = true,
-                    IsDeleted = false
-                };
-                
-                _context.Add(cc);
+                _context.Add(client);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(client);
         }
 
-        public string UploadNewImage(ClientViewModel model)
-        {
-            string newFullImageName = null;
-            if (model.ClientImg != null)
-            {
-                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
-                string newFileName = Guid.NewGuid() + "_" + model.ClientImg.FileName;
-                string FullPath = Path.Combine(fileRoot, newFileName);
-                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
-                {
-                    model.ClientImg.CopyTo(myNewFile);
-                }
-                newFullImageName = @"img\" + newFileName;
-                return newFullImageName;
-            }
-            return newFullImageName;
-        }
-
         // GET: Administrator/Clients/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -122,7 +87,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ClientId,ClientName,ClientDesc,ClientImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Client client)
+        public async Task<IActionResult> Edit(int id, [Bind("ClientId,ClientName,ClientDesc,ClientImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Client client)
         {
             if (id != client.ClientId)
             {
@@ -153,7 +118,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/Clients/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -173,7 +138,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // POST: Administrator/Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var client = await _context.Clients.FindAsync(id);
             _context.Clients.Remove(client);
@@ -181,7 +146,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ClientExists(Guid id)
+        private bool ClientExists(int id)
         {
             return _context.Clients.Any(e => e.ClientId == id);
         }

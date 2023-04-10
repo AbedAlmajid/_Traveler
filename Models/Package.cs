@@ -10,10 +10,12 @@ namespace DemoTraveler.Models
     public class Package : CommonProp
     {
         [Key]
-        public Guid PackageId { get; set; }
+        public int PackageId { get; set; }
 
-        public Guid CountryId { get; set; }
-        public Country CountryName { get; set; }
+        [Required(ErrorMessage = "Enter Country Name!")]
+        [Display(Name = "Country Name")]
+        public string CountryName { get; set; }
+
 
         [Required(ErrorMessage ="Enter Duration!")]
         public int Duration { get; set; }

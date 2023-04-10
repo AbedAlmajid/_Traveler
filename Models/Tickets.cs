@@ -13,6 +13,7 @@ namespace DemoTraveler.Models
         public string To { get; set; }
         public double Price { get; set; }
 
+        public int TravelId { get; set; }
         public Travel Travel { get; set; }
     }
 }

@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
-using Microsoft.AspNetCore.Hosting;
-using DemoTraveler.Models.ViewModels;
-using System.IO;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
@@ -17,11 +14,10 @@ namespace DemoTraveler.Areas.Administrator.Controllers
     public class HomeImagesController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _hostEnvironment;
-        public HomeImagesController(AppDbContext context, IWebHostEnvironment hostEnvironment)
+
+        public HomeImagesController(AppDbContext context)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/HomeImages
@@ -31,7 +27,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/HomeImages/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -59,68 +55,19 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(HomeImageViewModel homeImage)
+        public async Task<IActionResult> Create([Bind("ImageId,Imagea,Imageb,IsDeleted,IsActive,CreationDate,ModificationDate")] HomeImage homeImage)
         {
             if (ModelState.IsValid)
             {
-                string imgNamea = UploadNewImagea(homeImage);
-                string imgNameb = UploadNewImageb(homeImage);
-
-                HomeImage hh = new HomeImage
-                {
-                    Imagea = imgNamea,
-                    Imageb = imgNameb,
-                    IsDeleted = false,
-                    IsActive = true,
-                    CreationDate = DateTime.Now,
-                    ModificationDate = DateTime.Now                    
-                };
-
-                _context.Add(hh);
+                _context.Add(homeImage);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(homeImage);
         }
 
-        public string UploadNewImagea(HomeImageViewModel model)
-        {
-            string newFullImageName = null;
-            if (model.Imagea != null)
-            {
-                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
-                string newFileName = Guid.NewGuid() + "_" + model.Imagea.FileName;
-                string FullPath = Path.Combine(fileRoot, newFileName);
-                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
-                {
-                    model.Imagea.CopyTo(myNewFile);
-                }
-                newFullImageName = @"img\" + newFileName;
-                return newFullImageName;
-            }
-            return newFullImageName;
-        }
-
-        public string UploadNewImageb(HomeImageViewModel model)
-        {
-            string newFullImageName = null;
-            if (model.Imageb != null)
-            {
-                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
-                string newFileName = Guid.NewGuid() + "_" + model.Imageb.FileName;
-                string FullPath = Path.Combine(fileRoot, newFileName);
-                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
-                {
-                    model.Imageb.CopyTo(myNewFile);
-                }
-                newFullImageName = @"img\" + newFileName;
-                return newFullImageName;
-            }
-            return newFullImageName;
-        }
-
         // GET: Administrator/HomeImages/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -140,7 +87,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ImageId,Imagea,Imageb,IsDeleted,IsActive,CreationDate,ModificationDate")] HomeImage homeImage)
+        public async Task<IActionResult> Edit(int id, [Bind("ImageId,Imagea,Imageb,IsDeleted,IsActive,CreationDate,ModificationDate")] HomeImage homeImage)
         {
             if (id != homeImage.ImageId)
             {
@@ -171,7 +118,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/HomeImages/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -191,7 +138,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // POST: Administrator/HomeImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var homeImage = await _context.HomeImages.FindAsync(id);
             _context.HomeImages.Remove(homeImage);
@@ -199,7 +146,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HomeImageExists(Guid id)
+        private bool HomeImageExists(int id)
         {
             return _context.HomeImages.Any(e => e.ImageId == id);
         }

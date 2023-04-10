@@ -75,7 +75,7 @@ namespace DemoTraveler.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Ticket(Guid Id)
+        public IActionResult Ticket(int Id)
         {
             var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).ToList();
             return View(tickets);

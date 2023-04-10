@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class HomeImage : CommonProp
     {
         [Key]
-        public Guid ImageId { get; set; }
+        public int ImageId { get; set; }
 
         [Required(ErrorMessage ="Select Image!")]
         [Display(Name ="First Image")]

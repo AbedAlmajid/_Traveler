@@ -117,118 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>عن الراحل</value>
-  </data>
-  <data name="About Us" xml:space="preserve">
-    <value>معلومات عنا</value>
-  </data>
-  <data name="All Rights Reserved" xml:space="preserve">
-    <value>كل الحقوق محفوظة</value>
-  </data>
-  <data name="Best Services" xml:space="preserve">
-    <value>أفضل الخدمات</value>
-  </data>
-  <data name="Blog" xml:space="preserve">
-    <value>مدونة</value>
-  </data>
   <data name="Book Now" xml:space="preserve">
     <value>احجز الآن</value>
-  </data>
-  <data name="Clients" xml:space="preserve">
-    <value>عملاء</value>
-  </data>
-  <data name="Competitive Pricing" xml:space="preserve">
-    <value>أسعار تنافسية</value>
-  </data>
-  <data name="Contact" xml:space="preserve">
-    <value>تواصل معنا</value>
-  </data>
-  <data name="Depart Date" xml:space="preserve">
-    <value>تاريخ المغادرة</value>
-  </data>
-  <data name="Designed by" xml:space="preserve">
-    <value>صمم بواسطة</value>
-  </data>
-  <data name="Destination" xml:space="preserve">
-    <value>وجهة</value>
   </data>
   <data name="Discover Amazing Places With Us" xml:space="preserve">
     <value>اكتشف أماكن مذهلة معنا</value>
   </data>
-  <data name="Dubai" xml:space="preserve">
-    <value>دبي</value>
-  </data>
-  <data name="Duration" xml:space="preserve">
-    <value>المدة</value>
-  </data>
-  <data name="Explore Top Destination" xml:space="preserve">
-    <value>اكتشف أفضل وجهة</value>
-  </data>
-  <data name="Guides" xml:space="preserve">
-    <value>خطوط إرشاد</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>الصفخة الرئيسية</value>
-  </data>
   <data name="Let's Discover The World Together" xml:space="preserve">
     <value>لنكتشف العالم معًا</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>تسجيل الدخول</value>
-  </data>
-  <data name="NEWS LETTER" xml:space="preserve">
-    <value>رسالة الأخبار</value>
-  </data>
-  <data name="PACKAGES" xml:space="preserve">
-    <value>الحزم</value>
-  </data>
-  <data name="Pages" xml:space="preserve">
-    <value>الصفحات</value>
-  </data>
-  <data name="Pefect Tour Packages" xml:space="preserve">
-    <value>حزم جولة مثالية</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>انشاء حساب</value>
-  </data>
-  <data name="Return Date" xml:space="preserve">
-    <value>تاريخ العودة</value>
-  </data>
-  <data name="Select a destination" xml:space="preserve">
-    <value>أختر وجهتك</value>
-  </data>
-  <data name="Services" xml:space="preserve">
-    <value>خدمات</value>
-  </data>
-  <data name="Sign Up Now" xml:space="preserve">
-    <value>أفتح حساب الأن</value>
-  </data>
-  <data name="Submit" xml:space="preserve">
-    <value>بحث</value>
-  </data>
-  <data name="Testimonial" xml:space="preserve">
-    <value>التوصيات</value>
-  </data>
-  <data name="tour pakages" xml:space="preserve">
-    <value>برامج سياحية</value>
-  </data>
   <data name="Tours &amp; Travel" xml:space="preserve">
     <value>الجولات والسفر</value>
-  </data>
-  <data name="USEFULL LINKS" xml:space="preserve">
-    <value>روابط مفيدة</value>
-  </data>
-  <data name="We Provide Best Tour Packages In Your Budget" xml:space="preserve">
-    <value>نحن نقدم أفضل الحزم السياحية في ميزانيتك</value>
-  </data>
-  <data name="Worldwide Coverage" xml:space="preserve">
-    <value>تغطية عالمية</value>
-  </data>
-  <data name="Your email" xml:space="preserve">
-    <value>ألايميل</value>
-  </data>
-  <data name="Your name" xml:space="preserve">
-    <value>اسمك</value>
   </data>
 </root>

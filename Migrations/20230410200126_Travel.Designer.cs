@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoTraveler.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230410092044_Travel")]
+    [Migration("20230410200126_Travel")]
     partial class Travel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,10 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.AboutUs", b =>
                 {
-                    b.Property<Guid>("AboutUsId")
+                    b.Property<int>("AboutUsId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AboutImg1")
                         .IsRequired()
@@ -165,9 +166,10 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Booking", b =>
                 {
-                    b.Property<Guid>("BookingId")
+                    b.Property<int>("BookingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -175,6 +177,9 @@ namespace DemoTraveler.Migrations
 
                     b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("CountryId1")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -216,16 +221,17 @@ namespace DemoTraveler.Migrations
 
                     b.HasKey("BookingId");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("CountryId1");
 
                     b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Client", b =>
                 {
-                    b.Property<Guid>("ClientId")
+                    b.Property<int>("ClientId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClientDesc")
                         .IsRequired()
@@ -258,9 +264,10 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Contact", b =>
                 {
-                    b.Property<Guid>("ContactId")
+                    b.Property<int>("ContactId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -297,9 +304,10 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Country", b =>
                 {
-                    b.Property<Guid>("CountryId")
+                    b.Property<int>("CountryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CountryName")
                         .IsRequired()
@@ -324,9 +332,10 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.HomeImage", b =>
                 {
-                    b.Property<Guid>("ImageId")
+                    b.Property<int>("ImageId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -355,18 +364,20 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Package", b =>
                 {
-                    b.Property<Guid>("PackageId")
+                    b.Property<int>("PackageId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CountryDesc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("CountryImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -402,16 +413,44 @@ namespace DemoTraveler.Migrations
 
                     b.HasKey("PackageId");
 
-                    b.HasIndex("CountryId");
-
                     b.ToTable("Packages");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Tickets", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("From")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("To")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TravelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TravelId");
+
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Travel", b =>
                 {
-                    b.Property<Guid>("TravelId")
+                    b.Property<int>("TravelId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
@@ -573,22 +612,20 @@ namespace DemoTraveler.Migrations
                 {
                     b.HasOne("DemoTraveler.Models.Country", "Country")
                         .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CountryId1");
 
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Package", b =>
+            modelBuilder.Entity("DemoTraveler.Models.Tickets", b =>
                 {
-                    b.HasOne("DemoTraveler.Models.Country", "CountryName")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
+                    b.HasOne("DemoTraveler.Models.Travel", "Travel")
+                        .WithMany("Tickets")
+                        .HasForeignKey("TravelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CountryName");
+                    b.Navigation("Travel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -640,6 +677,11 @@ namespace DemoTraveler.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Travel", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }

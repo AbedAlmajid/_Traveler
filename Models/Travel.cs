@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class Travel : CommonProp
     {
         [Key]
-        public Guid TravelId { get; set; }
+        public int TravelId { get; set; }
 
         [Required(ErrorMessage ="Enter Travel Name!")]
         [Display(Name ="Travel Name")]

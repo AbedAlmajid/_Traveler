@@ -11,22 +11,22 @@ using DemoTraveler.Models;
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
     [Area("Administrator")]
-    public class AirlinesController : Controller
+    public class PackagesController : Controller
     {
         private readonly AppDbContext _context;
 
-        public AirlinesController(AppDbContext context)
+        public PackagesController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Administrator/Airlines
+        // GET: Administrator/Packages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Airlines.ToListAsync());
+            return View(await _context.Packages.ToListAsync());
         }
 
-        // GET: Administrator/Airlines/Details/5
+        // GET: Administrator/Packages/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +34,39 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var airline = await _context.Airlines
-                .FirstOrDefaultAsync(m => m.AirlineId == id);
-            if (airline == null)
+            var package = await _context.Packages
+                .FirstOrDefaultAsync(m => m.PackageId == id);
+            if (package == null)
             {
                 return NotFound();
             }
 
-            return View(airline);
+            return View(package);
         }
 
-        // GET: Administrator/Airlines/Create
+        // GET: Administrator/Packages/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Administrator/Airlines/Create
+        // POST: Administrator/Packages/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AirlineId,AirLineName,Location,PhoneNumber,AirlineImage")] Airline airline)
+        public async Task<IActionResult> Create([Bind("PackageId,CountryName,Duration,Person,CountryDesc,Prize,HotelStars,CountryImg,DepartDate,ReturnDate,IsDeleted,IsActive,CreationDate,ModificationDate")] Package package)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(airline);
+                _context.Add(package);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(airline);
+            return View(package);
         }
 
-        // GET: Administrator/Airlines/Edit/5
+        // GET: Administrator/Packages/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +74,22 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var airline = await _context.Airlines.FindAsync(id);
-            if (airline == null)
+            var package = await _context.Packages.FindAsync(id);
+            if (package == null)
             {
                 return NotFound();
             }
-            return View(airline);
+            return View(package);
         }
 
-        // POST: Administrator/Airlines/Edit/5
+        // POST: Administrator/Packages/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AirlineId,AirLineName,Location,PhoneNumber,AirlineImage")] Airline airline)
+        public async Task<IActionResult> Edit(int id, [Bind("PackageId,CountryName,Duration,Person,CountryDesc,Prize,HotelStars,CountryImg,DepartDate,ReturnDate,IsDeleted,IsActive,CreationDate,ModificationDate")] Package package)
         {
-            if (id != airline.AirlineId)
+            if (id != package.PackageId)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             {
                 try
                 {
-                    _context.Update(airline);
+                    _context.Update(package);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AirlineExists(airline.AirlineId))
+                    if (!PackageExists(package.PackageId))
                     {
                         return NotFound();
                     }
@@ -114,10 +114,10 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(airline);
+            return View(package);
         }
 
-        // GET: Administrator/Airlines/Delete/5
+        // GET: Administrator/Packages/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +125,30 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var airline = await _context.Airlines
-                .FirstOrDefaultAsync(m => m.AirlineId == id);
-            if (airline == null)
+            var package = await _context.Packages
+                .FirstOrDefaultAsync(m => m.PackageId == id);
+            if (package == null)
             {
                 return NotFound();
             }
 
-            return View(airline);
+            return View(package);
         }
 
-        // POST: Administrator/Airlines/Delete/5
+        // POST: Administrator/Packages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var airline = await _context.Airlines.FindAsync(id);
-            _context.Airlines.Remove(airline);
+            var package = await _context.Packages.FindAsync(id);
+            _context.Packages.Remove(package);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AirlineExists(int id)
+        private bool PackageExists(int id)
         {
-            return _context.Airlines.Any(e => e.AirlineId == id);
+            return _context.Packages.Any(e => e.PackageId == id);
         }
     }
 }

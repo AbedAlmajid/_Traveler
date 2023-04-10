@@ -83,33 +83,33 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
                         <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a>
-                        <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">About</a>
+                        <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
                         <partial name="_SelectLanguagePartial" />
-                        <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">Services</a>
-                        <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">Tour Packages</a>
-                        <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">Contact</a>
+                        <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
+                        <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
+                        <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
                         @if (signInManager.IsSignedIn(User))
                         { 
 
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu border-0 rounded-0 m-0">
-                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">Destination</a>
-                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">Clients</a>
-                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">Logout</a>
-                                    <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">Dashboard</a>
-                                </div>
-                            </div>
+                              <div class="nav-item dropdown">
+                                  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                  <div class="dropdown-menu border-0 rounded-0 m-0">
+                                      <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                      <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                      <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                      <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                  </div>
+                              </div>
                         }
                         else
                         {
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
                                 <div class="dropdown-menu border-0 rounded-0 m-0">
-                                    <a asp-action="Login" asp-controller="Account" class="dropdown-item">Login</a>
-                                    <a asp-action="Register" asp-controller="Account" class="dropdown-item">Register</a>
-                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">Destination</a>
-                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">Clients</a>
+                                    <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"]</a>
+                                    <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Register"]</a>
+                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
                                 </div>
                             </div>
                         }
@@ -265,25 +265,25 @@
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                    <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>Guides </a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>Testimonial</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Blog</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
+                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
+                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">

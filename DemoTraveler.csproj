@@ -21,8 +21,6 @@
 
   <ItemGroup>
     <Content Include="Areas\Administrator\Controllers\DashboardController.cs" />
-    <Content Include="Areas\Administrator\Controllers\HomeImagesController.cs" />
-    <Content Include="Areas\Administrator\Controllers\TravelsController.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +46,10 @@
     <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Models\" />
     <Folder Include="Areas\Customer\Models\" />
+    <Folder Include="Resources\Views\Shared\Components\AboutUs\" />
+    <Folder Include="Resources\Views\Shared\Components\Client\" />
+    <Folder Include="Resources\Views\Shared\Components\Package\" />
+    <Folder Include="Resources\Views\Shared\Components\Travel\" />
     <Folder Include="wwwroot\img\" />
   </ItemGroup>
 

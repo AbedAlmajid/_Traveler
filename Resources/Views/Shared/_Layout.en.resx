@@ -117,7 +117,130 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="About Us" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="All Rights Reserved" xml:space="preserve">
+    <value>All Rights Reserved</value>
+  </data>
+  <data name="Best Services" xml:space="preserve">
+    <value>Best Services</value>
+  </data>
+  <data name="Blog" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="Book Now" xml:space="preserve">
+    <value>Book Now</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clients</value>
+  </data>
+  <data name="Competitive Pricing" xml:space="preserve">
+    <value>Competitive Pricing</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Depart Date" xml:space="preserve">
+    <value>Depart Date</value>
+  </data>
+  <data name="Designed by" xml:space="preserve">
+    <value>Designed by</value>
+  </data>
+  <data name="Destination" xml:space="preserve">
+    <value>Destination</value>
+  </data>
+  <data name="Discover Amazing Places With Us" xml:space="preserve">
+    <value>Discover Amazing Places With Us</value>
+  </data>
+  <data name="Dubai" xml:space="preserve">
+    <value>Dubai</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Explore Top Destination" xml:space="preserve">
+    <value>Explore Top Destination</value>
+  </data>
+  <data name="Guides" xml:space="preserve">
+    <value>Guides</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Home1" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Let's Discover The World Together" xml:space="preserve">
+    <value>Let's Discover The World Together</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="NEWS LETTER" xml:space="preserve">
+    <value>NEWS LETTER</value>
+  </data>
+  <data name="PACKAGES" xml:space="preserve">
+    <value>PACKAGES</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Pages</value>
+  </data>
+  <data name="Pefect Tour Packages" xml:space="preserve">
+    <value>Pefect Tour Packages</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Return Date" xml:space="preserve">
+    <value>Return Date</value>
+  </data>
+  <data name="Select a destination" xml:space="preserve">
+    <value>Select a destination</value>
+  </data>
+  <data name="Services" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Sign Up Now" xml:space="preserve">
+    <value>Sign Up Now</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Testimonial" xml:space="preserve">
+    <value>Testimonial</value>
+  </data>
+  <data name="Tour Packages" xml:space="preserve">
+    <value>Tour Packages</value>
+  </data>
+  <data name="tour pakages" xml:space="preserve">
+    <value>tour pakages</value>
+  </data>
+  <data name="Tours &amp; Travel" xml:space="preserve">
+    <value>Tours &amp; Travel</value>
+  </data>
+  <data name="USEFULL LINKS" xml:space="preserve">
+    <value>USEFULL LINKS</value>
+  </data>
+  <data name="We Provide Best Tour Packages In Your Budget" xml:space="preserve">
+    <value>We Provide Best Tour Packages In Your Budget</value>
+  </data>
+  <data name="Worldwide Coverage" xml:space="preserve">
+    <value>Worldwide Coverage</value>
+  </data>
+  <data name="Your email" xml:space="preserve">
+    <value>Your email</value>
+  </data>
+  <data name="Your name" xml:space="preserve">
+    <value>Your name</value>
   </data>
 </root>

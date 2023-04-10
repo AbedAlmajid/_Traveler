@@ -19,12 +19,16 @@
 
 
 
-<div title="@localizer["Requst Culture provider:"] @requestCulture?.Provider?.GetType().Name">
-    <form id="selectLanguage" method="post" asp-controller="Home" asp-action="SetLanguage"
-          asp-route-returnUrl="@returnUrl">
-        <select name="culture"
-                onchange="this.form.submit();"
-                asp-for="@requestCulture.RequestCulture.UICulture.Name"
-                asp-items="cultureItems"></select>
-    </form>
-</div>
+    <div title="@localizer["Requst Culture provider:"] @requestCulture?.Provider?.GetType().Name">
+        <form id="selectLanguage" method="post" asp-controller="Home" asp-action="SetLanguage"
+              asp-route-returnUrl="@returnUrl">
+            
+                <select class="nav-link dropdown-toggle" name="culture"
+                        onchange="this.form.submit();"
+                        asp-for="@requestCulture.RequestCulture.UICulture.Name"
+                        asp-items="cultureItems"></select>
+               
+        </form>
+    </div>
+ 
+ 

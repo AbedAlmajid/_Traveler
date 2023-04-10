@@ -11,22 +11,23 @@ using DemoTraveler.Models;
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
     [Area("Administrator")]
-    public class CountriesController : Controller
+    public class TicketsController : Controller
     {
         private readonly AppDbContext _context;
 
-        public CountriesController(AppDbContext context)
+        public TicketsController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Administrator/Countries
+        // GET: Administrator/Tickets
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Countries.ToListAsync());
+            var appDbContext = _context.Tickets.Include(t => t.Travel);
+            return View(await appDbContext.ToListAsync());
         }
 
-        // GET: Administrator/Countries/Details/5
+        // GET: Administrator/Tickets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,39 +35,42 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var country = await _context.Countries
-                .FirstOrDefaultAsync(m => m.CountryId == id);
-            if (country == null)
+            var tickets = await _context.Tickets
+                .Include(t => t.Travel)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (tickets == null)
             {
                 return NotFound();
             }
 
-            return View(country);
+            return View(tickets);
         }
 
-        // GET: Administrator/Countries/Create
+        // GET: Administrator/Tickets/Create
         public IActionResult Create()
         {
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelName");
             return View();
         }
 
-        // POST: Administrator/Countries/Create
+        // POST: Administrator/Tickets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CountryId,CountryName,IsDeleted,IsActive,CreationDate,ModificationDate")] Country country)
+        public async Task<IActionResult> Create([Bind("Id,Name,From,To,Price,TravelId")] Tickets tickets)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(country);
+                _context.Add(tickets);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(country);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
+            return View(tickets);
         }
 
-        // GET: Administrator/Countries/Edit/5
+        // GET: Administrator/Tickets/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -74,22 +78,23 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var country = await _context.Countries.FindAsync(id);
-            if (country == null)
+            var tickets = await _context.Tickets.FindAsync(id);
+            if (tickets == null)
             {
                 return NotFound();
             }
-            return View(country);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
+            return View(tickets);
         }
 
-        // POST: Administrator/Countries/Edit/5
+        // POST: Administrator/Tickets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CountryId,CountryName,IsDeleted,IsActive,CreationDate,ModificationDate")] Country country)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,From,To,Price,TravelId")] Tickets tickets)
         {
-            if (id != country.CountryId)
+            if (id != tickets.Id)
             {
                 return NotFound();
             }
@@ -98,12 +103,12 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             {
                 try
                 {
-                    _context.Update(country);
+                    _context.Update(tickets);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CountryExists(country.CountryId))
+                    if (!TicketsExists(tickets.Id))
                     {
                         return NotFound();
                     }
@@ -114,10 +119,11 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(country);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
+            return View(tickets);
         }
 
-        // GET: Administrator/Countries/Delete/5
+        // GET: Administrator/Tickets/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -125,30 +131,31 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var country = await _context.Countries
-                .FirstOrDefaultAsync(m => m.CountryId == id);
-            if (country == null)
+            var tickets = await _context.Tickets
+                .Include(t => t.Travel)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (tickets == null)
             {
                 return NotFound();
             }
 
-            return View(country);
+            return View(tickets);
         }
 
-        // POST: Administrator/Countries/Delete/5
+        // POST: Administrator/Tickets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var country = await _context.Countries.FindAsync(id);
-            _context.Countries.Remove(country);
+            var tickets = await _context.Tickets.FindAsync(id);
+            _context.Tickets.Remove(tickets);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CountryExists(int id)
+        private bool TicketsExists(int id)
         {
-            return _context.Countries.Any(e => e.CountryId == id);
+            return _context.Tickets.Any(e => e.Id == id);
         }
     }
 }

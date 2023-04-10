@@ -7,30 +7,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
-using Microsoft.AspNetCore.Hosting;
-using DemoTraveler.Models.ViewModels;
-using System.IO;
-using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 
-
-
-namespace DemoTraveler.Areas.Administrator.Controllers
+namespace DemoTraveler.Areas.Administrator
 {
     [Area("Administrator")]
     public class TravelsController : Controller
     {
         private readonly AppDbContext _context;
-        private IWebHostEnvironment _hostEnvironment;
-        private readonly IViewLocalizer _localizer;
 
-        public TravelsController(AppDbContext context , IWebHostEnvironment hostEnvironment,
-           IViewLocalizer localizer)
+        public TravelsController(AppDbContext context)
         {
             _context = context;
-            _hostEnvironment = hostEnvironment;
-            _localizer = localizer;
         }
 
         // GET: Administrator/Travels
@@ -40,7 +27,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/Travels/Details/5
-        public async Task<IActionResult> Details(Guid? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -63,52 +50,25 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View();
         }
 
-     
+        // POST: Administrator/Travels/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create(TravelViewModel travel)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("TravelId,TravelName,TravelImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Travel travel)
         {
             if (ModelState.IsValid)
             {
-                string imgName = UploadNewImage(travel);
-
-                Travel tt = new Travel
-                {
-                    TravelName = travel.TravelName,
-                    TravelImg = imgName,
-                    IsDeleted = false,
-                    IsActive = true,
-                    CreationDate = DateTime.Now,
-                    ModificationDate = DateTime.Now
-                };
-                _context.Add(tt);
+                _context.Add(travel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(travel);
         }
 
-        public string UploadNewImage(TravelViewModel model)
-        {
-            string newFullImageName = null;
-            if (model.TravelImg != null)
-            {
-                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
-                string newFileName = Guid.NewGuid() + "_" + model.TravelImg.FileName;
-                string FullPath = Path.Combine(fileRoot, newFileName);
-                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
-                {
-                    model.TravelImg.CopyTo(myNewFile);
-                }
-                newFullImageName = @"img\" + newFileName;
-                return newFullImageName;
-            }
-            return newFullImageName;
-        }
-
         // GET: Administrator/Travels/Edit/5
-        public async Task<IActionResult> Edit(Guid? id)
+        public async Task<IActionResult> Edit(int? id)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -122,31 +82,23 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(travel);
         }
 
-
         // POST: Administrator/Travels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(TravelViewModel travel)
+        public async Task<IActionResult> Edit(int id, [Bind("TravelId,TravelName,TravelImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Travel travel)
         {
-           
+            if (id != travel.TravelId)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    string imgName = UploadNewImage(travel);
-
-                    Travel tt = new Travel
-                    {
-                        TravelName = travel.TravelName,
-                        TravelImg = imgName,
-                        CreationDate = DateTime.Now,
-                        ModificationDate = DateTime.Now,
-                        IsActive = true,
-                        IsDeleted =false
-                    };
-                    _context.Update(tt);
+                    _context.Update(travel);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -166,7 +118,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/Travels/Delete/5
-        public async Task<IActionResult> Delete(Guid? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -186,7 +138,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // POST: Administrator/Travels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var travel = await _context.Travels.FindAsync(id);
             _context.Travels.Remove(travel);
@@ -194,7 +146,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TravelExists(Guid id)
+        private bool TravelExists(int id)
         {
             return _context.Travels.Any(e => e.TravelId == id);
         }

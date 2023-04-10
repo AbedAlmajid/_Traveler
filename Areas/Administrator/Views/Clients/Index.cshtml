@@ -5,58 +5,68 @@
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Clients</h1>
+<h1>Index</h1>
 
-
-@if (Model.Any())
-{
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClientName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClientDesc)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClientImg)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClientName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClientDesc)
-                    </td>
-                    <td>
-                        <img width="120px" src="..\@Url.Content(item.ClientImg)" alt="package-place">
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ClientId" class="btn btn-warning">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ClientId" class="btn btn-info">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ClientId" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientDesc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientImg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModificationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientImg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModificationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClientId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClientId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClientId">Delete</a>
+            </td>
+        </tr>
 }
-else
-{
-    <div Class="alert alert info">
-        <b>No Client Avalible Click To Create New One</b>
-    </div>
-    <a asp-action="Create" class="btn btn-success">
-        Add Client
-    </a>
-}
-
-
-
+    </tbody>
+</table>

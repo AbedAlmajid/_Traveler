@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class Country : CommonProp
     {
         [Key]
-        public Guid CountryId { get; set; }
+        public int CountryId { get; set; }
 
         [Required(ErrorMessage = "Input Country Name")]
         [Display(Name = "Country Name")]

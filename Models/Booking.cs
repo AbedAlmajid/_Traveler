@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class Booking : CommonProp
     {
         [Key]
-        public Guid BookingId { get; set; }
+        public int BookingId { get; set; }
 
         [Required(ErrorMessage ="Input First Name!")]
         [Display(Name ="First Name")]

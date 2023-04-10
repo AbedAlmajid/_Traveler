@@ -10,7 +10,7 @@ namespace DemoTraveler.Models
     public class Client : CommonProp
     {
         [Key]
-        public Guid ClientId { get; set; }
+        public int ClientId { get; set; }
 
         [Required(ErrorMessage = "Enter Client Name!")]
         [Display(Name ="Client Name")]

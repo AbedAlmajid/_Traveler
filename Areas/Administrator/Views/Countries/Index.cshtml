@@ -10,70 +10,51 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-
-@if (Model.Any())
-{
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CountryName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsDeleted)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreationDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ModificationDate)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CountryName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsDeleted)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreationDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ModificationDate)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CountryId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.CountryId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CountryId">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <p>
-        <a asp-action="Create" class="btn btn-success">Add Country</a>
-    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModificationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModificationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CountryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CountryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CountryId">Delete</a>
+            </td>
+        </tr>
 }
-else
-{
-    <div Class="alert alert info">
-        <b> No Country Avalible Click To Create New One</b>
-    </div>
-    <a asp-action="Create" class="btn btn-success">
-        Add Country
-    </a>
-}
-
-
+    </tbody>
+</table>
