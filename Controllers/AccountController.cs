@@ -1,6 +1,8 @@
 ﻿using DemoTraveler.Data;
 using DemoTraveler.Models;
+using DemoTraveler.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -12,56 +14,89 @@ namespace DemoTraveler.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly AppDbContext db;
-        public AccountController(AppDbContext _db)
+        private UserManager<ApplicationUser> _userManager;
+
+        private SignInManager<ApplicationUser> _signInManager;
+
+        private RoleManager<IdentityRole> _roleManager;
+
+
+        public AccountController(UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
-            db = _db;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
         }
-        
+
+        #region Users
+
+        [HttpGet]
         public IActionResult Register()
         {
-            ViewBag.Roles = new SelectList(db.Roles, "RoleId", "RoleName");
             return View();
         }
-
         [HttpPost]
-        public async Task<IActionResult> RegisterAsync(User user)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            user.CreationDate = DateTime.Now;
-            user.ModificationDate = DateTime.Now;
-            user.IsDeleted = false;
-            user.IsActive = true;
+            if (ModelState.IsValid)
+            {
 
-            db.Users.Add(user);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Login");
+                ApplicationUser user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                };
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Login");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                    return View(model);
+                }
+
+            }
+            return View(model);
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(User user)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
-            var data = db.Users.Where(x => x.UserName == user.UserName &&
-            x.Password == user.Password);
-
-            if (data.Any())
+            if (ModelState.IsValid)
             {
-                HttpContext.Session.SetString("name", user.UserName);
-                return RedirectToAction("Index", "Dashboard", new { area = "Administrator" });
-            }
-            return View(user);
-        } 
 
-        public async Task<IActionResult> LogoutAsync(User user)
+                var result = await _signInManager.PasswordSignInAsync(model.Email,
+                    model.Password, true, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid User or Password");
+                return View(model);
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> logout()
         {
-            HttpContext.Session.Clear();
-            await db.SaveChangesAsync();
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
+
+
+        #endregion
     }
 }
-

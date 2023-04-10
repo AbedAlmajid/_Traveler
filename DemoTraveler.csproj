@@ -22,9 +22,7 @@
   <ItemGroup>
     <Content Include="Areas\Administrator\Controllers\DashboardController.cs" />
     <Content Include="Areas\Administrator\Controllers\HomeImagesController.cs" />
-    <Content Include="Areas\Administrator\Controllers\RolesController.cs" />
     <Content Include="Areas\Administrator\Controllers\TravelsController.cs" />
-    <Content Include="Areas\Administrator\Controllers\UsersController.cs" />
   </ItemGroup>
 
   <ItemGroup>

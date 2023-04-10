@@ -65,7 +65,7 @@ namespace DemoTraveler
 
             services.AddSession(op => op.IdleTimeout = TimeSpan.FromSeconds(200));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
             
             

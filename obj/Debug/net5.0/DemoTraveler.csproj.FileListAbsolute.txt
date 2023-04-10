@@ -856,11 +856,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\HomeImages\Details.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\HomeImages\Edit.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\HomeImages\Index.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Roles\Create.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Roles\Delete.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Roles\Details.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Roles\Edit.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Roles\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Shared\_AdminLayout.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Create.cshtml.g.cs
@@ -868,11 +863,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Details.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Edit.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Index.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Users\Create.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Users\Delete.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Users\Details.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Users\Edit.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Users\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\_ViewImports.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\_ViewStart.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Customer\Views\Customer\Index.cshtml.g.cs
@@ -898,7 +888,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\_SelectLanguagePartial.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Test\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.RazorTargetAssemblyInfo.cache

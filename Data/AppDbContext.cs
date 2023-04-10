@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace DemoTraveler.Data
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
         {
 
         }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Travel> Travels { get; set; }
         public DbSet<HomeImage> HomeImages { get; set; }
         public DbSet<Client> Clients { get; set; }
