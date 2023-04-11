@@ -11,9 +11,9 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group table table-hover">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
@@ -25,38 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="AboutImg1" class="control-label"></label>
-                <input asp-for="AboutImg1" class="form-control" />
+                <input asp-for="AboutImg1" type="file" class="form-control" />
                 <span asp-validation-for="AboutImg1" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AboutImg2" class="control-label"></label>
-                <input asp-for="AboutImg2" class="form-control" />
+                <input asp-for="AboutImg2" type="file" class="form-control" />
                 <span asp-validation-for="AboutImg2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AboutImg3" class="control-label"></label>
-                <input asp-for="AboutImg3" class="form-control" />
+                <input asp-for="AboutImg3" type="file" class="form-control" />
                 <span asp-validation-for="AboutImg3" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModificationDate" class="control-label"></label>
-                <input asp-for="ModificationDate" class="form-control" />
-                <span asp-validation-for="ModificationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -69,6 +49,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

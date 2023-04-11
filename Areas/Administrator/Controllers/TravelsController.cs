@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using DemoTraveler.Models.ViewModels;
 
 namespace DemoTraveler.Areas.Administrator
 {
@@ -14,10 +17,11 @@ namespace DemoTraveler.Areas.Administrator
     public class TravelsController : Controller
     {
         private readonly AppDbContext _context;
-
-        public TravelsController(AppDbContext context)
+        private IWebHostEnvironment _hostEnvironment;
+        public TravelsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/Travels
@@ -54,16 +58,44 @@ namespace DemoTraveler.Areas.Administrator
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TravelId,TravelName,TravelImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Travel travel)
+        public async Task<IActionResult> Create(TravelViewModel travel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(travel);
+                string imgName = UploadNewImage(travel);
+
+                Travel tt = new Travel
+                {
+                    TravelName = travel.TravelName,
+                    TravelImg = imgName,
+                    IsDeleted = false,
+                    IsActive = true,
+                    CreationDate = DateTime.Now,
+                    ModificationDate = DateTime.Now
+                };
+                _context.Add(tt);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(travel);
+        }
+
+        public string UploadNewImage(TravelViewModel model)
+        {
+            string newFullImageName = null;
+            if (model.TravelImg != null)
+            {
+                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
+                string newFileName = Guid.NewGuid() + "_" + model.TravelImg.FileName;
+                string FullPath = Path.Combine(fileRoot, newFileName);
+                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
+                {
+                    model.TravelImg.CopyTo(myNewFile);
+                }
+                newFullImageName = @"img\" + newFileName;
+                return newFullImageName;
+            }
+            return newFullImageName;
         }
 
         // GET: Administrator/Travels/Edit/5

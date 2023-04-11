@@ -117,31 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Book Now" xml:space="preserve">
-    <value>احجز الآن</value>
+  <data name="Best Services" xml:space="preserve">
+    <value>Best Services</value>
   </data>
-  <data name="Depart Date" xml:space="preserve">
-    <value>تاريخ المغادرة</value>
+  <data name="Competitive Pricing" xml:space="preserve">
+    <value>Competitive Pricing</value>
   </data>
-  <data name="Destination" xml:space="preserve">
-    <value>وجهتك</value>
-  </data>
-  <data name="Discover Amazing Places With Us" xml:space="preserve">
-    <value>اكتشف أماكن مذهلة معنا</value>
-  </data>
-  <data name="Duration" xml:space="preserve">
-    <value>المدة</value>
-  </data>
-  <data name="Let's Discover The World Together" xml:space="preserve">
-    <value>لنكتشف العالم معًا</value>
-  </data>
-  <data name="Return Date" xml:space="preserve">
-    <value>تاريخ العودة</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>بحث</value>
-  </data>
-  <data name="Tours &amp; Travel" xml:space="preserve">
-    <value>الجولات والسفر</value>
+  <data name="Worldwide Coverage" xml:space="preserve">
+    <value>Worldwide Coverage</value>
   </data>
 </root>

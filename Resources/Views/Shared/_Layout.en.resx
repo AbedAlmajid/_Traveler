@@ -165,6 +165,9 @@
   <data name="Duration" xml:space="preserve">
     <value>Duration</value>
   </data>
+  <data name="ER" xml:space="preserve">
+    <value>ER</value>
+  </data>
   <data name="Explore Top Destination" xml:space="preserve">
     <value>Explore Top Destination</value>
   </data>
@@ -222,11 +225,11 @@
   <data name="Tour Packages" xml:space="preserve">
     <value>Tour Packages</value>
   </data>
-  <data name="tour pakages" xml:space="preserve">
-    <value>tour pakages</value>
-  </data>
   <data name="Tours &amp; Travel" xml:space="preserve">
     <value>Tours &amp; Travel</value>
+  </data>
+  <data name="TRAVEL" xml:space="preserve">
+    <value>TRAVEL</value>
   </data>
   <data name="USEFULL LINKS" xml:space="preserve">
     <value>USEFULL LINKS</value>

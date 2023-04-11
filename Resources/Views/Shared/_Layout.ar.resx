@@ -144,6 +144,9 @@
   <data name="Contact" xml:space="preserve">
     <value>تواصل معنا</value>
   </data>
+  <data name="CONTACT US" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>حسابي</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="Duration" xml:space="preserve">
     <value>المدة</value>
   </data>
+  <data name="ER" xml:space="preserve">
+    <value>ال</value>
+  </data>
   <data name="Explore Top Destination" xml:space="preserve">
     <value>اكتشف أفضل وجهة</value>
   </data>
@@ -172,10 +178,7 @@
     <value>خطوط إرشاد</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>الصفخة الرئيسية</value>
-  </data>
-  <data name="Home1" xml:space="preserve">
-    <value>الصفخة الرئيسية</value>
+    <value>الصفحة الرئيسية</value>
   </data>
   <data name="Let's Discover The World Together" xml:space="preserve">
     <value>لنكتشف العالم معًا</value>
@@ -188,6 +191,9 @@
   </data>
   <data name="NEWS LETTER" xml:space="preserve">
     <value>رسالة الأخبار</value>
+  </data>
+  <data name="Our Services" xml:space="preserve">
+    <value>خدماتنا</value>
   </data>
   <data name="PACKAGES" xml:space="preserve">
     <value>الحزم</value>
@@ -213,9 +219,6 @@
   <data name="Sign Up Now" xml:space="preserve">
     <value>أفتح حساب الأن</value>
   </data>
-  <data name="String" xml:space="preserve">
-    <value />
-  </data>
   <data name="Submit" xml:space="preserve">
     <value>بحث</value>
   </data>
@@ -230,6 +233,9 @@
   </data>
   <data name="Tours &amp; Travel" xml:space="preserve">
     <value>الجولات والسفر</value>
+  </data>
+  <data name="TRAVEL" xml:space="preserve">
+    <value>الرح</value>
   </data>
   <data name="USEFULL LINKS" xml:space="preserve">
     <value>روابط مفيدة</value>

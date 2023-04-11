@@ -5,12 +5,14 @@
     "\\Areas\\Administrator",
     "\\Areas\\Administrator\\Controllers",
     "\\Areas\\Administrator\\Views",
-    "\\Areas\\Administrator\\Views\\Shared",
-    "\\Models",
-    "\\Models\\ViewModels",
-    "\\wwwroot",
-    "\\wwwroot\\js"
+    "\\Areas\\Administrator\\Views\\Tickets",
+    "\\Areas\\Administrator\\Views\\Travels",
+    "\\Resources",
+    "\\Resources\\Views",
+    "\\Resources\\Views\\Shared",
+    "\\Resources\\Views\\Shared\\Components",
+    "\\Resources\\Views\\Shared\\Components\\HomeImage"
   ],
-  "SelectedNode": "\\Views\\Account\\Login.cshtml",
+  "SelectedNode": "\\Areas\\Administrator\\Controllers\\AboutUsController.cs",
   "PreviewInSolutionExplorer": false
 }

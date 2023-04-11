@@ -15,9 +15,9 @@
 <div class="container-fluid py-5">
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
-            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
-            <h1>Explore Top Destination</h1>
-        </div>
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Localizer["Destination"]</h6>
+                        <h1>@Localizer["Explore Top Destination"]</h1>
+</div>
         <div class="row">
             @foreach (var item in Model)
             {
@@ -26,7 +26,7 @@
                         <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img class="img-fluid" src="..\@Url.Content(item.TravelImg)" alt="Image"></a>
 
                         <a class="destination-overlay text-white text-decoration-none" asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId">
-                            <h5 class="text-white">@item.TravelName</h5>
+                            <h5 class="text-white">@Localizer[item.TravelName]</h5>
                         </a>
                     </div>
                 </div>
