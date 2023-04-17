@@ -126,6 +126,9 @@
   <data name="Explore Top Destination" xml:space="preserve">
     <value>اكتشف أفضل وجهة</value>
   </data>
+  <data name="MORROCOW" xml:space="preserve">
+    <value>المغرب</value>
+  </data>
   <data name="QATAR" xml:space="preserve">
     <value>قطر</value>
   </data>

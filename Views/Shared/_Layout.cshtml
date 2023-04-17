@@ -21,22 +21,24 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
     <title>TRAVELER - @ViewBag.Title</title>
-    <link href="~/img/favicon.ico" rel="icon">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    @*<link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
+    @*<link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
     <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
     {
-      <link rel="stylesheet"
-      href="https://cdn.rtlcss.com/bootstrap/v4.0.0/css/bootstrap.min.css"
-      integrity="sha384-P4uhUIGk/q1gaD/NdgkBIl3a6QywJjlsFJFk7SPRdruoGddvRVSwv5qFnvZ73cpz"
-      crossorigin="anonymous">
-
+        <link href="~/css/RTLStyle.css" rel="stylesheet" />
     }
-    <link href="~/css/style.css" rel="stylesheet" />
+    else
+    {
+        <link href="~/css/style.css" rel="stylesheet" />
+    }
+    <link href="~/img/favicon.ico" rel="icon">
 
 </head>
 
@@ -45,14 +47,14 @@
     <div class="container-fluid bg-light pt-3 d-none d-lg-block">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="col-lg-6 text-center text-lg mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
                         <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
                         <p class="text-body px-3">|</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center text-lg-right">
+                <div class="col-lg-6 text-center text-lg">
                     <div class="d-inline-flex align-items-center">
                         <a class="text-primary px-3" href="">
                             <i class="fab fa-twitter"></i>
@@ -79,58 +81,81 @@
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
                 <a asp-action="Index" asp-controller="Home" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">@Localizer["TRAVEL"]</span>@Localizer["ER"]</h1>
+                    <h1 class="m-0 text-primary">
+                        <span class="text-dark">
+                            TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+                                <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
+                            </svg>
+                        </span>ER
+                    </h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto py-0">
-                        <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a>
-                        <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
-                        <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
-                        <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
-                        <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
-                        @if (signInManager.IsSignedIn(User))
-                        {
-                            if (User.IsInRole("Admin"))
-                            {
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                        <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                        <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                        <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                        <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                    </div>
-                                </div>
-                            }
-                            else if (User.IsInRole("AirCompany"))
-                            {
-                                <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                        <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                        <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                        <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                        <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                    </div>
-                                </div>
-                            }
-                        }
-                        else
-                        {
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                <div class="dropdown-menu border-0 rounded-0 m-0">
-                                    <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
-                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                </div>
-                            </div>
-                        }
-                        <partial name="_SelectLanguagePartial" />
+                    <div class="navbar-nav m-auto py-0">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a></li>
+                            <li>
+                                <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
+                            </li>
+                            <li>
+                                <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
+                            </li>
+                            <li>
+                                <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
 
+                            </li>
+                            <li>
+                                <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
+                            </li>
+                            <li>
+                                @if (signInManager.IsSignedIn(User))
+                                {
+                                    if (User.IsInRole("Admin"))
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (User.IsInRole("AirCompany"))
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </li>
+
+
+                            <li>
+                                <partial name="_SelectLanguagePartial" />
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
@@ -268,7 +293,7 @@
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">@Localizer["TRAVEL"]</span>@Localizer["ER"]</h1>
+                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
                 </a>
                 <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
                 <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
@@ -334,7 +359,7 @@
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
 
-
+    @*<script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>*@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/easing/easing.min.js"></script>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About Us" xml:space="preserve">
+    <value>معلومات عنا</value>
+  </data>
   <data name="Book Now" xml:space="preserve">
     <value>احجز الآن</value>
   </data>
@@ -135,6 +138,9 @@
   <data name="Let's Discover The World Together" xml:space="preserve">
     <value>لنكتشف العالم معًا</value>
   </data>
+  <data name="Packages In Your Budget" xml:space="preserve">
+    <value>الحزم السياحية في ميزانيتك</value>
+  </data>
   <data name="Return Date" xml:space="preserve">
     <value>تاريخ العودة</value>
   </data>
@@ -143,5 +149,8 @@
   </data>
   <data name="Tours &amp; Travel" xml:space="preserve">
     <value>الجولات والسفر</value>
+  </data>
+  <data name="We Provide Best Tour" xml:space="preserve">
+    <value>نحن نقدم أفضل </value>
   </data>
 </root>

@@ -1,4 +1,8 @@
-﻿@model IEnumerable<HomeImage>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization
+
+@model IEnumerable<HomeImage>
 
 
 @foreach (var item in Model)
@@ -27,16 +31,34 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-prev-icon mb-n2"></span>
-                </div>
-            </a>
-            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
-                <div class="btn btn-dark" style="width: 45px; height: 45px;">
-                    <span class="carousel-control-next-icon mb-n2"></span>
-                </div>
-            </a>
+            @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
+            {
+                <a class="carousel-control-next" href="#header-carousel" data-slide="prev">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a class="carousel-control-prev" href="#header-carousel" data-slide="next">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
+
+            }
+            else
+            {
+                <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
+            }
+
         </div>
     </div>
 
@@ -70,14 +92,14 @@
                         <div class="col-md-3">
                             <div class="mb-3 mb-md-0">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="@Localizer["Return Date"]" data-target="#date2" data-toggle="datetimepicker" />
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder=@Localizer["Return Date"] data-target="#date2" data-toggle="datetimepicker" />
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="mb-3 mb-md-0">
                                 <select class="custom-select px-4" style="height: 47px;">
-                                    <option selected>"@Localizer["Duration"]"</option>
+                                    <option selected>@Localizer["Duration"]</option>
                                     <option value="1">Duration 1</option>
                                     <option value="2">Duration 1</option>
                                     <option value="3">Duration 1</option>

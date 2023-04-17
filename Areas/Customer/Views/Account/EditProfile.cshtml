@@ -1,0 +1,16 @@
+﻿@model EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+    Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<form asp-action="EditProfile">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+</form>

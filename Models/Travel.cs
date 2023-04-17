@@ -20,6 +20,6 @@ namespace DemoTraveler.Models
         [Display(Name ="Travel Image")]
         public string TravelImg { get; set; }
 
-        public IList<Tickets> Tickets { get; set; }
+        public IList<Ticket> Tickets { get; set; }
     }
 }

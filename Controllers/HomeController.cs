@@ -82,11 +82,20 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpGet]
-        public IActionResult Payment(int Id)
+        public IActionResult Booking(int Id)
         {
-            var ticket = db.Tickets.Where(x => x.Id == Id).SingleOrDefault();
+            var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
             return View(ticket);
         }
+
+        [HttpGet]
+        public IActionResult Payment(int Id)
+        {
+            var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
+            return View(ticket);
+        }
+
+        
 
         [HttpPost]
         public IActionResult SetLanguage(string culture , string returnUrl)
@@ -104,10 +113,10 @@ namespace DemoTraveler.Controllers
         {
             if ( txtName == null )
             {
-                return View("Index" , db.Packages.Include(d => d.CountryName));
+                return View("Index" , db.Travels.Include(d => d.TravelName));
             }
-            var data = db.Packages.Where(x => x.CountryDesc.Contains(txtName)).
-                Include(d => d.CountryName);
+            var data = db.Travels.Where(x => x.TravelName.Contains(txtName)).
+                Include(d => d.TravelName);
             return View("Index", data);
         }
         

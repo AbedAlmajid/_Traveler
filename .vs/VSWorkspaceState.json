@@ -6,13 +6,11 @@
     "\\Areas\\Administrator\\Controllers",
     "\\Areas\\Administrator\\Views",
     "\\Areas\\Administrator\\Views\\Tickets",
-    "\\Areas\\Administrator\\Views\\Travels",
-    "\\Resources",
-    "\\Resources\\Views",
-    "\\Resources\\Views\\Shared",
-    "\\Resources\\Views\\Shared\\Components",
-    "\\Resources\\Views\\Shared\\Components\\HomeImage"
+    "\\Models",
+    "\\Models\\ViewModels",
+    "\\Views",
+    "\\Views\\Home"
   ],
-  "SelectedNode": "\\Areas\\Administrator\\Controllers\\AboutUsController.cs",
+  "SelectedNode": "\\Views\\Home\\Ticket.cshtml",
   "PreviewInSolutionExplorer": false
 }

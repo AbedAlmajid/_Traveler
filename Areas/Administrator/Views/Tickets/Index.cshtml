@@ -1,7 +1,7 @@
-﻿@model IEnumerable<DemoTraveler.Models.Tickets>
+﻿@model IEnumerable<DemoTraveler.Models.Ticket>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tickets";
     Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -14,13 +14,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.FlyBrand)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.From)
+                @Html.DisplayNameFor(model => model.BrandName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.To)
+                @Html.DisplayNameFor(model => model.FromCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArriveTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -35,24 +59,48 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <img width="120px" src="..\@Url.Content(item.FlyBrand)" alt="package-place">
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.From)
+                @Html.DisplayFor(modelItem => item.BrandName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.To)
+                @Html.DisplayFor(modelItem => item.FromCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromAirport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToAirport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArriveTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Travel.TravelImg)
+                @Html.DisplayFor(modelItem => item.Travel.TravelName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TicketId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TicketId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TicketId">Delete</a>
             </td>
         </tr>
 }

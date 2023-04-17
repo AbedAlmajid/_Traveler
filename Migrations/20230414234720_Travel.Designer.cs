@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoTraveler.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230410200126_Travel")]
+    [Migration("20230414234720_Travel")]
     partial class Travel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -175,18 +175,8 @@ namespace DemoTraveler.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("CountryId1")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -215,13 +205,16 @@ namespace DemoTraveler.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookingId");
 
-                    b.HasIndex("CountryId1");
+                    b.HasIndex("TicketId");
 
                     b.ToTable("Bookings");
                 });
@@ -330,6 +323,22 @@ namespace DemoTraveler.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
+                {
+                    b.Property<int>("FlightTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FlightTicket")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FlightTypeId");
+
+                    b.ToTable("FlightTypes");
+                });
+
             modelBuilder.Entity("DemoTraveler.Models.HomeImage", b =>
                 {
                     b.Property<int>("ImageId")
@@ -416,33 +425,106 @@ namespace DemoTraveler.Migrations
                     b.ToTable("Packages");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Tickets", b =>
+            modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("From")
+                    b.Property<string>("ArriveTime")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("BrandName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
+                    b.Property<string>("DepartDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("To")
+                    b.Property<string>("DepartTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FlightDuration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FlightTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FlyBrand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromCountry")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("Price")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TicketTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ToAirport")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToCountry")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TravelId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FlightTypeId");
+
+                    b.HasIndex("TicketTypeId");
 
                     b.HasIndex("TravelId");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.TicketType", b =>
+                {
+                    b.Property<int>("TicketTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TypeTicket")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TicketTypeId");
+
+                    b.ToTable("TicketTypes");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Travel", b =>
@@ -610,20 +692,38 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Booking", b =>
                 {
-                    b.HasOne("DemoTraveler.Models.Country", "Country")
+                    b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
                         .WithMany()
-                        .HasForeignKey("CountryId1");
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Country");
+                    b.Navigation("Ticket");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Tickets", b =>
+            modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
                 {
+                    b.HasOne("DemoTraveler.Models.FlightType", "FlightType")
+                        .WithMany("Tickets")
+                        .HasForeignKey("FlightTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DemoTraveler.Models.TicketType", "TicketType")
+                        .WithMany("Tickets")
+                        .HasForeignKey("TicketTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DemoTraveler.Models.Travel", "Travel")
                         .WithMany("Tickets")
                         .HasForeignKey("TravelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("FlightType");
+
+                    b.Navigation("TicketType");
 
                     b.Navigation("Travel");
                 });
@@ -677,6 +777,16 @@ namespace DemoTraveler.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
+                {
+                    b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.TicketType", b =>
+                {
+                    b.Navigation("Tickets");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Travel", b =>

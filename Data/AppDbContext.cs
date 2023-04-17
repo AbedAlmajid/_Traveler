@@ -23,8 +23,11 @@ namespace DemoTraveler.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Airline> Airlines { get; set; }
-        public DbSet<Tickets> Tickets { get; set; }
-        
-        
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<TicketType> TicketTypes { get; set; }
+        public DbSet<FlightType> FlightTypes { get; set; }
+       
+
+
     }
 }

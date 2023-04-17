@@ -1,7 +1,9 @@
 using DemoTraveler.Data;
 using DemoTraveler.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
@@ -42,6 +44,24 @@ namespace DemoTraveler
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization();
 
+            services.Configure<CookieAuthenticationOptions>(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromSeconds(10);
+                options.SlidingExpiration = true;
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = ctx =>
+                    {
+                        // set a message to show in the view
+                        ctx.Response.Headers.Append("X-RedirectReason", "SessionTimeout");
+
+                        // redirect to the login page
+                        ctx.Response.Redirect(ctx.RedirectUri);
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new[]
@@ -63,7 +83,7 @@ namespace DemoTraveler
             });
       
 
-            services.AddSession(op => op.IdleTimeout = TimeSpan.FromSeconds(200));
+            services.AddSession(op => op.IdleTimeout = TimeSpan.FromMinutes(45));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();

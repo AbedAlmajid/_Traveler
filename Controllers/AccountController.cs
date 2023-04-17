@@ -97,6 +97,52 @@ namespace DemoTraveler.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult ResetPassword(string UserName = null)
+        {
+            if (UserName == null)
+            {
+                return BadRequest("You must be supplied for password reset.");
+            }
+            else
+            {
+                var model = new ResetPassWordViewModel { UserName = UserName };
+                return View(model);
+            };
+            
+        }
+
+        [HttpGet]
+        public IActionResult EditProfile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                user.UserName = model.UserName;
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Profile");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+        }
         #endregion
     }
 }

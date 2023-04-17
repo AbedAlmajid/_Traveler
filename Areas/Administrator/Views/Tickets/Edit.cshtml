@@ -1,4 +1,4 @@
-﻿@model DemoTraveler.Models.Tickets
+﻿@model DemoTraveler.Models.Ticket
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,27 +7,67 @@
 
 <h1>Edit</h1>
 
-<h4>Tickets</h4>
+<h4>Ticket</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TicketId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="FlyBrand" class="control-label"></label>
+                <input asp-for="FlyBrand" type="file" class="form-control" />
+                <span asp-validation-for="FlyBrand" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="From" class="control-label"></label>
-                <input asp-for="From" class="form-control" />
-                <span asp-validation-for="From" class="text-danger"></span>
+                <label asp-for="BrandName" class="control-label"></label>
+                <input asp-for="BrandName" class="form-control" />
+                <span asp-validation-for="BrandName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="To" class="control-label"></label>
-                <input asp-for="To" class="form-control" />
-                <span asp-validation-for="To" class="text-danger"></span>
+                <label asp-for="FromCountry" class="control-label"></label>
+                <input asp-for="FromCountry" class="form-control" />
+                <span asp-validation-for="FromCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToCountry" class="control-label"></label>
+                <input asp-for="ToCountry" class="form-control" />
+                <span asp-validation-for="ToCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FromAirport" class="control-label"></label>
+                <input asp-for="FromAirport" class="form-control" />
+                <span asp-validation-for="FromAirport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToAirport" class="control-label"></label>
+                <input asp-for="ToAirport" class="form-control" />
+                <span asp-validation-for="ToAirport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartTime" class="control-label"></label>
+                <input asp-for="DepartTime" class="form-control" />
+                <span asp-validation-for="DepartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArriveTime" class="control-label"></label>
+                <input asp-for="ArriveTime" class="form-control" />
+                <span asp-validation-for="ArriveTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartDate" class="control-label"></label>
+                <input asp-for="DepartDate" class="form-control" />
+                <span asp-validation-for="DepartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlightDuration" class="control-label"></label>
+                <input asp-for="FlightDuration" class="form-control" />
+                <span asp-validation-for="FlightDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
@@ -40,6 +80,16 @@
                 <span asp-validation-for="TravelId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="TicketTypeId" class="control-label"></label>
+                <select asp-for="TicketTypeId" class="form-control" asp-items="ViewBag.TicketTypeId"></select>
+                <span asp-validation-for="TicketTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlightTypeId" class="control-label"></label>
+                <select asp-for="FlightTypeId" class="form-control" asp-items="ViewBag.FlightTypeId"></select>
+                <span asp-validation-for="FlightTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -49,3 +99,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+

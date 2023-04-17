@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
+using Microsoft.AspNetCore.Hosting;
+using DemoTraveler.Models.ViewModels;
+using System.IO;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
@@ -15,15 +18,18 @@ namespace DemoTraveler.Areas.Administrator.Controllers
     {
         private readonly AppDbContext _context;
 
-        public TicketsController(AppDbContext context)
+        private readonly IWebHostEnvironment _hostEnvironment;
+
+        public TicketsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/Tickets
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Tickets.Include(t => t.Travel);
+            var appDbContext = _context.Tickets.Include(t => t.FlightType).Include(t => t.TicketType).Include(t => t.Travel);
             return View(await appDbContext.ToListAsync());
         }
 
@@ -35,20 +41,24 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var tickets = await _context.Tickets
+            var ticket = await _context.Tickets
+                .Include(t => t.FlightType)
+                .Include(t => t.TicketType)
                 .Include(t => t.Travel)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tickets == null)
+                .FirstOrDefaultAsync(m => m.TicketId == id);
+            if (ticket == null)
             {
                 return NotFound();
             }
 
-            return View(tickets);
+            return View(ticket);
         }
 
         // GET: Administrator/Tickets/Create
         public IActionResult Create()
         {
+            ViewData["FlightTypeId"] = new SelectList(_context.FlightTypes, "FlightTypeId", "TypeFlight");
+            ViewData["TicketTypeId"] = new SelectList(_context.TicketTypes, "TicketTypeId", "TypeTicket");
             ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelName");
             return View();
         }
@@ -58,16 +68,57 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,From,To,Price,TravelId")] Tickets tickets)
+        public async Task<IActionResult> Create(TicketViewModel ticket)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tickets);
+                string imgName = UploadNewImage(ticket);
+
+                Ticket tt = new Ticket
+                {
+                    FlyBrand = imgName,
+                    BrandName = ticket.BrandName,
+                    FromCountry = ticket.FromCountry,
+                    ToCountry = ticket.ToCountry,
+                    FromAirport = ticket.FromAirport,
+                    ToAirport = ticket.ToAirport,
+                    DepartTime = ticket.DepartTime,
+                    ArriveTime = ticket.ArriveTime,
+                    DepartDate = ticket.DepartDate,
+                    FlightDuration = ticket.FlightDuration,
+                    Weight = ticket.Weight,
+                    Price = ticket.Price,
+                    TravelId = ticket.TravelId,
+                    TicketTypeId = ticket.TicketTypeId,
+                    FlightTypeId = ticket.FlightTypeId
+                };
+
+                _context.Add(tt);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
-            return View(tickets);
+            ViewData["FlightTypeId"] = new SelectList(_context.FlightTypes, "FlightTypeId", "TypeFlight", ticket.FlightTypeId);
+            ViewData["TicketTypeId"] = new SelectList(_context.TicketTypes, "TicketTypeId", "TypeTicket", ticket.TicketTypeId);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "Travel", ticket.TravelId);
+            return View(ticket);
+        }
+
+        public string UploadNewImage(TicketViewModel model)
+        {
+            string newFullImageName = null;
+            if (model.FlyBrand != null)
+            {
+                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
+                string newFileName = Guid.NewGuid() + "_" + model.FlyBrand.FileName;
+                string FullPath = Path.Combine(fileRoot, newFileName);
+                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
+                {
+                    model.FlyBrand.CopyTo(myNewFile);
+                }
+                newFullImageName = @"img\" + newFileName;
+                return newFullImageName;
+            }
+            return newFullImageName;
         }
 
         // GET: Administrator/Tickets/Edit/5
@@ -78,13 +129,15 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var tickets = await _context.Tickets.FindAsync(id);
-            if (tickets == null)
+            var ticket = await _context.Tickets.FindAsync(id);
+            if (ticket == null)
             {
                 return NotFound();
             }
-            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
-            return View(tickets);
+            ViewData["FlightTypeId"] = new SelectList(_context.FlightTypes, "FlightTypeId", "TypeFlight", ticket.FlightTypeId);
+            ViewData["TicketTypeId"] = new SelectList(_context.TicketTypes, "TicketTypeId", "TypeTicket", ticket.TicketTypeId);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelName", ticket.TravelId);
+            return View(ticket);
         }
 
         // POST: Administrator/Tickets/Edit/5
@@ -92,35 +145,46 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,From,To,Price,TravelId")] Tickets tickets)
+        public async Task<IActionResult> Edit(int id, TicketViewModel ticket)
         {
-            if (id != tickets.Id)
+            string imgName = UploadNewImage(ticket);
+            
+            if (id != ticket.TicketId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
+                var ti = await _context.Tickets.FindAsync(id);
+                if (ti == null)
                 {
-                    _context.Update(tickets);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TicketsExists(tickets.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                ti.FlyBrand = imgName;
+                ti.BrandName = ticket.BrandName;
+                ti.FromCountry = ticket.FromCountry;
+                ti.ToCountry = ticket.ToCountry;
+                ti.FromAirport = ticket.FromAirport;
+                ti.ToAirport = ticket.ToAirport;
+                ti.DepartTime = ticket.DepartTime;
+                ti.ArriveTime = ticket.ArriveTime;
+                ti.DepartDate = ticket.DepartDate;
+                ti.FlightDuration = ticket.FlightDuration;
+                ti.Weight = ticket.Weight;
+                ti.Price = ticket.Price;
+                ti.TravelId = ticket.TravelId;
+                ti.TicketTypeId = ticket.TicketTypeId;
+                ti.FlightTypeId = ticket.FlightTypeId;
+
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelImg", tickets.TravelId);
-            return View(tickets);
+            ViewData["FlightTypeId"] = new SelectList(_context.FlightTypes, "FlightTypeId", "TypeFlight", ticket.FlightTypeId);
+            ViewData["TicketTypeId"] = new SelectList(_context.TicketTypes, "TicketTypeId", "TypeTicket", ticket.TicketTypeId);
+            ViewData["TravelId"] = new SelectList(_context.Travels, "TravelId", "TravelName", ticket.TravelId);
+            return View(ticket);
         }
 
         // GET: Administrator/Tickets/Delete/5
@@ -131,15 +195,17 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 return NotFound();
             }
 
-            var tickets = await _context.Tickets
+            var ticket = await _context.Tickets
+                .Include(t => t.FlightType)
+                .Include(t => t.TicketType)
                 .Include(t => t.Travel)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (tickets == null)
+                .FirstOrDefaultAsync(m => m.TicketId == id);
+            if (ticket == null)
             {
                 return NotFound();
             }
 
-            return View(tickets);
+            return View(ticket);
         }
 
         // POST: Administrator/Tickets/Delete/5
@@ -147,15 +213,15 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tickets = await _context.Tickets.FindAsync(id);
-            _context.Tickets.Remove(tickets);
+            var ticket = await _context.Tickets.FindAsync(id);
+            _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TicketsExists(int id)
+        private bool TicketExists(int id)
         {
-            return _context.Tickets.Any(e => e.Id == id);
+            return _context.Tickets.Any(e => e.TicketId == id);
         }
     }
 }

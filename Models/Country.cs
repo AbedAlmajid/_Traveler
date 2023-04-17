@@ -15,5 +15,6 @@ namespace DemoTraveler.Models
         [Required(ErrorMessage = "Input Country Name")]
         [Display(Name = "Country Name")]
         public string CountryName { get; set; }
+        
     }
 }

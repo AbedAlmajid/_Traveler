@@ -142,6 +142,19 @@ namespace DemoTraveler.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FlightTypes",
+                columns: table => new
+                {
+                    FlightTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FlightTicket = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FlightTypes", x => x.FlightTypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HomeImages",
                 columns: table => new
                 {
@@ -182,6 +195,23 @@ namespace DemoTraveler.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Packages", x => x.PackageId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TicketTypes",
+                columns: table => new
+                {
+                    TicketTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeTicket = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TicketTypes", x => x.TicketTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -309,6 +339,51 @@ namespace DemoTraveler.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FlyBrand = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BrandName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FromCountry = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ToCountry = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FromAirport = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ToAirport = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ArriveTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepartDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FlightDuration = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Weight = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TravelId = table.Column<int>(type: "int", nullable: false),
+                    TicketTypeId = table.Column<int>(type: "int", nullable: false),
+                    FlightTypeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tickets_FlightTypes_FlightTypeId",
+                        column: x => x.FlightTypeId,
+                        principalTable: "FlightTypes",
+                        principalColumn: "FlightTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_TicketTypes_TicketTypeId",
+                        column: x => x.TicketTypeId,
+                        principalTable: "TicketTypes",
+                        principalColumn: "TicketTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tickets_Travels_TravelId",
+                        column: x => x.TravelId,
+                        principalTable: "Travels",
+                        principalColumn: "TravelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
@@ -316,14 +391,12 @@ namespace DemoTraveler.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NationalNumber = table.Column<int>(type: "int", nullable: false),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryId1 = table.Column<int>(type: "int", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PassportNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TicketId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -333,33 +406,10 @@ namespace DemoTraveler.Migrations
                 {
                     table.PrimaryKey("PK_Bookings", x => x.BookingId);
                     table.ForeignKey(
-                        name: "FK_Bookings_Countries_CountryId1",
-                        column: x => x.CountryId1,
-                        principalTable: "Countries",
-                        principalColumn: "CountryId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tickets",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    From = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    To = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    TravelId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tickets", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tickets_Travels_TravelId",
-                        column: x => x.TravelId,
-                        principalTable: "Travels",
-                        principalColumn: "TravelId",
+                        name: "FK_Bookings_Tickets_TicketId",
+                        column: x => x.TicketId,
+                        principalTable: "Tickets",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -403,9 +453,19 @@ namespace DemoTraveler.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_CountryId1",
+                name: "IX_Bookings_TicketId",
                 table: "Bookings",
-                column: "CountryId1");
+                column: "TicketId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_FlightTypeId",
+                table: "Tickets",
+                column: "FlightTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_TicketTypeId",
+                table: "Tickets",
+                column: "TicketTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_TravelId",
@@ -446,13 +506,13 @@ namespace DemoTraveler.Migrations
                 name: "Contacts");
 
             migrationBuilder.DropTable(
+                name: "Countries");
+
+            migrationBuilder.DropTable(
                 name: "HomeImages");
 
             migrationBuilder.DropTable(
                 name: "Packages");
-
-            migrationBuilder.DropTable(
-                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -461,7 +521,13 @@ namespace DemoTraveler.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "Tickets");
+
+            migrationBuilder.DropTable(
+                name: "FlightTypes");
+
+            migrationBuilder.DropTable(
+                name: "TicketTypes");
 
             migrationBuilder.DropTable(
                 name: "Travels");

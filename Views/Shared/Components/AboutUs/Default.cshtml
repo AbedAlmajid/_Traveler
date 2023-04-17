@@ -2,7 +2,7 @@
 @using Microsoft.Extensions.Options
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.AspNetCore.Localization
-
+@using System.Globalization
 
 @inject IViewLocalizer localizer
 @inject IOptions<RequestLocalizationOptions> locOptions
@@ -16,18 +16,30 @@
 
 @foreach (var item in Model)
 {
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5" dir="ltr">
         <div class="container pt-5">
             <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="..\@Url.Content(item.AboutImg1)" style="object-fit: cover;">
+                @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
+                {
+                    <div class="col-lg-6" style="min-height: 500px;">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute w-100 h-100" src="..\@Url.Content(item.AboutImg1)" style="object-fit: cover;">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
+                }
+                else
+                {
+                    <div class="col-lg-6" style="min-height: 500px;">
+                        <div class="position-relative h-100">
+                            <img class="position-absolute w-100 h-100" src="..\@Url.Content(item.AboutImg1)" style="object-fit: cover;">
+                        </div>
+                    </div>
+                }
+
+                <div class="col-lg-6 ">
                     <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
-                        <h1 class="mb-3">@localizer["We Provide Best Tour Packages In Your Budget"]</h1>
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">@localizer["About Us"]</h6>
+                        <h1 class="mb-3">@localizer["We Provide Best Tour"]@localizer["Packages In Your Budget"]</h1>
                         <p></p>
                         <div class="row mb-4">
                             <div class="col-6">

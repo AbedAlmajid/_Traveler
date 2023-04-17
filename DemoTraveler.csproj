@@ -45,10 +45,13 @@
   <ItemGroup>
     <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Models\" />
+    <Folder Include="Areas\AirCompany\Controllers\" />
+    <Folder Include="Areas\AirCompany\Data\" />
+    <Folder Include="Areas\AirCompany\Models\" />
+    <Folder Include="Areas\AirCompany\Views\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Resources\Views\Shared\Components\Client\" />
     <Folder Include="Resources\Views\Shared\Components\Package\" />
-    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>
