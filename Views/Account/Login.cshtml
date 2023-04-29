@@ -1,72 +1,49 @@
-﻿@model RegisterViewModel
+﻿@model LoginViewModel
 
+@{
+    ViewData["Title"] = "Login"; 
+ }
 
-    <link href="~/css/LoginStyle.css" rel="stylesheet" />
-<div class="cotn_principal">
-    <div class="cont_centrar">
+<link href="~/css/LoginStyle.css" rel="stylesheet" />
 
-        <div class="cont_login">
-            <div class="cont_info_log_sign_up">
-                <div class="col_md_login">
-                    <div class="cont_ba_opcitiy">
-
-                        <h2>LOGIN</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
-                    </div>
-                </div>
-                <div class="col_md_sign_up">
-                    <div class="cont_ba_opcitiy">
-                        <h2>SIGN UP</h2>
-
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                        <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="cont_back_info">
-                <div class="cont_img_back_grey">
-                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-                </div>
-
-            </div>
-            <div class="cont_forms">
-                <div class="cont_img_back_">
-                    <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
-                </div>
-                <form asp-action="Login" method="post">
-                    <div class="cont_form_login">
-                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                        <h2>LOGIN</h2>
-                        <input asp-for="UserName" type="text" placeholder="Email" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                        <input asp-for="Password" type="password" placeholder="Password" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                        <button class="btn_login" type="submit">LOGIN</button>
-                    </div>
-                </form>
-                <form asp-action="Register" method="post">
-                    <div class="cont_form_sign_up">
-                        <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
-                        <h2>SIGN UP</h2>
-                        <input asp-for="UserName" type="text" placeholder="Email" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                        <input asp-for="Password" type="password" placeholder="Password" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                        <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        <input asp-for="PhoneNumber" type="text" placeholder="Phone Number" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                        <button class="btn_sign_up" type="submit" >SIGN UP</button>
-                    </div>
+    <div class="page-wrapper bg-gra-02 p-t-50 p-b-100 font-poppins mt-2 container-fluid">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-6">
+                <div class="card-body">
+                    <h2 class="title">Traveler Log In</h2>
+                    <form asp-action="Login">
+                        <div class="row row-space">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <label asp-for="Email" class="label"></label>
+                                    <input asp-for="Email" class="input--style-4" type="email" name="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <label asp-for="Password" class="label">Password</label>
+                                    <input asp-for="Password" class="input--style-4" type="password" name="Password">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="center-block">
+                                <button class="btn btn-primary" type="submit">Login</button>
+                                <a class="btn btn-primary" asp-action="Register" asp-controller="Account">Register</a>
+                            </div>
+                        </div>
+                        
+                        
                     </form>
+                </div>
             </div>
-
         </div>
     </div>
-</div>
-<script src="~/js/JavaScriptLogin.js"></script>
+
+
+
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script src="~/vendor/datepicker/moment.min.js"></script>
+    <script src="~/vendor/datepicker/daterangepicker.js"></script>
+    <script src="~/js/global.js"></script>
+

@@ -43,17 +43,22 @@ namespace DemoTraveler.Controllers
             if (ModelState.IsValid)
             {
 
-                ApplicationUser user = new ApplicationUser
+                var user = new ApplicationUser
                 {
-                    UserName = model.UserName,
-                    Email = model.UserName,
-                    PhoneNumber = model.PhoneNumber,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Gender = model.Gender,
+                    BirthDay = model.BirthDay,
+                    Email = model.Email,
+                    UserName = model.Email,
+                    PhoneNumber = model.PhoneNumber
                 };
-
+               
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Login", "Account");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -77,7 +82,7 @@ namespace DemoTraveler.Controllers
             if (ModelState.IsValid)
             {
 
-                var result = await _signInManager.PasswordSignInAsync(model.UserName,
+                var result = await _signInManager.PasswordSignInAsync(model.Email,
                     model.Password, true, false);
 
                 if (result.Succeeded)

@@ -10,7 +10,7 @@ namespace DemoTraveler.Models.ViewModels
     {
         [Required(ErrorMessage = "Enter User Name!")]
         [EmailAddress]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Enter Password!")]
         [DataType(DataType.Password)]

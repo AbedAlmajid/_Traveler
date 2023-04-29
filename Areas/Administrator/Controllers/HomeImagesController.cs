@@ -191,7 +191,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // POST: Administrator/HomeImages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var homeImage = await _context.HomeImages.FindAsync(id);
             _context.HomeImages.Remove(homeImage);

@@ -13,6 +13,12 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CountryImg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CountryImg)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CountryName)
         </dt>
         <dd class = "col-sm-10">
@@ -37,6 +43,12 @@
             @Html.DisplayFor(model => model.CountryDesc)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Prize)
         </dt>
         <dd class = "col-sm-10">
@@ -47,12 +59,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.HotelStars)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CountryImg)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CountryImg)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DepartDate)
@@ -66,6 +72,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ReturnDate)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Country.CountryName)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IsDeleted)
         </dt>

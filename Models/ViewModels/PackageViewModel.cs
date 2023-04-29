@@ -10,8 +10,21 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class PackageViewModel : CommonProp
     {
-        public Guid CountryId { get; set; }
-        public Country CountryName { get; set; }
+
+        [Key]
+        public int PackageId { get; set; }
+
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
+
+        [Required(ErrorMessage = "Select Country Image!")]
+        [Display(Name = "Country Image")]
+        public IFormFile CountryImg { get; set; }
+
+        [Required(ErrorMessage = "Enter Country Name!")]
+        [Display(Name = "Country Name")]
+        public string CountryName { get; set; }
+
 
         [Required(ErrorMessage = "Enter Duration!")]
         public int Duration { get; set; }
@@ -24,16 +37,25 @@ namespace DemoTraveler.Models.ViewModels
         [DataType(DataType.MultilineText)]
         public string CountryDesc { get; set; }
 
+        [Required(ErrorMessage = "please Enter Brand Name!")]
+        [Display(Name = "Brand Name")]
+        public string BrandName { get; set; }
+
         [Required(ErrorMessage = "Enter Prize!")]
-        public int Prize { get; set; }
+        public decimal? Prize { get; set; }
 
         [Required(ErrorMessage = "Enter Hotel Stars!")]
         [Display(Name = "Hotel Stars")]
         public int HotelStars { get; set; }
 
-        [Required(ErrorMessage = "Select Country Image!")]
-        [Display(Name = "Country Image")]
-        public IFormFile CountryImg { get; set; }
+        [Required(ErrorMessage = "Select Depart Date!")]
+        [Display(Name = "Depart Date")]
+        public DateTime DepartDate { get; set; }
+
+
+        [Required(ErrorMessage = "Select Return Date!")]
+        [Display(Name = "Return Date")]
+        public DateTime ReturnDate { get; set; }
 
     }
 }

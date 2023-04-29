@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About Us" xml:space="preserve">
+    <value>معلومات </value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>العملاء</value>
+  </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
+  </data>
+  <data name="Home Page" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="HomeImages" xml:space="preserve">
+    <value>صور الصفحة الرئيسية</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="Packages" xml:space="preserve">
+    <value>بكجات</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>صفحات</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>ملفي</value>
+  </data>
+  <data name="Reset Password" xml:space="preserve">
+    <value>اعادة كلمة السر</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Tickets" xml:space="preserve">
+    <value>التذاكر</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>الرحلة</value>
   </data>
 </root>

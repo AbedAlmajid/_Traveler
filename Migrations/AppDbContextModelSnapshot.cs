@@ -99,8 +99,8 @@ namespace DemoTraveler.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("BirthDay")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -113,7 +113,15 @@ namespace DemoTraveler.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Gender")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Gender")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -376,9 +384,16 @@ namespace DemoTraveler.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CountryDesc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CountryImg")
                         .IsRequired()
@@ -412,13 +427,16 @@ namespace DemoTraveler.Migrations
                     b.Property<int>("Person")
                         .HasColumnType("int");
 
-                    b.Property<int>("Prize")
-                        .HasColumnType("int");
+                    b.Property<decimal?>("Prize")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("PackageId");
+
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Packages");
                 });
@@ -699,6 +717,17 @@ namespace DemoTraveler.Migrations
                     b.Navigation("Ticket");
                 });
 
+            modelBuilder.Entity("DemoTraveler.Models.Package", b =>
+                {
+                    b.HasOne("DemoTraveler.Models.Country", "Country")
+                        .WithMany("Packages")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
             modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
                 {
                     b.HasOne("DemoTraveler.Models.FlightType", "FlightType")
@@ -775,6 +804,11 @@ namespace DemoTraveler.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Country", b =>
+                {
+                    b.Navigation("Packages");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>

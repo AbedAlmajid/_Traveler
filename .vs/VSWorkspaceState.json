@@ -5,12 +5,13 @@
     "\\Areas\\Administrator",
     "\\Areas\\Administrator\\Controllers",
     "\\Areas\\Administrator\\Views",
-    "\\Areas\\Administrator\\Views\\Tickets",
-    "\\Models",
-    "\\Models\\ViewModels",
-    "\\Views",
-    "\\Views\\Home"
+    "\\Areas\\Administrator\\Views\\Packages",
+    "\\Areas\\AirCompany",
+    "\\Areas\\AirCompany\\Controllers",
+    "\\Areas\\AirCompany\\Views",
+    "\\Areas\\AirCompany\\Views\\AirCompany",
+    "\\Areas\\AirCompany\\Views\\Shared"
   ],
-  "SelectedNode": "\\Views\\Home\\Ticket.cshtml",
+  "SelectedNode": "\\Areas\\AirCompany\\Views\\Shared\\_AirCompanyLayout.cshtml",
   "PreviewInSolutionExplorer": false
 }

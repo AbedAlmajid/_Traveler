@@ -8,9 +8,24 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class RegisterViewModel
     {
+        [Required(ErrorMessage = "Enter First Name!")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Enter Last Name!")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage ="Enter Your Birth Day!")]
+        [Display(Name ="Birth Day")]
+        public DateTime BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Select Your Gender!")]
+        public bool Gender { get; set; }
+
         [Required(ErrorMessage ="Enter User Name!")]
         [EmailAddress]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required(ErrorMessage ="Enter Password!")]
         [DataType(DataType.Password)]

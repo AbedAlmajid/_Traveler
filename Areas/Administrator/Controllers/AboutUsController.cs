@@ -208,7 +208,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // POST: Administrator/AboutUs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var aboutUs = await _context.AboutUs.FindAsync(id);
             _context.AboutUs.Remove(aboutUs);

@@ -11,7 +11,7 @@ namespace DemoTraveler.Models.ViewModels
     public class TravelViewModel : CommonProp
     {
         [Key]
-        public Guid TravelId { get; set; }
+        public int TravelId { get; set; }
 
         [Required(ErrorMessage = "Enter Travel Name!")]
         [Display(Name = "Travel Name")]

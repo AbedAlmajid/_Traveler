@@ -12,6 +12,10 @@ namespace DemoTraveler.Models
         [Key]
         public int PackageId { get; set; }
 
+        [Required(ErrorMessage = "Select Country Image!")]
+        [Display(Name = "Country Image")]
+        public string CountryImg { get; set; }
+
         [Required(ErrorMessage = "Enter Country Name!")]
         [Display(Name = "Country Name")]
         public string CountryName { get; set; }
@@ -28,17 +32,16 @@ namespace DemoTraveler.Models
         [DataType(DataType.MultilineText)]
         public string CountryDesc { get; set; }
 
+        [Required(ErrorMessage = "please Enter Brand Name!")]
+        [Display(Name = "Brand Name")]
+        public string BrandName { get; set; }
+
         [Required(ErrorMessage ="Enter Prize!")]
-        public int Prize { get; set; }
+        public decimal? Prize { get; set; }
 
         [Required(ErrorMessage ="Enter Hotel Stars!")]
         [Display(Name = "Hotel Stars")]
         public int HotelStars { get; set; }
-
-        [Required(ErrorMessage = "Select Country Image!")]
-        [Display(Name = "Country Image")]
-        public string CountryImg { get; set; }
-
 
         [Required(ErrorMessage = "Select Depart Date!")]
         [Display(Name = "Depart Date")]
@@ -48,6 +51,9 @@ namespace DemoTraveler.Models
         [Required(ErrorMessage = "Select Return Date!")]
         [Display(Name = "Return Date")]
         public DateTime ReturnDate { get; set; }
+
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
 
     }
 }

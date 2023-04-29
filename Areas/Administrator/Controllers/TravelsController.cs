@@ -119,8 +119,10 @@ namespace DemoTraveler.Areas.Administrator
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TravelId,TravelName,TravelImg,IsDeleted,IsActive,CreationDate,ModificationDate")] Travel travel)
+        public async Task<IActionResult> Edit(int id, TravelViewModel travel)
         {
+            string imgName = UploadNewImage(travel);
+
             if (id != travel.TravelId)
             {
                 return NotFound();
@@ -128,22 +130,19 @@ namespace DemoTraveler.Areas.Administrator
 
             if (ModelState.IsValid)
             {
-                try
+                var tr = await _context.Travels.FindAsync(id);
+                if (tr == null)
                 {
-                    _context.Update(travel);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TravelExists(travel.TravelId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                tr.TravelName = travel.TravelName;
+                tr.TravelImg = imgName;
+                tr.IsDeleted = false;
+                tr.IsActive = true;
+                tr.CreationDate = DateTime.Now;
+                tr.ModificationDate = DateTime.Now;
+
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(travel);

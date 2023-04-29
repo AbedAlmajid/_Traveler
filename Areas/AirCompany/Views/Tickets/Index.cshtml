@@ -1,0 +1,86 @@
+﻿@model IEnumerable<DemoTraveler.Models.Ticket>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AirCompany/Views/Shared/_AirCompanyLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlyBrand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArriveTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img width="120" src="..\@Url.Content(item.FlyBrand)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromCountry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToCountry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromAirport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToAirport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArriveTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TicketId" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TicketId" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TicketId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>

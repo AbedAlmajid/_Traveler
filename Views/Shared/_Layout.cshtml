@@ -14,22 +14,21 @@
 
 <head>
 
-
-
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
     <title>TRAVELER - @ViewBag.Title</title>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    @*<link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
-    @*<link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
-    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" media="all">
+    @*<link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
+    @*<link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />*@
+    @*<link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
+
     @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
     {
         <link href="~/css/RTLStyle.css" rel="stylesheet" />
@@ -44,7 +43,7 @@
 
 <body>
 
-    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block mt-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 text-center text-lg mb-2 mb-lg-0">
@@ -117,7 +116,7 @@
                                         <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
                                                 <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
                                                 <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
@@ -132,7 +131,7 @@
                                                 <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
                                                 <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
                                             </div>
                                         </div>
                                     }
@@ -144,14 +143,25 @@
                                                 <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
                                                 <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
                                             </div>
                                         </div>
                                     }
+
+                                }
+                                else
+                                {
+                                    <div class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                        <div class="dropdown-menu border-0 rounded-0 m-0">
+                                            <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                            <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                            <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
+                                            <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                        </div>
+                                    </div>
                                 }
                             </li>
-
-
                             <li>
                                 <partial name="_SelectLanguagePartial" />
                             </li>
@@ -289,7 +299,7 @@
     </div>-->
     <!--<!-- Blog End -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 " style="margin-top: 170px;">
+    <div class="footer container-fluid bg-dark text-white-50" >
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand">
@@ -301,7 +311,7 @@
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -325,7 +335,7 @@
                     <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
                     <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
                     <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -338,20 +348,6 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white-50">
-                    Copy Right &copy; <a href="#">Domain</a> All Rights Reserved.
-                </p>
-            </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">
-                    Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                </p>
-            </div>
-        </div>
-    </div>
     <!-- Footer End -->
     <!-- Back to Top -->
 
@@ -360,7 +356,7 @@
 
 
     @*<script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>*@
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>

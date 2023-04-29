@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,21 @@ namespace DemoTraveler.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string Gender { get; set; }
-        public string City { get; set; }
+        [Required(ErrorMessage = "Enter First Name!")]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Enter Last Name!")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Enter Your Birth Day!")]
+        [Display(Name = "Birth Day")]
+        public DateTime BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Select Your Gender!")]
+        public bool Gender { get; set; }
+
+        
     }
 }

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DemoTraveler.Data;
 using DemoTraveler.Models;
+using DemoTraveler.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
@@ -14,16 +17,19 @@ namespace DemoTraveler.Areas.Administrator.Controllers
     public class PackagesController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public PackagesController(AppDbContext context)
+        public PackagesController(AppDbContext context , IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/Packages
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Packages.ToListAsync());
+            var appDbContext = _context.Packages.Include(p => p.Country);
+            return View(await appDbContext.ToListAsync());
         }
 
         // GET: Administrator/Packages/Details/5
@@ -35,6 +41,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             }
 
             var package = await _context.Packages
+                .Include(p => p.Country)
                 .FirstOrDefaultAsync(m => m.PackageId == id);
             if (package == null)
             {
@@ -47,6 +54,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // GET: Administrator/Packages/Create
         public IActionResult Create()
         {
+            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName");
             return View();
         }
 
@@ -55,15 +63,55 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PackageId,CountryName,Duration,Person,CountryDesc,Prize,HotelStars,CountryImg,DepartDate,ReturnDate,IsDeleted,IsActive,CreationDate,ModificationDate")] Package package)
+        public async Task<IActionResult> Create(PackageViewModel package)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(package);
+                string imgName = UploadNewImage(package);
+
+                Package pp = new Package
+                {
+                    Country = package.Country,
+                    CountryImg = imgName,
+                    CountryName = package.CountryName,
+                    Duration = package.Duration,
+                    Person = package.Person,
+                    CountryDesc = package.CountryDesc,
+                    BrandName  = package.BrandName,
+                    Prize = package.Prize,
+                    HotelStars  = package.HotelStars,
+                    DepartDate = package.DepartDate,
+                    ReturnDate = package.ReturnDate,
+                    CreationDate = DateTime.Now,
+                    ModificationDate = DateTime.Now,
+                    IsActive = true,
+                    IsDeleted = false
+                };
+
+                _context.Add(pp);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
+        }
+
+        public string UploadNewImage(PackageViewModel model)
+        {
+            string newFullImageName = null;
+            if (model.CountryImg != null)
+            {
+                string fileRoot = Path.Combine(_hostEnvironment.WebRootPath, @"img\");
+                string newFileName = Guid.NewGuid() + "_" + model.CountryImg.FileName;
+                string FullPath = Path.Combine(fileRoot, newFileName);
+                using (var myNewFile = new FileStream(FullPath, FileMode.Create))
+                {
+                    model.CountryImg.CopyTo(myNewFile);
+                }
+                newFullImageName = @"img\" + newFileName;
+                return newFullImageName;
+            }
+            return newFullImageName;
         }
 
         // GET: Administrator/Packages/Edit/5
@@ -79,6 +127,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             {
                 return NotFound();
             }
+            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
         }
 
@@ -87,8 +136,10 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PackageId,CountryName,Duration,Person,CountryDesc,Prize,HotelStars,CountryImg,DepartDate,ReturnDate,IsDeleted,IsActive,CreationDate,ModificationDate")] Package package)
+        public async Task<IActionResult> Edit(int id, PackageViewModel package)
         {
+            string imgName = UploadNewImage(package);
+
             if (id != package.PackageId)
             {
                 return NotFound();
@@ -96,24 +147,32 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var pa = await _context.Packages.FindAsync(id);
+                if (pa == null)
                 {
-                    _context.Update(package);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PackageExists(package.PackageId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                pa.Country = package.Country;
+                pa.CountryImg = imgName;
+                pa.CountryName = package.CountryName;
+                pa.Duration = package.Duration;
+                pa.Person = package.Person;
+                pa.CountryDesc = package.CountryDesc;
+                pa.BrandName = package.BrandName;
+                pa.Prize = package.Prize;
+                pa.HotelStars = package.HotelStars;
+                pa.DepartDate = package.DepartDate;
+                pa.ReturnDate = package.ReturnDate;
+                pa.CreationDate = DateTime.Now;
+                pa.ModificationDate = DateTime.Now;
+                pa.IsActive = true;
+                pa.IsDeleted = false;
+
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
         }
 
@@ -126,6 +185,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             }
 
             var package = await _context.Packages
+                .Include(p => p.Country)
                 .FirstOrDefaultAsync(m => m.PackageId == id);
             if (package == null)
             {

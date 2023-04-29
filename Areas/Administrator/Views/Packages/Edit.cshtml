@@ -11,9 +11,14 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PackageId" />
+            <div class="form-group">
+                <label asp-for="CountryImg" class="control-label"></label>
+                <input asp-for="CountryImg" type="file" class="form-control" />
+                <span asp-validation-for="CountryImg" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="CountryName" class="control-label"></label>
                 <input asp-for="CountryName" class="form-control" />
@@ -35,6 +40,11 @@
                 <span asp-validation-for="CountryDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="BrandName" class="control-label"></label>
+                <input asp-for="BrandName" class="form-control" />
+                <span asp-validation-for="BrandName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Prize" class="control-label"></label>
                 <input asp-for="Prize" class="form-control" />
                 <span asp-validation-for="Prize" class="text-danger"></span>
@@ -45,11 +55,6 @@
                 <span asp-validation-for="HotelStars" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CountryImg" class="control-label"></label>
-                <input asp-for="CountryImg" class="form-control" />
-                <span asp-validation-for="CountryImg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="DepartDate" class="control-label"></label>
                 <input asp-for="DepartDate" class="form-control" />
                 <span asp-validation-for="DepartDate" class="text-danger"></span>
@@ -58,6 +63,11 @@
                 <label asp-for="ReturnDate" class="control-label"></label>
                 <input asp-for="ReturnDate" class="form-control" />
                 <span asp-validation-for="ReturnDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -90,6 +100,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

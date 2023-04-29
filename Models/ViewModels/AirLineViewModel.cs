@@ -17,9 +17,11 @@ namespace DemoTraveler.Models.ViewModels
         public string Location { get; set; }
 
         [Required(ErrorMessage = "Enter Phone Number!")]
+        [Display(Name ="Phone Number")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Select Image!")]
+        [Display(Name = "Airline Image")]
         public IFormFile AirlineImage { get; set; }
     }
 }

@@ -26,6 +26,11 @@ namespace DemoTraveler.Controllers
             return View();
         }
 
+        public IActionResult Destination()
+        {
+            return View();
+        }
+
         public IActionResult TourPackage()
         {
             return View();
@@ -70,10 +75,6 @@ namespace DemoTraveler.Controllers
             return View();
         }
 
-        public IActionResult Package()
-        {
-            return View();
-        }
         [HttpGet]
         public IActionResult Ticket(int Id)
         {
@@ -91,11 +92,17 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Payment(int Id)
         {
-            var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
+            var ticket = db.Bookings.Where(x => x.BookingId == Id).SingleOrDefault();
             return View(ticket);
         }
 
-        
+        public IActionResult Package(int Id)
+        {
+            var package = db.Bookings.Where(b => b.BookingId == Id).SingleOrDefault();
+            return View(package);
+        }
+
+
 
         [HttpPost]
         public IActionResult SetLanguage(string culture , string returnUrl)
