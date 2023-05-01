@@ -329,6 +329,34 @@ namespace DemoTraveler.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("DemoTraveler.Models.CreditCardInfo", b =>
+                {
+                    b.Property<int>("CardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CCV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardHolder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExpirationDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CardId");
+
+                    b.ToTable("CreditCardInfos");
+                });
+
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
                 {
                     b.Property<int>("FlightTypeId")

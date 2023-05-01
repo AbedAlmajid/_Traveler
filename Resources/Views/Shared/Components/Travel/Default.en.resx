@@ -117,19 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALGERIA" xml:space="preserve">
+    <value>ALGERIA</value>
+  </data>
   <data name="Destination" xml:space="preserve">
     <value>Destination</value>
   </data>
   <data name="DUBAI" xml:space="preserve">
     <value>DUBAI</value>
   </data>
+  <data name="EGYPT" xml:space="preserve">
+    <value>EGYPT</value>
+  </data>
   <data name="Explore Top Destination" xml:space="preserve">
     <value>Explore Top Destination</value>
+  </data>
+  <data name="JORDAN" xml:space="preserve">
+    <value>JORDAN</value>
+  </data>
+  <data name="LEBANON" xml:space="preserve">
+    <value>LEBANON</value>
+  </data>
+  <data name="MALDIVES" xml:space="preserve">
+    <value>MALDIVES</value>
   </data>
   <data name="MORROCOW" xml:space="preserve">
     <value>MORROCOW</value>
   </data>
   <data name="QATAR" xml:space="preserve">
     <value>QATAR</value>
+  </data>
+  <data name="TURKEY" xml:space="preserve">
+    <value>TURKEY</value>
   </data>
 </root>

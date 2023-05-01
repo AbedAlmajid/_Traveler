@@ -58,7 +58,6 @@
     <Folder Include="Areas\AirCompany\Models\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Resources\Views\Shared\Components\Client\" />
-    <Folder Include="Resources\Views\Shared\Components\Package\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,15 +3,15 @@
     "",
     "\\Areas",
     "\\Areas\\Administrator",
-    "\\Areas\\Administrator\\Controllers",
     "\\Areas\\Administrator\\Views",
-    "\\Areas\\Administrator\\Views\\Packages",
-    "\\Areas\\AirCompany",
-    "\\Areas\\AirCompany\\Controllers",
-    "\\Areas\\AirCompany\\Views",
-    "\\Areas\\AirCompany\\Views\\AirCompany",
-    "\\Areas\\AirCompany\\Views\\Shared"
+    "\\Controllers",
+    "\\Data",
+    "\\Migrations",
+    "\\Models",
+    "\\Models\\ViewModels",
+    "\\Views",
+    "\\Views\\Account"
   ],
-  "SelectedNode": "\\Areas\\AirCompany\\Views\\Shared\\_AirCompanyLayout.cshtml",
+  "SelectedNode": "\\Views\\Home\\Payment.cshtml",
   "PreviewInSolutionExplorer": false
 }

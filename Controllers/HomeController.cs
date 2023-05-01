@@ -4,10 +4,9 @@ using DemoTraveler.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -61,7 +60,7 @@ namespace DemoTraveler.Controllers
                 CreationDate = DateTime.Now
             };
             db.Contacts.Add(cc);
-            await  db.SaveChangesAsync();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -69,7 +68,7 @@ namespace DemoTraveler.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Client()
         {
             return View();
@@ -86,14 +85,68 @@ namespace DemoTraveler.Controllers
         public IActionResult Booking(int Id)
         {
             var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
-            return View(ticket);
+            ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "ToCountry");
+            return View();
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Booking(BookingViewModel booking)
+        {
+            if (ModelState.IsValid)
+            {
+                Booking bb = new Booking
+                {
+                    FirstName = booking.FirstName,
+                    LastName = booking.LastName,
+                    NationalNumber = booking.NationalNumber,
+                    PhoneNumber = booking.PhoneNumber,
+                    Address = booking.Address,
+                    ZipCode = booking.ZipCode,
+                    PassportNumber = booking.PassportNumber,
+                    TicketId = booking.TicketId,
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreationDate = DateTime.Now,
+                    ModificationDate = DateTime.Now
+                };
+                db.Add(bb);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Payment");
+            }
+            ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "Ticket", booking.TicketId);
+            return View(booking);
+        }
+
 
         [HttpGet]
         public IActionResult Payment(int Id)
         {
             var ticket = db.Bookings.Where(x => x.BookingId == Id).SingleOrDefault();
             return View(ticket);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Payment(CreditCardInfoViewModel card, string cardNumber, string cardNumber1, string cardNumber2, string cardNumber3, string expireDate)
+        {
+            if (ModelState.IsValid)
+            {
+                var fullCardNumber = cardNumber + cardNumber1 + cardNumber2 + cardNumber3;
+                var expire = expireDate;
+
+                CreditCardInfo cc = new CreditCardInfo
+                {
+                    CardNumber = fullCardNumber,
+                    CardHolder = card.CardHolder,
+                    ExpirationDate = expire,
+                    CCV = card.CCV
+                };
+
+                db.Add(cc);
+                await db.SaveChangesAsync();
+                return View(card);
+            }
+            return View(card);
         }
 
         public IActionResult Package(int Id)
@@ -105,12 +158,14 @@ namespace DemoTraveler.Controllers
 
 
         [HttpPost]
-        public IActionResult SetLanguage(string culture , string returnUrl)
+        public IActionResult SetLanguage(string culture, string returnUrl)
         {
             Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
                 CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
-                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1)
+                new CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddYears(1)
                 });
 
             return LocalRedirect(returnUrl);
@@ -118,15 +173,15 @@ namespace DemoTraveler.Controllers
 
         public IActionResult SearchData(string txtName)
         {
-            if ( txtName == null )
+            if (txtName == null)
             {
-                return View("Index" , db.Travels.Include(d => d.TravelName));
+                return View("Index", db.Travels.Include(d => d.TravelName));
             }
             var data = db.Travels.Where(x => x.TravelName.Contains(txtName)).
                 Include(d => d.TravelName);
             return View("Index", data);
         }
-        
+
     }
 
 
