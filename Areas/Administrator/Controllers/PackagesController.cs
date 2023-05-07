@@ -25,12 +25,25 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        // GET: Administrator/Packages
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string CountryName)
         {
-            var appDbContext = _context.Packages.Include(p => p.Country);
-            return View(await appDbContext.ToListAsync());
+            //return View(await _context.Travels.ToListAsync());
+            ViewData["CurrentFilter"] = CountryName;
+            var travels = from p in _context.Packages
+                          select p;
+            if (!String.IsNullOrEmpty(CountryName))
+            {
+                travels = travels.Where(t => t.CountryName.Contains(CountryName));
+            }
+            return View(travels);
         }
+
+        // GET: Administrator/Packages
+        //public async Task<IActionResult> Index()
+        //{
+        //    var appDbContext = _context.Packages.Include(p => p.Country);
+        //    return View(await appDbContext.ToListAsync());
+        //}
 
         // GET: Administrator/Packages/Details/5
         public async Task<IActionResult> Details(int? id)

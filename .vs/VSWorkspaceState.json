@@ -1,17 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Areas",
-    "\\Areas\\Administrator",
-    "\\Areas\\Administrator\\Views",
-    "\\Controllers",
-    "\\Data",
-    "\\Migrations",
-    "\\Models",
-    "\\Models\\ViewModels",
-    "\\Views",
-    "\\Views\\Account"
+    "\\obj",
+    "\\obj\\Debug",
+    "\\obj\\Debug\\net5.0",
+    "\\obj\\Debug\\net5.0\\Razor",
+    "\\obj\\Debug\\net5.0\\Razor\\Views",
+    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared",
+    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components",
+    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components\\Partner",
+    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components\\SearchTravel"
   ],
-  "SelectedNode": "\\Views\\Home\\Payment.cshtml",
+  "SelectedNode": "\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }

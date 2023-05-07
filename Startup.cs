@@ -83,12 +83,11 @@ namespace DemoTraveler
             });
       
 
-            services.AddSession(op => op.IdleTimeout = TimeSpan.FromMinutes(45));
+            services.AddSession();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
-            
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

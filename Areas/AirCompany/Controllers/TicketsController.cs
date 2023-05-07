@@ -24,12 +24,25 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        // GET: AirCompany/Tickets
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string toCountry)
         {
-            var appDbContext = _context.Tickets.Include(t => t.FlightType).Include(t => t.TicketType).Include(t => t.Travel);
-            return View(await appDbContext.ToListAsync());
+            //return View(await _context.Travels.ToListAsync());
+            ViewData["CurrentFilter"] = toCountry;
+            var travels = from k in _context.Tickets
+                          select k;
+            if (!String.IsNullOrEmpty(toCountry))
+            {
+                travels = travels.Where(t => t.ToCountry.Contains(toCountry));
+            }
+            return View(travels);
         }
+
+        // GET: AirCompany/Tickets
+        //public async Task<IActionResult> Index()
+        //{
+        //    var appDbContext = _context.Tickets.Include(t => t.FlightType).Include(t => t.TicketType).Include(t => t.Travel);
+        //    return View(await appDbContext.ToListAsync());
+        //}
 
         // GET: AirCompany/Tickets/Details/5
         public async Task<IActionResult> Details(int? id)

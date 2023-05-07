@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #f7f7f7;
+  background-color: #a9dce3;
   position: relative;
   margin: 0px;
   font-size: 12px;
@@ -51,9 +51,9 @@ footer .copy{
 
 /* Logo & Navigation */
 
-.header{
-   height:50px;
-   background-color: #2c3742;
+.header {
+    height: 50px;
+    background-color: #5e001f;
 }
 
 .header .logo h1{
@@ -217,14 +217,14 @@ footer .copy{
 /* Sidebar navigation */
 
 .content-box, .content-box-large {
-   margin-bottom:30px;
-   background:#fff;
-   border-radius:10px;
-   padding:10px;
-   border-left:1px solid #eee;
-   border-top:1px solid #eee;
-   border-right:2px solid #eee;
-   border-bottom:2px solid #eee; 
+    margin-bottom: 30px;
+    background: #00e1d93d;
+    border-radius: 10px;
+    padding: 10px;
+    border-left: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-right: 2px solid #eee;
+    border-bottom: 2px solid #eee;
 }
 
 .content-box-large {

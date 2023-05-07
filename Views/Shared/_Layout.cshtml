@@ -78,101 +78,204 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid position-relative nav-bar p-0">
-        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a asp-action="Index" asp-controller="Home" class="navbar-brand">
-                    <h1 class="m-0 text-primary">
-                        <span class="text-dark">
-                            TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
-                                <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
-                            </svg>
-                        </span>ER
-                    </h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                    <div class="navbar-nav m-auto py-0">
-                        <ul class="nav navbar-nav">
-                            <li><a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a></li>
-                            <li>
-                                <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
-                            </li>
-                            <li>
-                                <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
-                            </li>
-                            <li>
-                                <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
+    @if (CultureInfo.CurrentCulture.Name.StartsWith("en"))
+    {
+        <div class="container-fluid position-relative nav-bar p-0">
+            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                    <a asp-action="Index" asp-controller="Home" class="navbar-brand">
+                        <h1 class="m-0 text-primary">
+                            <span class="text-dark">
+                                TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+                                    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
+                                </svg>
+                            </span>ER
+                        </h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                        <div class="navbar-nav m-auto py-0">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a></li>
+                                <li>
+                                    <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
+                                </li>
+                                <li>
+                                    <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
 
-                            </li>
-                            <li>
-                                <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
-                            </li>
-                            <li>
-                                @if (signInManager.IsSignedIn(User))
-                                {
-                                    if (User.IsInRole("Admin"))
+                                </li>
+                                <li>
+                                    <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
+                                </li>
+                                <li>
+                                    @if (signInManager.IsSignedIn(User))
                                     {
-                                        <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                        if (User.IsInRole("Admin"))
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    }
-                                    else if (User.IsInRole("AirCompany"))
-                                    {
-                                        <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                            <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                        }
+                                        else if (User.IsInRole("AirCompany"))
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
+                                            </div>
+                                        }
+
                                     }
                                     else
                                     {
                                         <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
+                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
                                             </div>
                                         </div>
                                     }
-
-                                }
-                                else
-                                {
-                                    <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                        <div class="dropdown-menu border-0 rounded-0 m-0">
-                                            <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                            <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                            <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
-                                            <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                        </div>
-                                    </div>
-                                }
-                            </li>
-                            <li>
-                                <partial name="_SelectLanguagePartial" />
-                            </li>
-                        </ul>
+                                </li>
+                                <li>
+                                        <partial name="_SelectLanguagePartial"  />
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="container-fluid position-relative nav-bar p-0">
+            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                        <div class="navbar-nav m-auto py-0">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <partial name="_SelectLanguagePartial" />
+                                </li>
+                                <li>
+                                    <a asp-action="AboutUs" asp-controller="Home" class="nav-item nav-link">@Localizer["About"]</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
+                                </li>
+                                <li>
+                                    <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
+
+                                </li>
+                                <li>
+                                    <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
+                                </li>
+                                <li>
+                                    @if (signInManager.IsSignedIn(User))
+                                    {
+                                        if (User.IsInRole("Admin"))
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
+                                            </div>
+                                        }
+                                        else if (User.IsInRole("AirCompany"))
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="nav-item dropdown">
+                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                                <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                    <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                    <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
+                                                    <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                            <div class="dropdown-menu border-0 rounded-0 m-0">
+                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
+                                                <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
+                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
+                                            </div>
+                                        </div>
+                                    }
+                                </li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a>
+                                </li>
+                            </ul>
+                            <a asp-action="Index" asp-controller="Home" class="navbar-brand">
+                                <h1 class="m-0 text-primary">
+                                    <span class="text-dark mr-5 mt-4">
+                                        TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
+                                            <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
+                                        </svg>
+                                    </span>ER
+                                </h1>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    }
+
+
     <!-- Navbar End -->
     <div>
         @RenderBody()
@@ -181,174 +284,229 @@
 
     <!-- Registration Start -->
     @*<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-5 mb-lg-0">
-                    <div class="mb-4">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
-                        <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-5 mb-lg-0">
+                        <div class="mb-4">
+                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
+                            <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
+                        </div>
+                        <p class="text-white">
+                            Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                            ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                            dolor
+                        </p>
+                        <ul class="list-inline text-white m-0">
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
+                        </ul>
                     </div>
-                    <p class="text-white">
-                        Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor
-                    </p>
-                    <ul class="list-inline text-white m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
-                    </ul>
-                </div>
-                <div class="col-lg-5">
-                    <div class="card border-0">
-                        <div class="card-header bg-primary text-center p-4">
-                            <h1 class="text-white m-0">Sign Up Now</h1>
-                        </div>
-                        <div class="card-body rounded-bottom bg-white p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Your name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Select a destination</option>
-                                        <option value="1">destination 1</option>
-                                        <option value="2">destination 1</option>
-                                        <option value="3">destination 1</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-      
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
-                <h1>Latest From Our Blog</h1>
-            </div>
-            <div class="row pb-3">
-                <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                    <div class="blog-item">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                            <div class="blog-date">
-                                <h6 class="font-weight-bold mb-n1">01</h6>
-                                <small class="text-white text-uppercase">Jan</small>
+                    <div class="col-lg-5">
+                        <div class="card border-0">
+                            <div class="card-header bg-primary text-center p-4">
+                                <h1 class="text-white m-0">Sign Up Now</h1>
                             </div>
-                        </div>
-                        <div class="bg-white p-4">
-                            <div class="d-flex mb-2">
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                <span class="text-primary px-2">|</span>
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
+                            <div class="card-body rounded-bottom bg-white p-5">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control p-4" placeholder="Your name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="custom-select px-4" style="height: 47px;">
+                                            <option selected>Select a destination</option>
+                                            <option value="1">destination 1</option>
+                                            <option value="2">destination 1</option>
+                                            <option value="3">destination 1</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+                                    </div>
+                                </form>
                             </div>
-                            <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                    <div class="blog-item">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/blog-2.jpg" alt="">
-                            <div class="blog-date">
-                                <h6 class="font-weight-bold mb-n1">01</h6>
-                                <small class="text-white text-uppercase">Jan</small>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4">
-                            <div class="d-flex mb-2">
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                <span class="text-primary px-2">|</span>
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                            </div>
-                            <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                    <div class="blog-item">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/blog-3.jpg" alt="">
-                            <div class="blog-date">
-                                <h6 class="font-weight-bold mb-n1">01</h6>
-                                <small class="text-white text-uppercase">Jan</small>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4">
-                            <div class="d-flex mb-2">
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                <span class="text-primary px-2">|</span>
-                                <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                            </div>
-                            <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>*@
-    <!--<!-- Blog End 
+
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
+                <div class="text-center mb-3 pb-3">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
+                    <h1>Latest From Our Blog</h1>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="blog-item">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
+                                <div class="blog-date">
+                                    <h6 class="font-weight-bold mb-n1">01</h6>
+                                    <small class="text-white text-uppercase">Jan</small>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4">
+                                <div class="d-flex mb-2">
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
+                                    <span class="text-primary px-2">|</span>
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
+                                </div>
+                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="blog-item">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="img/blog-2.jpg" alt="">
+                                <div class="blog-date">
+                                    <h6 class="font-weight-bold mb-n1">01</h6>
+                                    <small class="text-white text-uppercase">Jan</small>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4">
+                                <div class="d-flex mb-2">
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
+                                    <span class="text-primary px-2">|</span>
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
+                                </div>
+                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
+                        <div class="blog-item">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="img/blog-3.jpg" alt="">
+                                <div class="blog-date">
+                                    <h6 class="font-weight-bold mb-n1">01</h6>
+                                    <small class="text-white text-uppercase">Jan</small>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4">
+                                <div class="d-flex mb-2">
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
+                                    <span class="text-primary px-2">|</span>
+                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
+                                </div>
+                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!--<!-- Blog End
     <!-- Footer Start -->
-    <div class="footer container-fluid bg-dark text-white-50" >
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                </a>
-                <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+    @if (CultureInfo.CurrentCulture.Name.StartsWith("en"))
+    {
+        <div class="footer container-fluid bg-dark text-white-50">
+            <div class="row pt-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <a href="" class="navbar-brand">
+                        <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                    </a>
+                    <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
+                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
-                    <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                        <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
-                    <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
-                    <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
-                    @Localizer["CONTACT US"]
-                </h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
-                <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
+                        @Localizer["CONTACT US"]
+                    </h5>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
+                    <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="footer container-fluid bg-dark text-white-50">
+            <div class="row pt-5">
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
+                        @Localizer["CONTACT US"]
+                    </h5>
+                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
+                    <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
+                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"]</a>
+                        <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
+                        <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5">
+                    <a href="" class="navbar-brand">
+                        <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                    </a>
+                    <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
+                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
     <!-- Footer End -->
     <!-- Back to Top -->
 
@@ -357,8 +515,11 @@
 
 
     @*<script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>*@
-   
-    
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/easing/easing.min.js"></script>
     <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/lib/tempusdominus/js/moment.min.js"></script>
@@ -367,8 +528,9 @@
     @*<script src="~/mail/contact.js"></script>*@
     <script src="~/js/main.js"></script>
     @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>*@
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>*@
+    <!--OPTIONAL: Add the following scripts for enabling Client Side validation.-->
 
 </body>
 

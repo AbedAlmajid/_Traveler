@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Administrator\Models\**" />
+    <Content Remove="Areas\Administrator\Models\**" />
+    <EmbeddedResource Remove="Areas\Administrator\Models\**" />
+    <None Remove="Areas\Administrator\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css" />
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map" />
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css" />
@@ -52,10 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Administrator\Models\" />
     <Folder Include="Areas\Administrator\Views\Models\" />
-    <Folder Include="Areas\AirCompany\Data\" />
-    <Folder Include="Areas\AirCompany\Models\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Resources\Views\Shared\Components\Client\" />
   </ItemGroup>

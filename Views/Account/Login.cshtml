@@ -4,6 +4,14 @@
     ViewData["Title"] = "Login"; 
  }
 
+<style>
+    .center-block {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>
+
 <link href="~/css/LoginStyle.css" rel="stylesheet" />
 
     <div class="page-wrapper bg-gra-02 p-t-50 p-b-100 font-poppins mt-2 container-fluid">
@@ -27,20 +35,19 @@
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="center-block">
-                                <button class="btn btn-primary" type="submit">Login</button>
-                                <a class="btn btn-primary" asp-action="Register" asp-controller="Account">Register</a>
-                            </div>
                         </div>
-                        
-                        
+                        <div class="p-t-15">
+                            <button class="btn btn-primary w-50 p-3 center-block" type="submit">Login</button>
+                        </div>
+                        <label class="w-50 p-3 center-block text-center">
+                           Don't Have Account ?! please Register
+                            <a asp-action="Register" asp-controller="Account" style="color:blue; font-weight:bold">Register</a>
+                        </label>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <script src="~/vendor/select2/select2.min.js"></script>
     <script src="~/vendor/datepicker/moment.min.js"></script>

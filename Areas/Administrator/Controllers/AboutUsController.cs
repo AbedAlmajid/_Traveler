@@ -157,8 +157,12 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AboutUs aboutUs)
+        public async Task<IActionResult> Edit(int id, AboutUsViewModel aboutUs)
         {
+            string imgName1 = UploadNewImage1(aboutUs);
+            string imgName2 = UploadNewImage2(aboutUs);
+            string imgName3 = UploadNewImage3(aboutUs);
+
             if (id != aboutUs.AboutUsId)
             {
                 return NotFound();
@@ -166,22 +170,22 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var au = await _context.AboutUs.FindAsync();
+                if (au == null)
                 {
-                    _context.Update(aboutUs);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AboutUsExists(aboutUs.AboutUsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                au.Title = aboutUs.Title;
+                au.AboutUsDescription = aboutUs.AboutUsDescription;
+                au.AboutImg1 = imgName1;
+                au.AboutImg2 = imgName2;
+                au.AboutImg3 = imgName3;
+                au.IsActive = true;
+                au.IsDeleted = false;
+                au.CreationDate = DateTime.Now;
+                au.ModificationDate = DateTime.Now;
+
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(aboutUs);

@@ -13,21 +13,30 @@ using DemoTraveler.Models.ViewModels;
 
 namespace DemoTraveler.Areas.Administrator
 {
+
     [Area("Administrator")]
     public class TravelsController : Controller
     {
         private readonly AppDbContext _context;
         private IWebHostEnvironment _hostEnvironment;
-        public TravelsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
+        public TravelsController(AppDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
         }
 
         // GET: Administrator/Travels
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string travelName)
         {
-            return View(await _context.Travels.ToListAsync());
+            //return View(await _context.Travels.ToListAsync());
+            ViewData["CurrentFilter"] = travelName;
+            var travels = from t in _context.Travels
+                         select t;
+            if (!String.IsNullOrEmpty(travelName))
+            {
+                travels = travels.Where(t => t.TravelName.Contains(travelName));
+            }
+            return View(travels);
         }
 
         // GET: Administrator/Travels/Details/5

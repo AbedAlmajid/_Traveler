@@ -8,6 +8,7 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class RegisterViewModel
     {
+        public int id { get; set; }
         [Required(ErrorMessage = "Enter First Name!")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -18,6 +19,8 @@ namespace DemoTraveler.Models.ViewModels
 
         [Required(ErrorMessage ="Enter Your Birth Day!")]
         [Display(Name ="Birth Day")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{MM/dd/yyyy}")]
         public DateTime BirthDay { get; set; }
 
         [Required(ErrorMessage = "Select Your Gender!")]

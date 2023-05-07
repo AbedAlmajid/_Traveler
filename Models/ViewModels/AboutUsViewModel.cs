@@ -10,6 +10,9 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class AboutUsViewModel : CommonProp
     {
+        [Key]
+        public int AboutUsId { get; set; }
+
         [Required(ErrorMessage = "Enter Title!")]
         public string Title { get; set; }
 

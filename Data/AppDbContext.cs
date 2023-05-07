@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoTraveler.Models.ViewModels;
 
 namespace DemoTraveler.Data
 {
@@ -26,7 +27,8 @@ namespace DemoTraveler.Data
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<FlightType> FlightTypes { get; set; }
         public DbSet<Package> Packages { get; set; }
-        public DbSet<CreditCardInfo> CreditCardInfos { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Partner> Partners { get; set; }
 
 
 

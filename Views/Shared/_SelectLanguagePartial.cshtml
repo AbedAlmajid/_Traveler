@@ -19,7 +19,7 @@
 
 
 
-    <div title="@localizer["Requst Culture provider:"] @requestCulture?.Provider?.GetType().Name">
+    <div class="nav-item dropdown" title="@localizer["Requst Culture provider:"] @requestCulture?.Provider?.GetType().Name">
         <form id="selectLanguage" method="post" asp-controller="Home" asp-action="SetLanguage"
               asp-route-returnUrl="@returnUrl">
             

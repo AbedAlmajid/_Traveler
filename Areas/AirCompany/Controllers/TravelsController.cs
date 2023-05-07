@@ -25,11 +25,24 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        // GET: AirCompany/Travels
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string travelName)
         {
-            return View(await _context.Travels.ToListAsync());
+            //return View(await _context.Travels.ToListAsync());
+            ViewData["CurrentFilter"] = travelName;
+            var travels = from t in _context.Travels
+                          select t;
+            if (!String.IsNullOrEmpty(travelName))
+            {
+                travels = travels.Where(t => t.TravelName.Contains(travelName));
+            }
+            return View(travels);
         }
+
+        // GET: AirCompany/Travels
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Travels.ToListAsync());
+        //}
 
         // GET: AirCompany/Travels/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -7,50 +7,102 @@
 <div class="container-fluid page-header">
     <div class="container-fluid">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-            <h3 class="display-4 text-white text-uppercase">Contact</h3>
+            <h3 class="display-4 text-white text-uppercase">@Localizer["Contact"]</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0 text-uppercase"><a class="text-white" asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></p>
+                <p class="m-0 text-uppercase"><a class="text-white" asp-action="Index" asp-controller="Home">@Localizer["Back To Home"]</a></p>
                 <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                <p class="m-0 text-uppercase">Contact</p>
+                <p class="m-0 text-uppercase">@Localizer["Contact"]</p>
             </div>
         </div>
     </div>
 </div>
 
-<h4 class="container">Contact</h4>
+@*<h4 class="container">@Localizer["Contact"]</h4>
 <hr />
 <div class="container">
     <div class="col-md-10">
         <form asp-action="Contact" class="container">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
+                <label asp-for="FullName" class="control-label">@Localizer["FullName"]</label>
                 <input asp-for="FullName" class="form-control" />
                 <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
+                <label asp-for="Email" class="control-label">@Localizer["Email"]</label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Subject" class="control-label"></label>
+                <label asp-for="Subject" class="control-label">@Localizer["Subject"]</label>
                 <input asp-for="Subject" class="form-control" />
                 <span asp-validation-for="Subject" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Message" class="control-label"></label>
+                <label asp-for="Message" class="control-label">@Localizer["Message"]</label>
                 <textarea asp-for="Message" class="form-control"></textarea>
                 <span asp-validation-for="Message" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="container btn btn-primary" />
+                <input type="submit" value="@Localizer["Send"]" class="container btn btn-primary" />
             </div>
             <div>
-                <a asp-action="Index" class="container btn btn-outline-warning">Back to List</a>
+                <a asp-action="Index" class="container btn btn-outline-warning">@Localizer["Back To Home"]</a>
             </div>
         </form>
+    </div>
+</div>*@
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact</h6>
+            <h1>Contact For Any Query</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form bg-white" style="padding: 30px;">
+                    <div id="success"></div>
+                    <form class="container" asp-action="Contact" novalidate="novalidate">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" asp-for="FullName" placeholder="@Localizer["FullName"]"
+                                       required="required" data-validation-required-message="Please enter your name" />
+                                <span class="help-block text-danger"></span>
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <input type="email" class="form-control p-4" asp-for="Email" placeholder="@Localizer["Email"]"
+                                       required="required" data-validation-required-message="Please enter your email" />
+                                <span class="help-block text-danger"></span>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" asp-for="Subject" placeholder="@Localizer["Subject"]"
+                                   required="required" data-validation-required-message="Please enter a subject" />
+                            <span class="help-block text-danger"></span>
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="control-group">
+                            <textarea class="form-control py-3 px-4" rows="5" asp-for="Message" placeholder="@Localizer["Message"]"
+                                      required="required"
+                                      data-validation-required-message="Please enter your message"></textarea>
+                            <span class="help-block text-danger"></span>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="text-center">
+                            <button class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton">@Localizer["Send Message"]</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

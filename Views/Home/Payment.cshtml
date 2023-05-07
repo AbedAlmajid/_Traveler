@@ -1,4 +1,4 @@
-﻿@model CreditCardInfo
+﻿@model DemoTraveler.Models.ViewModels.PaymentViewModel
 
 
 @{
@@ -73,25 +73,26 @@
                     </div>
                 </div>
             </div>
-            <form asp-action="Payment" class="form" autocomplete="on" novalidate>
+            <form asp-action="Payment" class="form" autocomplete="on">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
                 <fieldset>
                     <label asp-for="CardNumber"></label>
-                    <input asp-for="CardNumber" type="hidden" id="full-card-number" name="CardNumber" />
-                    <input type="num" id="card-number" class="input-cart-number" maxlength="4" />
-                    <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" />
-                    <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" />
-                    <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" />
-
+                    <input type="num" asp-for="CardNumber" class="input-cart-number" maxlength="4" />
+                    <input type="num" asp-for="CardNumber" id="card-number-1" class="input-cart-number" maxlength="4" />
+                    <input type="num" asp-for="CardNumber" id="card-number-2" class="input-cart-number" maxlength="4" />
+                    <input type="num" asp-for="CardNumber" id="card-number-3" class="input-cart-number" maxlength="4" />
                 </fieldset>
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
                 <fieldset>
                     <label asp-for="CardHolder"></label>
                     <input asp-for="CardHolder" type="text" id="card-holder" />
+                    <span asp-validation-for="CardHolder" class="text-danger"></span>
                 </fieldset>
                 <fieldset class="fieldset-expiration">
                     <label asp-for="ExpirationDate"></label>
-                    <input asp-for="ExpirationDate" type="hidden" name="ExpirationDate" />
                     <div class="select">
-                        <select id="card-expiration-month" name="expireDate">
+                        <select id="card-expiration-month" asp-for="ExpirationDate">
                             <option></option>
                             <option>01</option>
                             <option>02</option>
@@ -123,6 +124,7 @@
                             <option>2033</option>
                         </select>
                     </div>
+                    <span asp-validation-for="ExpirationDate" class="text-danger"></span>
                 </fieldset>
                 <fieldset class="fieldset-ccv">
                     <label asp-for="CCV"></label>
@@ -137,53 +139,47 @@
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    function PaymentModal() {
-        $('#exampleModal').modal('show');
-    }
-</script>
+    <script>
+        function PaymentModal() {
+            $('#exampleModal').modal('show');
+        }
+    </script>
 
-<script>
-    var monthValue = document.getElementById('card-expiration-month').value;
-    var yearValue = document.getElementById('card-expiration-year').value;
-    var expireDate = monthValue + '-' + yearValue;
-    document.getElementsByName('expireDate')[0].value = expireDate;
-</script>
+
+
 <script>
     $('.input-cart-number').on('keyup change', function () {
         $t = $(this);
-
         if ($t.val().length > 3) {
             $t.next().focus();
         }
-
         var card_number = '';
         $('.input-cart-number').each(function () {
             card_number += $(this).val() + ' ';
@@ -191,28 +187,23 @@
                 $(this).next().focus();
             }
         })
-
         $('.credit-card-box .number').html(card_number);
         $('.CardNumber').text(card_number);
     });
-
     $('#card-holder').on('keyup change', function () {
         $t = $(this);
         $('.credit-card-box .card-holder div').html($t.val());
     });
-
     $('#card-holder').on('keyup change', function () {
         $t = $(this);
         $('.credit-card-box .card-holder div').html($t.val());
     });
-
     $('#card-expiration-month, #card-expiration-year').change(function () {
         m = $('#card-expiration-month option').index($('#card-expiration-month option:selected'));
         m = (m < 10) ? '0' + m : m;
         y = $('#card-expiration-year').val().substr(2, 2);
         $('.card-expiration-date div').html(m + '/' + y);
     })
-
     $('#card-ccv').on('focus', function () {
         $('.credit-card-box').addClass('hover');
     }).on('blur', function () {
@@ -221,18 +212,12 @@
         $('.ccv div').html($(this).val());
     });
 
-
-    
-
-
-    $(function () {
-        $('form').on('submit', function () {
-            var fullCardNumber = $('#card-number').val() + $('#card-number-1').val() + $('#card-number-2').val() + $('#card-number-3').val();
-            $('#full-card-number').val(fullCardNumber);
-        });
-    });
-
-
+    //$(function () {
+    //    $('form').on('submit', function () {
+    //        var fullCardNumber = $('#card-number').val() + $('#card-number-1').val() + $('#card-number-2').val() + $('#card-number-3').val();
+    //        $('#full-card-number').val(fullCardNumber);
+    //    });
+    //});
     /*--------------------
     CodePen Tile Preview
     --------------------*/
@@ -241,7 +226,6 @@
             $(this).blur().dequeue();
         });
     }, 500);
-
     /*function getCreditCardType(accountNumber) {
       if (/^5[1-5]/.test(accountNumber)) {
         result = 'mastercard';
@@ -254,7 +238,6 @@
       }
       return result;
     }
-
     $('#card-number').change(function(){
       console.log(getCreditCardType($(this).val()));
     })*/

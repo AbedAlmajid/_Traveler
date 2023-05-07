@@ -1,87 +1,98 @@
-﻿@model DemoTraveler.Models.Booking
+﻿@model DemoTraveler.Models.ViewModels.BookingViewModel
+
+@using Microsoft.AspNetCore.Identity;
 
 @{
     ViewData["Title"] = "Booking";
 }
 
+@inject SignInManager<ApplicationUser> signInManager
 <hr />
 <hr />
 <link href="~/css/LoginStyle.css" rel="stylesheet" />
-<div class="container-fluid py-5" dir="ltr">
-    <div class="container pt-5">
-        <div class="card card-4">
-            <div class="card-body">
-                <h2 class="title">Booking</h2>
-                <form asp-action="Booking" method="POST">
-                    <div class="row row-space">
-                        <div class="col-6">
-                            <div class="input-group">
-                                <label asp-for="FirstName" class="label"></label>
-                                <input asp-for="FirstName" class="input--style-4" type="text" name="FirstName">
-                                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+@if (signInManager.IsSignedIn(User))
+{
+    <div class="container-fluid py-5" dir="ltr">
+        <div class="container pt-5">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Booking Ticket</h2>
+                    <form asp-action="Booking" method="POST">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row row-space">
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label asp-for="FirstName" class="label"></label>
+                                    <input asp-for="FirstName" class="input--style-4" type="text" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="input-group">
-                                <label asp-for="LastName" class="label"></label>
-                                <input asp-for="LastName" class="input--style-4" type="text" name="LastName">
-                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            <div class="col-6">
+                                <div class="input-group">
+                                    <label asp-for="LastName" class="label"></label>
+                                    <input asp-for="LastName" class="input--style-4" type="text" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row row-space">
-                        <div class="col-6">
                             <div class="col-6">
                                 <div class="input-group">
                                     <label asp-for="NationalNumber" class="label"></label>
-                                    <input asp-for="NationalNumber" class="input--style-4" name="NationalNumber">
+                                    <input asp-for="NationalNumber" class="input--style-4" />
                                     <span asp-validation-for="NationalNumber" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row row-space">
-                        <div class="col-8">
-                            <div class="input-group">
-                                <label asp-for="PassportNumber" class="label"></label>
-                                <input asp-for="PassportNumber" class="input--style-4" name="PassportNumber">
-                                <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                        
+                        <div class="row row-space">
+                            <div class="col-8">
+                                <div class="input-group">
+                                    <label asp-for="PassportNumber" class="label"></label>
+                                    <input asp-for="PassportNumber" class="input--style-4">
+                                    <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="input-group">
+                                    <label asp-for="Address" class="label"></label>
+                                    <input asp-for="Address" class="input--style-4" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="input-group">
+                                    <label class="label" asp-for="ZipCode"></label>
+                                    <input asp-for="ZipCode" type="number" class="input--style-4" />
+                                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="input-group">
+                                    <label class="label" asp-for="PhoneNumber"></label>
+                                    <input asp-for="PhoneNumber" class="input--style-4" type="tel" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="input-group">
+                                    <label class="label" asp-for="TicketId">To Country</label>
+                                    <select asp-for="TicketId" class="input--style-4" asp-items="ViewBag.TicketId" type="number"></select>
+                                    <span asp-validation-for="TicketId" class="text-danger"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-8">
-                            <div class="input-group">
-                                <label asp-for="Address" class="label"></label>
-                                <input asp-for="Address" class="input--style-4" name="Address">
-                                <span asp-validation-for="Address" class="text-danger"></span>
-                            </div>
+                        <div class="p-t-15">
+                            <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
-                        <div class="col-8">
-                            <div class="input-group">
-                                <label class="label" asp-for="ZipCode"></label>
-                                <input asp-for="ZipCode" type="number" name="ZipCode" class="input--style-4">
-                                <span asp-validation-for="ZipCode" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="input-group">
-                                <label class="label" asp-for="PhoneNumber"></label>
-                                <input asp-for="PhoneNumber" class="input--style-4" type="number" name="PhoneNumber">
-                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="input-group">
-                                <label class="label" asp-for="TicketId">To Country</label>
-                                <select asp-for="TicketId" class="input--style-4" type="number" asp-items="ViewBag.TicketId" name="TicketId"></select>
-                                <span asp-validation-for="TicketId" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-t-15">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    IgnoreBody();
+    Context.Response.Redirect("../../Account/Login");
+}
+

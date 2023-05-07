@@ -1,6 +1,7 @@
 ﻿using DemoTraveler.Data;
 using DemoTraveler.Models;
 using DemoTraveler.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -82,6 +83,7 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Booking(int Id)
         {
             var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
@@ -91,6 +93,7 @@ namespace DemoTraveler.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Booking(BookingViewModel booking)
         {
             if (ModelState.IsValid)
@@ -113,6 +116,7 @@ namespace DemoTraveler.Controllers
                 db.Add(bb);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Payment");
+
             }
             ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "Ticket", booking.TicketId);
             return View(booking);
@@ -127,26 +131,24 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Payment(CreditCardInfoViewModel card, string cardNumber, string cardNumber1, string cardNumber2, string cardNumber3, string expireDate)
+        public async Task<IActionResult> Payment(PaymentViewModel payment)
         {
             if (ModelState.IsValid)
             {
-                var fullCardNumber = cardNumber + cardNumber1 + cardNumber2 + cardNumber3;
-                var expire = expireDate;
-
-                CreditCardInfo cc = new CreditCardInfo
+               
+                Payment cc = new Payment
                 {
-                    CardNumber = fullCardNumber,
-                    CardHolder = card.CardHolder,
-                    ExpirationDate = expire,
-                    CCV = card.CCV
+                    CardNumber = payment.CardNumber,
+                    CardHolder = payment.CardHolder,
+                    ExpirationDate = payment.ExpirationDate,
+                    CCV = payment.CCV
                 };
 
                 db.Add(cc);
                 await db.SaveChangesAsync();
-                return View(card);
+                return RedirectToAction("Index" , "Home");
             }
-            return View(card);
+            return View(payment);
         }
 
         public IActionResult Package(int Id)
@@ -171,15 +173,12 @@ namespace DemoTraveler.Controllers
             return LocalRedirect(returnUrl);
         }
 
-        public IActionResult SearchData(string txtName)
+        public IActionResult SearchTravel(string txtName)
         {
-            if (txtName == null)
-            {
-                return View("Index", db.Travels.Include(d => d.TravelName));
-            }
-            var data = db.Travels.Where(x => x.TravelName.Contains(txtName)).
-                Include(d => d.TravelName);
-            return View("Index", data);
+            string selectedTravel = Request.Form["txtName"];
+            ViewData["TravelId"] = new SelectList(db.Travels, "TravelId", "Travel");
+            var travel = db.Travels.Where(t => t.TravelName.Contains(txtName)).ToList();
+            return View(travel);
         }
 
     }

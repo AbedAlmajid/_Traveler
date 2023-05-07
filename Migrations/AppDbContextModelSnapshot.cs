@@ -329,34 +329,6 @@ namespace DemoTraveler.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.CreditCardInfo", b =>
-                {
-                    b.Property<int>("CardId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CCV")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CardHolder")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CardNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ExpirationDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CardId");
-
-                    b.ToTable("CreditCardInfos");
-                });
-
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
                 {
                     b.Property<int>("FlightTypeId")
@@ -467,6 +439,70 @@ namespace DemoTraveler.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Packages");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Partner", b =>
+                {
+                    b.Property<int>("PartnerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PartnerImg")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PartnerJop")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PartnerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PartnerId");
+
+                    b.ToTable("Partners");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Payment", b =>
+                {
+                    b.Property<int>("CardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CCV")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardHolder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExpirationDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CardId");
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
