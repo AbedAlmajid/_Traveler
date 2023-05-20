@@ -78,12 +78,18 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Ticket(int Id)
         {
-            var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).ToList();
+            var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).
+                Include(x => x.Travel).
+                Include(x => x.TicketType).
+                Include(x => x.FlightType).ToList();
             return View(tickets);
         }
 
-        [HttpGet]
+        
 
+
+
+        [HttpGet]
         public IActionResult Booking(int Id)
         {
             var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
@@ -93,7 +99,6 @@ namespace DemoTraveler.Controllers
 
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Booking(BookingViewModel booking)
         {
             if (ModelState.IsValid)
@@ -115,7 +120,7 @@ namespace DemoTraveler.Controllers
                 };
                 db.Add(bb);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Payment");
+                return RedirectToAction("Payment", new { Id = bb.BookingId });
 
             }
             ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "Ticket", booking.TicketId);
@@ -126,8 +131,11 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Payment(int Id)
         {
-            var ticket = db.Bookings.Where(x => x.BookingId == Id).SingleOrDefault();
-            return View(ticket);
+            PaymentViewModel model = new PaymentViewModel
+            {
+                BookingId = Id
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -145,7 +153,11 @@ namespace DemoTraveler.Controllers
                 };
 
                 db.Add(cc);
+                var ticket = db.Bookings.Where(x => x.BookingId == payment.BookingId).SingleOrDefault();
+                ticket.Status = true;
+                db.Bookings.Update(ticket);
                 await db.SaveChangesAsync();
+                ViewBag.ShowModel = true;
                 return RedirectToAction("Index" , "Home");
             }
             return View(payment);

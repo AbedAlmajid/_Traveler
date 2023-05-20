@@ -14,9 +14,6 @@ namespace DemoTraveler.Models.ViewModels
         [Key]
         public int PackageId { get; set; }
 
-        public int CountryId { get; set; }
-        public Country Country { get; set; }
-
         [Required(ErrorMessage = "Select Country Image!")]
         [Display(Name = "Country Image")]
         public IFormFile CountryImg { get; set; }

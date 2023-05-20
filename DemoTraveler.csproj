@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Customer\Views\Account\MyProfile.cshtml" />
     <None Include="wwwroot\Dashboard\vendors\bootstrap-wysihtml5\.settings\.gitignore" />
     <None Include="wwwroot\vendor\datepicker\daterangepicker.js" />
     <None Include="wwwroot\vendor\datepicker\moment.min.js" />
@@ -62,6 +63,7 @@
     <Folder Include="Areas\Administrator\Views\Models\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Resources\Views\Shared\Components\Client\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

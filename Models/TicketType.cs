@@ -13,6 +13,7 @@ namespace DemoTraveler.Models
         public int TicketTypeId { get; set; }
 
         [Required]
+        [Display(Name = "Type Ticket")]
         public string TypeTicket { get; set; }
 
         public IList<Ticket> Tickets { get; set; }

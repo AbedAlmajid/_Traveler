@@ -211,6 +211,9 @@ namespace DemoTraveler.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<int>("TicketId")
                         .HasColumnType("int");
 
@@ -301,34 +304,6 @@ namespace DemoTraveler.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Country", b =>
-                {
-                    b.Property<int>("CountryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CountryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("ModificationDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("CountryId");
-
-                    b.ToTable("Countries");
-                });
-
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
                 {
                     b.Property<int>("FlightTypeId")
@@ -392,9 +367,6 @@ namespace DemoTraveler.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CountryImg")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -435,8 +407,6 @@ namespace DemoTraveler.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("PackageId");
-
-                    b.HasIndex("CountryId");
 
                     b.ToTable("Packages");
                 });
@@ -484,6 +454,9 @@ namespace DemoTraveler.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("BookingId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CCV")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -500,7 +473,14 @@ namespace DemoTraveler.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TicketId")
+                        .HasColumnType("int");
+
                     b.HasKey("CardId");
+
+                    b.HasIndex("BookingId");
+
+                    b.HasIndex("TicketId");
 
                     b.ToTable("Payments");
                 });
@@ -511,6 +491,9 @@ namespace DemoTraveler.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ArriveTime")
                         .IsRequired()
@@ -569,6 +552,8 @@ namespace DemoTraveler.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("TicketId");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("FlightTypeId");
 
@@ -637,6 +622,28 @@ namespace DemoTraveler.Migrations
                     b.HasKey("TravelId");
 
                     b.ToTable("Travels");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.UserTicket", b =>
+                {
+                    b.Property<int>("UserTicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserTicketId");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("UserTickets");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -781,19 +788,27 @@ namespace DemoTraveler.Migrations
                     b.Navigation("Ticket");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Package", b =>
+            modelBuilder.Entity("DemoTraveler.Models.Payment", b =>
                 {
-                    b.HasOne("DemoTraveler.Models.Country", "Country")
-                        .WithMany("Packages")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("DemoTraveler.Models.Booking", "Booking")
+                        .WithMany("Payments")
+                        .HasForeignKey("BookingId");
 
-                    b.Navigation("Country");
+                    b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId");
+
+                    b.Navigation("Booking");
+
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
                 {
+                    b.HasOne("DemoTraveler.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany("Tickets")
+                        .HasForeignKey("ApplicationUserId");
+
                     b.HasOne("DemoTraveler.Models.FlightType", "FlightType")
                         .WithMany("Tickets")
                         .HasForeignKey("FlightTypeId")
@@ -812,11 +827,30 @@ namespace DemoTraveler.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("ApplicationUser");
+
                     b.Navigation("FlightType");
 
                     b.Navigation("TicketType");
 
                     b.Navigation("Travel");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.UserTicket", b =>
+                {
+                    b.HasOne("DemoTraveler.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -870,9 +904,14 @@ namespace DemoTraveler.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Country", b =>
+            modelBuilder.Entity("DemoTraveler.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Packages");
+                    b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("DemoTraveler.Models.Booking", b =>
+                {
+                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>

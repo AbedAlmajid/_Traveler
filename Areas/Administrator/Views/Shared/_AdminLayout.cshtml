@@ -57,15 +57,29 @@
                         <li><a asp-action="Index" asp-controller="Packages"><i class="glyphicon glyphicon-pencil"></i>@Localizer["Packages"]</a></li>
                         <li><a asp-action="Index" asp-controller="Partners"><i class="glyphicon glyphicon-tasks"></i> @Localizer["Partners"]</a></li>
                         <li><a asp-action="Index" asp-controller="AboutUs"><i class="glyphicon glyphicon-tasks"></i>@Localizer["About Us"]</a></li>
-                        <li><a asp-action="Index" asp-controller="Tickets"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Tickets"]</a></li>
+                        <li><a asp-action="Index" asp-controller="Contacts"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Contacts"]</a></li>
+
                         <li class="submenu">
                             <a href="#">
-                                <i class="glyphicon glyphicon-list"></i>@Localizer["Pages"]
+                                <i class="glyphicon glyphicon-list"></i>@Localizer["Tickets"]
                                 <span class="caret pull-right"></span>
                             </a>
                             <ul>
+                                <li><a asp-action="Index" asp-controller="Tickets"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Tickets"]</a></li>
+                                <li><a asp-action="Index" asp-controller="FlightTypes"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Flight Types"]</a></li>
+                                <li><a asp-action="Index" asp-controller="TicketTypes"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Ticket Types"]</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list"></i>@Localizer["Users"]
+                                <span class="caret pull-right"></span>
+                            </a>
+                            <ul>
+                                <li><a asp-action="UserList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Users"]</a></li>
+                                <li><a asp-action="RoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Roles"]</a></li>
+                                <li><a asp-action="UserRoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["User Role"]</a></li>
                                 <li><a asp-action="Logout" asp-controller="Account" asp-area="">@Localizer["Logout"]</a></li>
-                                <li><a asp-action="ResetPassword" asp-controller="Account" asp-area="">@Localizer["Reset Password"]</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -88,4 +102,4 @@
 
 
 </body>
-</html>            
+</html>

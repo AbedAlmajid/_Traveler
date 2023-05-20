@@ -1,4 +1,4 @@
-﻿@model LoginViewModel
+﻿@model DemoTraveler.Models.ViewModels.LoginViewModel
 
 @{
     ViewData["Title"] = "Login"; 
@@ -22,6 +22,7 @@
                     <form asp-action="Login">
                         <div class="row row-space">
                             <div class="col-12">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="input-group">
                                     <label asp-for="Email" class="label"></label>
                                     <input asp-for="Email" class="input--style-4" type="email" name="Email">

@@ -10,6 +10,7 @@ using DemoTraveler.Models;
 using Microsoft.AspNetCore.Hosting;
 using DemoTraveler.Models.ViewModels;
 using System.IO;
+using System.Security.Claims;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
@@ -17,16 +18,15 @@ namespace DemoTraveler.Areas.Administrator.Controllers
     public class TicketsController : Controller
     {
         private readonly AppDbContext _context;
-
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public TicketsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
+        public TicketsController(AppDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index(string toCountry)
+        public IActionResult Index(string toCountry)
         {
             //return View(await _context.Travels.ToListAsync());
             ViewData["CurrentFilter"] = toCountry;
@@ -85,6 +85,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
                 string imgName = UploadNewImage(ticket);
 
                 Ticket tt = new Ticket
@@ -103,7 +105,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                     Price = ticket.Price,
                     TravelId = ticket.TravelId,
                     TicketTypeId = ticket.TicketTypeId,
-                    FlightTypeId = ticket.FlightTypeId
+                    FlightTypeId = ticket.FlightTypeId,
                 };
 
                 _context.Add(tt);
@@ -161,7 +163,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         public async Task<IActionResult> Edit(int id, TicketViewModel ticket)
         {
             string imgName = UploadNewImage(ticket);
-            
+
             if (id != ticket.TicketId)
             {
                 return NotFound();

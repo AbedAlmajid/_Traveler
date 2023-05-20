@@ -25,7 +25,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index(string CountryName)
+        public IActionResult Index(string CountryName)
         {
             //return View(await _context.Travels.ToListAsync());
             ViewData["CurrentFilter"] = CountryName;
@@ -53,9 +53,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                 return NotFound();
             }
 
-            var package = await _context.Packages
-                .Include(p => p.Country)
-                .FirstOrDefaultAsync(m => m.PackageId == id);
+            var package = await _context.Packages.FirstOrDefaultAsync(m => m.PackageId == id);
             if (package == null)
             {
                 return NotFound();
@@ -67,7 +65,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         // GET: AirCompany/Packages/Create
         public IActionResult Create()
         {
-            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName");
             return View();
         }
 
@@ -88,7 +85,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
 
                 Package pp = new Package
                 {
-                    CountryId = package.CountryId,
                     CountryImg = imgName,
                     CountryName = package.CountryName,
                     Duration = package.Duration,
@@ -108,7 +104,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
         }
 
@@ -143,7 +138,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             {
                 return NotFound();
             }
-            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
         }
 
@@ -169,7 +163,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                     return NotFound();
                 }
 
-                pa.Country = package.Country;
                 pa.CountryImg = imgName;
                 pa.CountryName = package.CountryName;
                 pa.Duration = package.Duration;
@@ -188,7 +181,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CountryId"] = new SelectList(_context.Countries, "CountryId", "CountryName", package.CountryId);
             return View(package);
         }
 
@@ -200,9 +192,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                 return NotFound();
             }
 
-            var package = await _context.Packages
-                .Include(p => p.Country)
-                .FirstOrDefaultAsync(m => m.PackageId == id);
+            var package = await _context.Packages.FirstOrDefaultAsync(m => m.PackageId == id);
             if (package == null)
             {
                 return NotFound();

@@ -1,0 +1,19 @@
+﻿@model DeleteRoleViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Delete Role</h1>
+
+<p>Are you sure you want to delete the role <strong>@Model.RoleName</strong>?</p>
+
+@using (Html.BeginForm("ConfirmDeleteRole", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.RoleId)
+
+    <button type="submit">Confirm Delete</button>
+    <a asp-action="RoleList">Cancel</a>
+}

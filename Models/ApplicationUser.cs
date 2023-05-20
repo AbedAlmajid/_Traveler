@@ -24,6 +24,6 @@ namespace DemoTraveler.Models
         [Required(ErrorMessage = "Select Your Gender!")]
         public bool Gender { get; set; }
 
-        
+        public IList<Ticket> Tickets { get; set; }
     }
 }

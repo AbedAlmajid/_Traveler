@@ -26,5 +26,11 @@ namespace DemoTraveler.Models
 
         [Required(ErrorMessage = "Enter CVV!")]
         public string CCV { get; set; }
+
+        public int? BookingId { get; set; }
+        public Booking Booking { get; set; }
+
+        public int? TicketId { get; set; }
+        public Ticket Ticket { get; set; }
     }
 }

@@ -1,16 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\obj",
-    "\\obj\\Debug",
-    "\\obj\\Debug\\net5.0",
-    "\\obj\\Debug\\net5.0\\Razor",
-    "\\obj\\Debug\\net5.0\\Razor\\Views",
-    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared",
-    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components",
-    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components\\Partner",
-    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared\\Components\\SearchTravel"
+    "\\Areas",
+    "\\Areas\\Administrator",
+    "\\Areas\\Administrator\\Views",
+    "\\Areas\\Administrator\\Views\\Tickets",
+    "\\Views",
+    "\\Views\\Account",
+    "\\Views\\Home",
+    "\\Views\\Shared",
+    "\\Views\\Shared\\Components",
+    "\\Views\\Shared\\Components\\AboutUs"
   ],
-  "SelectedNode": "\\Startup.cs",
+  "SelectedNode": "\\Areas\\Administrator\\Controllers\\FlightTypesController.cs",
   "PreviewInSolutionExplorer": false
 }

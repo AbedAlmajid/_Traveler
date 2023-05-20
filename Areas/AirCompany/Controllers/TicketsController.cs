@@ -10,6 +10,7 @@ using DemoTraveler.Models;
 using Microsoft.AspNetCore.Hosting;
 using DemoTraveler.Models.ViewModels;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace DemoTraveler.Areas.AirCompany.Controllers
 {
@@ -18,23 +19,31 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
-        public TicketsController(AppDbContext context , IWebHostEnvironment hostEnvironment)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public TicketsController(AppDbContext context , IWebHostEnvironment hostEnvironment,
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index(string toCountry)
         {
-            //return View(await _context.Travels.ToListAsync());
             ViewData["CurrentFilter"] = toCountry;
-            var travels = from k in _context.Tickets
-                          select k;
+
+            var loggedInUser = await _userManager.GetUserAsync(HttpContext.User);
+            var tickets = from t in _context.Tickets
+                          select t;
+
             if (!String.IsNullOrEmpty(toCountry))
             {
-                travels = travels.Where(t => t.ToCountry.Contains(toCountry));
+                tickets = tickets.Where(t => t.ToCountry.Contains(toCountry));
             }
-            return View(travels);
+
+            var ticket = await _context.Tickets.Where(t => t.ApplicationUserId == loggedInUser.Id).ToListAsync();
+            return View(ticket);
         }
 
         // GET: AirCompany/Tickets

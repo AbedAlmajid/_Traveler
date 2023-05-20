@@ -23,5 +23,7 @@ namespace DemoTraveler.Models.ViewModels
 
         [Required(ErrorMessage = "Enter CVV!")]
         public string CCV { get; set; }
+
+        public int BookingId { get; set; }
     }
 }

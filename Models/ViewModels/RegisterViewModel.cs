@@ -8,7 +8,7 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Enter First Name!")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

@@ -1,6 +1,7 @@
 ﻿using DemoTraveler.Data;
 using DemoTraveler.Models;
 using DemoTraveler.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,22 +13,23 @@ using System.Threading.Tasks;
 
 namespace DemoTraveler.Controllers
 {
+
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
-
         private SignInManager<ApplicationUser> _signInManager;
-
         private RoleManager<IdentityRole> _roleManager;
-
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         #region Users
@@ -37,6 +39,7 @@ namespace DemoTraveler.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -50,10 +53,10 @@ namespace DemoTraveler.Controllers
                     Gender = model.Gender,
                     BirthDay = model.BirthDay,
                     Email = model.Email,
-                    UserName = model.Email,
+                    UserName = model.FirstName + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
-               
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -86,13 +89,21 @@ namespace DemoTraveler.Controllers
 
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+
+                    if (user != null)
+                    {
+                        string userId = user.Id;
+                        string email = user.Email;
+                        _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Invalid User or Password");
-                return View(model);
             }
             return View(model);
         }
+
 
         public async Task<IActionResult> logout()
         {
@@ -101,20 +112,7 @@ namespace DemoTraveler.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult ResetPassword(string UserName = null)
-        {
-            if (UserName == null)
-            {
-                return BadRequest("You must be supplied for password reset.");
-            }
-            else
-            {
-                var model = new ResetPassWordViewModel { UserName = UserName };
-                return View(model);
-            };
-            
-        }
+
 
         [HttpGet]
         public IActionResult EditProfile()
@@ -148,5 +146,7 @@ namespace DemoTraveler.Controllers
             return View(model);
         }
         #endregion
+
+       
     }
 }

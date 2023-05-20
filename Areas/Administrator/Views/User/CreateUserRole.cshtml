@@ -1,0 +1,25 @@
+﻿@model DemoTraveler.Models.ViewModels.UserRoleViewModel
+
+@{
+    ViewData["Title"] = "CreateUser";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Add User Role</h1>
+
+@using (Html.BeginForm("CreateUserRole", "User", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.UserId)
+    @Html.DropDownListFor(m => m.UserId, Model.Users, "Select User")
+
+    @Html.LabelFor(m => m.RoleId)
+    @Html.DropDownListFor(m => m.RoleId, Model.Roles, "Select Role")
+
+    <button type="submit">Save</button>
+}
+
+
+<div>
+    <a asp-action="UserRoleList" class="btn btn-warning">Back to List</a>
+</div>

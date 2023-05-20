@@ -50,9 +50,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.DepartDate)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Country)
-                </th>
                 <th></th>
             </tr>
         </thead>
@@ -61,7 +58,7 @@
             {
                 <tr>
                     <td>
-                        <img width="120px" src="..\@Url.Content(item.CountryImg)" alt="package-place">
+                        <img width="120" src="..\@Url.Content(item.CountryImg)" alt="package-place">
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CountryName)
@@ -86,9 +83,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DepartDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Country.CountryName)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.PackageId" class="btn btn-warning">

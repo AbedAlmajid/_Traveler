@@ -10,8 +10,8 @@ namespace DemoTraveler.Models
     {
         [Key]
         public int TicketId { get; set; }
-        
-        [Required(ErrorMessage ="please select Fly Brand!")]
+
+        [Required(ErrorMessage = "please select Fly Brand!")]
         [Display(Name = "Fly Brand Image")]
         public string FlyBrand { get; set; }
 
@@ -36,7 +36,7 @@ namespace DemoTraveler.Models
         public string ToAirport { get; set; }
 
         [Required(ErrorMessage = "Enter Depart Time!")]
-        [Display(Name ="Depart Time")]
+        [Display(Name = "Depart Time")]
         public string DepartTime { get; set; }
 
         [Required(ErrorMessage = "Enter Arrive Time!")]
@@ -67,6 +67,9 @@ namespace DemoTraveler.Models
 
         public int FlightTypeId { get; set; }
         public FlightType FlightType { get; set; }
+
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         public IList<Booking> Bookings { get; set; }
 

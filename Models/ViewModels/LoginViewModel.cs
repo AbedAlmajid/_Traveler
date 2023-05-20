@@ -8,7 +8,7 @@ namespace DemoTraveler.Models.ViewModels
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Enter User Name!")]
+        [Required(ErrorMessage = "Enter Email!")]
         [EmailAddress]
         public string Email { get; set; }
 
