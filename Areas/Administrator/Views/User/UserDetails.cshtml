@@ -1,0 +1,16 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "UserDetails";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>User Details</h1>
+
+<p>Id: @Model.Id</p>
+<p>First Name: @Model.FirstName</p>
+<p>Last Name: @Model.LastName</p>
+<p>Email: @Model.Email</p>
+<p>Phone Number: @Model.PhoneNumber</p>
+
+<a asp-action="UserList" asp-controller="User"
+   class="btn btn-primary">Back To List</a>

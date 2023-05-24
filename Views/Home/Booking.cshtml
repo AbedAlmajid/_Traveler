@@ -37,7 +37,7 @@
                         <div class="col-6">
                             <div class="input-group">
                                 <label asp-for="NationalNumber" class="label"></label>
-                                <input asp-for="NationalNumber" class="input--style-4" />
+                                <input asp-for="NationalNumber" type="number" class="input--style-4" />
                                 <span asp-validation-for="NationalNumber" class="text-danger"></span>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="col-8">
                             <div class="input-group">
                                 <label asp-for="PassportNumber" class="label"></label>
-                                <input asp-for="PassportNumber" class="input--style-4">
+                                <input asp-for="PassportNumber" type="num" class="input--style-4">
                                 <span asp-validation-for="PassportNumber" class="text-danger"></span>
                             </div>
                         </div>
@@ -61,24 +61,24 @@
                         <div class="col-8">
                             <div class="input-group">
                                 <label class="label" asp-for="ZipCode"></label>
-                                <input asp-for="ZipCode" type="number" class="input--style-4" />
+                                <input asp-for="ZipCode" type="num" class="input--style-4" />
                                 <span asp-validation-for="ZipCode" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-8">
                             <div class="input-group">
                                 <label class="label" asp-for="PhoneNumber"></label>
-                                <input asp-for="PhoneNumber" class="input--style-4" type="tel" />
+                                <input asp-for="PhoneNumber" type="tel" class="input--style-4" />
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-8">
+                        @*<div class="col-8">
                             <div class="input-group">
                                 <label class="label" asp-for="TicketId">To Country</label>
                                 <select asp-for="TicketId" class="input--style-4" asp-items="ViewBag.TicketId" type="number"></select>
                                 <span asp-validation-for="TicketId" class="text-danger"></span>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                     <div class="p-t-15">
                         <button class="btn btn-primary" type="submit">Submit</button>

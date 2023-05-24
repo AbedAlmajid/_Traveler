@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DemoTraveler.Models.ViewModels.UserRoleViewModel>
+﻿@model IEnumerable<UserRoleViewModel>
 
 
 @{
@@ -7,33 +7,32 @@
 }
 
 
-@*<table class="table table-hover">
+
+
+<table class="table table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoleId)
-            </th>
-            <th></th>
+            <th>Role Name</th>
+            <th>Users</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var roleViewModel in Model)
         {
             <tr>
+                <td>@roleViewModel.RoleName</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
+                    <ul>
+                        @foreach (var user in roleViewModel.Users)
+                        {
+                            <li>@user</li>
+                        }
+                    </ul>
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RoleId)
-                </td>d>
             </tr>
-
         }
     </tbody>
-</table>*@
+</table>
 
 <a asp-action="CreateUserRole" asp-controller="User"
    class="btn btn-success"> Create User Role</a>

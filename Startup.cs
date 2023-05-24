@@ -74,20 +74,24 @@ namespace DemoTraveler
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
             });
-
+           
             services.AddControllersWithViews();
+
+            services.AddRazorPages();
 
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Traveler"));
             });
-      
+
+            services.Configure<IdentityOptions>(Configuration.GetSection(nameof(IdentityOptions)));
 
             services.AddSession();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
-
+                  .AddEntityFrameworkStores<AppDbContext>()
+                  .AddDefaultTokenProviders();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -134,6 +138,7 @@ namespace DemoTraveler
                     name: "areas",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
           );
+                endpoints.MapRazorPages();
             });
 
 

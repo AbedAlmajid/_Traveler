@@ -8,12 +8,19 @@
 
 <h1>Delete Role</h1>
 
-<p>Are you sure you want to delete the role <strong>@Model.RoleName</strong>?</p>
+<p>Are you sure you want to delete the role 
+    <strong>@Model.RoleName</strong>?</p>
 
-@using (Html.BeginForm("ConfirmDeleteRole", "User", FormMethod.Post))
+@*@using (Html.BeginForm("ConfirmDeleteRole", "User", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.RoleId)
 
     <button type="submit">Confirm Delete</button>
     <a asp-action="RoleList">Cancel</a>
-}
+}*@
+<form asp-action="DeleteRole" asp-controller="User" method="post">
+    <input type="hidden" asp-for="RoleId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="UserList" asp-controller="User"
+       class="btn btn-primary">Back To List</a>
+</form>

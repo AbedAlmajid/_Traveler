@@ -901,7 +901,10 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Ra
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\CreateUserRole.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\DeleteRole.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\EditRole.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\EditUser.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\RoleList.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserDelete.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserDetails.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserList.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserRoleList.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\_ViewImports.cshtml.g.cs
@@ -966,4 +969,5 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\De
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\ref\DemoTraveler.dll
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.pdb
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.genruntimeconfig.cache
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Customer\Views\UserTickets\MyTicket.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.csproj.AssemblyReference.cache

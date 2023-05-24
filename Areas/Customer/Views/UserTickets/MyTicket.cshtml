@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "MyTickets";
+    Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<h1>MyTickets</h1>
+
+@if (Model.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Booking ID</th>
+                <th>Flight Brand</th>
+                <th>Brand Name</th>
+                <!-- Add more columns based on your needs -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var userTicket in Model)
+            {
+                <tr>
+                    <td>@userTicket.TicketId</td>
+                    <td>@userTicket.BookingId</td>
+                    <td>@userTicket.Ticket.FlyBrand</td>
+                    <td>@userTicket.Ticket.BrandName</td>
+                    <!-- Add more cells based on your needs -->
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No tickets found.</p>
+}

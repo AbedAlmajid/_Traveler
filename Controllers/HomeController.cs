@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace DemoTraveler.Controllers
@@ -17,9 +18,11 @@ namespace DemoTraveler.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext db;
-        public HomeController(AppDbContext _db)
+        private readonly UserManager<ApplicationUser> userManager;
+        public HomeController(AppDbContext _db , UserManager<ApplicationUser> _userManager)
         {
             db = _db;
+            userManager = _userManager;
         }
         public IActionResult Index()
         {
@@ -93,14 +96,20 @@ namespace DemoTraveler.Controllers
         public IActionResult Booking(int Id)
         {
             var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
+            var model = new BookingViewModel
+            {
+                TicketId = ticket.TicketId
+            };
+
             ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "ToCountry");
             return View();
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Booking(BookingViewModel booking)
+        public async Task<IActionResult> Booking(BookingViewModel booking, TicketViewModel ticket, UserTicketViewModel userTicket)
         {
+           
             if (ModelState.IsValid)
             {
                 Booking bb = new Booking
@@ -112,19 +121,43 @@ namespace DemoTraveler.Controllers
                     Address = booking.Address,
                     ZipCode = booking.ZipCode,
                     PassportNumber = booking.PassportNumber,
-                    TicketId = booking.TicketId,
                     IsActive = true,
                     IsDeleted = false,
                     CreationDate = DateTime.Now,
                     ModificationDate = DateTime.Now
                 };
-                db.Add(bb);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Payment", new { Id = bb.BookingId });
+                try
+                {
+                    db.Bookings.Add(bb);
+                    await db.SaveChangesAsync();
+                }
+                catch (DbUpdateException)
+                {
+                    ModelState.AddModelError(string.Empty, "Error occurred while saving the booking.");
+                    return View(booking);
+                }
+
+
+                ApplicationUser user = await userManager.GetUserAsync(User);
+
+                UserTicket userTickete = new UserTicket
+                {
+                    ApplicationUserId = user.UserName,
+                    TicketId = ticket.TicketId,
+                    BookingId = bb.BookingId
+                };
+
+                db.UserTickets.Add(userTickete);
+                db.SaveChanges();
+
+                return RedirectToAction("Payment", new { Id = bb.BookingId , userTicket.UserTicketId });
 
             }
-            ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "Ticket", booking.TicketId);
-            return View(booking);
+            else
+            {
+                ModelState.AddModelError("", "Booking Is Not Valid Now");
+                return View(booking);
+            }
         }
 
 

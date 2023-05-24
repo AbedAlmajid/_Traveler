@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace DemoTraveler.Models
 {
@@ -14,5 +15,8 @@ namespace DemoTraveler.Models
 
         public int TicketId { get; set; }
         public Ticket Ticket { get; set; }
+
+        public int BookingId { get; set; }
+        public Booking Booking { get; set; }
     }
 }

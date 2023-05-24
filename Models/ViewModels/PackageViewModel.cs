@@ -39,7 +39,7 @@ namespace DemoTraveler.Models.ViewModels
         public string BrandName { get; set; }
 
         [Required(ErrorMessage = "Enter Prize!")]
-        public decimal? Prize { get; set; }
+        public double Price { get; set; }
 
         [Required(ErrorMessage = "Enter Hotel Stars!")]
         [Display(Name = "Hotel Stars")]

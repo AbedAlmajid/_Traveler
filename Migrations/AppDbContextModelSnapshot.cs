@@ -201,29 +201,26 @@ namespace DemoTraveler.Migrations
                     b.Property<DateTime>("ModificationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NationalNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("NationalNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PassportNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
-
-                    b.Property<int>("TicketId")
-                        .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookingId");
-
-                    b.HasIndex("TicketId");
 
                     b.ToTable("Bookings");
                 });
@@ -399,9 +396,8 @@ namespace DemoTraveler.Migrations
                     b.Property<int>("Person")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("Prize")
-                        .IsRequired()
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("datetime2");
@@ -530,9 +526,8 @@ namespace DemoTraveler.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("Price")
-                        .IsRequired()
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("TicketTypeId")
                         .HasColumnType("int");
@@ -634,6 +629,9 @@ namespace DemoTraveler.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TicketId")
                         .HasColumnType("int");
 
@@ -641,7 +639,11 @@ namespace DemoTraveler.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("TicketId");
+                    b.HasIndex("BookingId")
+                        .IsUnique();
+
+                    b.HasIndex("TicketId")
+                        .IsUnique();
 
                     b.ToTable("UserTickets");
                 });
@@ -777,17 +779,6 @@ namespace DemoTraveler.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DemoTraveler.Models.Booking", b =>
-                {
-                    b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
-                        .WithMany("Bookings")
-                        .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ticket");
-                });
-
             modelBuilder.Entity("DemoTraveler.Models.Payment", b =>
                 {
                     b.HasOne("DemoTraveler.Models.Booking", "Booking")
@@ -842,13 +833,21 @@ namespace DemoTraveler.Migrations
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
+                    b.HasOne("DemoTraveler.Models.Booking", "Booking")
+                        .WithOne("UserTicket")
+                        .HasForeignKey("DemoTraveler.Models.UserTicket", "BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
-                        .WithMany()
-                        .HasForeignKey("TicketId")
+                        .WithOne("UserTicket")
+                        .HasForeignKey("DemoTraveler.Models.UserTicket", "TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+
+                    b.Navigation("Booking");
 
                     b.Navigation("Ticket");
                 });
@@ -912,6 +911,8 @@ namespace DemoTraveler.Migrations
             modelBuilder.Entity("DemoTraveler.Models.Booking", b =>
                 {
                     b.Navigation("Payments");
+
+                    b.Navigation("UserTicket");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.FlightType", b =>
@@ -921,7 +922,7 @@ namespace DemoTraveler.Migrations
 
             modelBuilder.Entity("DemoTraveler.Models.Ticket", b =>
                 {
-                    b.Navigation("Bookings");
+                    b.Navigation("UserTicket");
                 });
 
             modelBuilder.Entity("DemoTraveler.Models.TicketType", b =>

@@ -25,7 +25,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             _hostEnvironment = hostEnvironment;
         }
 
-        public async Task<IActionResult> Index(string travelName)
+        public IActionResult Index(string travelName)
         {
             //return View(await _context.Travels.ToListAsync());
             ViewData["CurrentFilter"] = travelName;

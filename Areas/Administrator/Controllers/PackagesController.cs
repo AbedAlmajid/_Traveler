@@ -87,7 +87,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                     Person = package.Person,
                     CountryDesc = package.CountryDesc,
                     BrandName  = package.BrandName,
-                    Prize = package.Prize,
+                    Price = package.Price,
                     HotelStars  = package.HotelStars,
                     DepartDate = package.DepartDate,
                     ReturnDate = package.ReturnDate,
@@ -166,7 +166,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 pa.Person = package.Person;
                 pa.CountryDesc = package.CountryDesc;
                 pa.BrandName = package.BrandName;
-                pa.Prize = package.Prize;
+                pa.Price = package.Price;
                 pa.HotelStars = package.HotelStars;
                 pa.DepartDate = package.DepartDate;
                 pa.ReturnDate = package.ReturnDate;

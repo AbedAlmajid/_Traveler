@@ -22,11 +22,11 @@ namespace DemoTraveler.Models
 
         [Required(ErrorMessage = "Input National Number")]
         [Display(Name = "National Number")]
-        public int NationalNumber { get; set; }
+        public string NationalNumber { get; set; }
 
         [Required(ErrorMessage = "Input Phone Number!")]
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Input Address")]
         public string Address { get; set; }
@@ -40,8 +40,7 @@ namespace DemoTraveler.Models
         [Display(Name = "Passport Number")]
         public string PassportNumber { get; set; }
 
-        public int TicketId { get; set; }
-        public Ticket Ticket { get; set; }
+        public UserTicket UserTicket { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; }
     }

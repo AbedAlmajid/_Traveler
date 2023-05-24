@@ -1,0 +1,51 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace DemoTraveler.Migrations
+{
+    public partial class tick : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropIndex(
+                name: "IX_UserTickets_BookingId",
+                table: "UserTickets");
+
+            migrationBuilder.DropIndex(
+                name: "IX_UserTickets_TicketId",
+                table: "UserTickets");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTickets_BookingId",
+                table: "UserTickets",
+                column: "BookingId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTickets_TicketId",
+                table: "UserTickets",
+                column: "TicketId",
+                unique: true);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropIndex(
+                name: "IX_UserTickets_BookingId",
+                table: "UserTickets");
+
+            migrationBuilder.DropIndex(
+                name: "IX_UserTickets_TicketId",
+                table: "UserTickets");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTickets_BookingId",
+                table: "UserTickets",
+                column: "BookingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserTickets_TicketId",
+                table: "UserTickets",
+                column: "TicketId");
+        }
+    }
+}

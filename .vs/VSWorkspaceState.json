@@ -3,15 +3,14 @@
     "",
     "\\Areas",
     "\\Areas\\Administrator",
-    "\\Areas\\Administrator\\Views",
-    "\\Areas\\Administrator\\Views\\Tickets",
-    "\\Views",
-    "\\Views\\Account",
-    "\\Views\\Home",
-    "\\Views\\Shared",
-    "\\Views\\Shared\\Components",
-    "\\Views\\Shared\\Components\\AboutUs"
+    "\\Areas\\Administrator\\Controllers",
+    "\\Areas\\Customer",
+    "\\Areas\\Customer\\Views",
+    "\\Areas\\Customer\\Views\\UserTickets",
+    "\\Data",
+    "\\Models",
+    "\\Models\\ViewModels"
   ],
-  "SelectedNode": "\\Areas\\Administrator\\Controllers\\FlightTypesController.cs",
+  "SelectedNode": "\\Views\\Home\\Ticket.cshtml",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,4 @@
-﻿@model DemoTraveler.Models.ViewModels.UserRoleViewModel
+﻿@model DemoTraveler.Models.UserRole
 
 @{
     ViewData["Title"] = "CreateUser";
@@ -8,7 +8,7 @@
 
 <h1>Add User Role</h1>
 
-@using (Html.BeginForm("CreateUserRole", "User", FormMethod.Post))
+@*@using (Html.BeginForm("CreateUserRole", "User", FormMethod.Post))
 {
     @Html.LabelFor(m => m.UserId)
     @Html.DropDownListFor(m => m.UserId, Model.Users, "Select User")
@@ -17,9 +17,39 @@
     @Html.DropDownListFor(m => m.RoleId, Model.Roles, "Select Role")
 
     <button type="submit">Save</button>
-}
+}*@
 
-
-<div>
-    <a asp-action="UserRoleList" class="btn btn-warning">Back to List</a>
+<div class="row">
+    <div class="col-md-4">
+        <form action="@Url.Action("CreateUserRole", "User")" method="post">
+            <div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <label for="UserId" class="control-label">User:</label>
+                <select name="UserId" class="form-control">
+                    <option value="">Select User</option>
+                    @foreach (var user in Model.Users)
+                    {
+                        <option value="@user.Value">@user.Text</option>
+                    }
+                </select>
+            </div>
+            <br />
+            <div>
+                <label for="RoleId" class="control-label">Role:</label>
+                <select name="RoleId" class="form-control">
+                    <option value="">Select Role</option>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <option value="@role.Value">@role.Text</option>
+                    }
+                </select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="UserRoleList" class="btn btn-warning">Back to List</a>
+            </div>
+        </form>
+    </div>
 </div>
+

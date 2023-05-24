@@ -58,7 +58,7 @@ namespace DemoTraveler.Models.ViewModels
 
         [Required(ErrorMessage = "Enter  Price!")]
         [Display(Name = "Price")]
-        public decimal? Price { get; set; }
+        public double Price { get; set; }
 
         public int TravelId { get; set; }
         public Travel Travel { get; set; }
@@ -68,7 +68,5 @@ namespace DemoTraveler.Models.ViewModels
 
         public int FlightTypeId { get; set; }
         public FlightType FlightType { get; set; }
-
-        public IList<Booking> Bookings { get; set; }
     }
 }

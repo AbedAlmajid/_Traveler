@@ -21,7 +21,8 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public TicketsController(AppDbContext context , IWebHostEnvironment hostEnvironment,
+        public TicketsController(AppDbContext context,
+            IWebHostEnvironment hostEnvironment,
             UserManager<ApplicationUser> userManager)
         {
             _context = context;
@@ -46,14 +47,6 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             return View(ticket);
         }
 
-        // GET: AirCompany/Tickets
-        //public async Task<IActionResult> Index()
-        //{
-        //    var appDbContext = _context.Tickets.Include(t => t.FlightType).Include(t => t.TicketType).Include(t => t.Travel);
-        //    return View(await appDbContext.ToListAsync());
-        //}
-
-        // GET: AirCompany/Tickets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -88,7 +81,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TicketViewModel ticket)
+        public async Task<IActionResult> Create(TicketViewModel ticket, int userId)
         {
             if (ModelState.IsValid)
             {
@@ -165,7 +158,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,TicketViewModel ticket)
+        public async Task<IActionResult> Edit(int id, TicketViewModel ticket)
         {
             string imgName = UploadNewImage(ticket);
 

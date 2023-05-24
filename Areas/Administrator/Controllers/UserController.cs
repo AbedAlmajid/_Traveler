@@ -59,14 +59,13 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email,
-                    UserName = model.FirstName,
+                    UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
 
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction(nameof(UserList));
                 }
                 foreach (var error in result.Errors)
@@ -78,37 +77,125 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult Login()
+        public IActionResult UserDetails(string id)
         {
-            return View();
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userDetail = new ApplicationUser
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userDetail);
+        }
+
+        [HttpGet]
+        public IActionResult EditUser(string id)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var userEdit = new RegisterViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public IActionResult EditUser(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await signInManager.PasswordSignInAsync(model.Email,
-                    model.Password, true, false);
+                var user = userManager.FindByIdAsync(model.Id).Result;
+
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.PhoneNumber = model.PhoneNumber;
+
+
+                    var result = userManager.UpdateAsync(user).Result;
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction(nameof(UserList));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Failed to update profile.");
+                    }
+                }
+                else
+                {
+                    // Handle user not found
+                    return NotFound();
+                }
+            }
+
+            // If the model state is invalid, return to the edit view with the updated model state
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult UserDelete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userEdit = new ApplicationUser
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> UserDelete(string id , RegisterViewModel model)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                var userTickets = db.UserTickets.Where(ut => ut.ApplicationUserId == user.Id);
+                db.UserTickets.RemoveRange(userTickets);
+                await db.SaveChangesAsync();
+
+                var result = await userManager.DeleteAsync(user);
 
                 if (result.Succeeded)
                 {
-                    var user = await userManager.FindByEmailAsync(model.Email);
-
-                    if (user != null)
-                    {
-                        string userId = user.Id;
-                        string email = user.Email;
-                        httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
-                    }
-
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction(nameof(UserList));
                 }
-                ModelState.AddModelError("", "Invalid User or Password");
-                return View(model);
+                else
+                {
+                    ModelState.AddModelError("", "Failed To Delete User");
+                }
             }
-            return View(model);
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("UserDelete", id);
         }
 
         #endregion
@@ -212,7 +299,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public  IActionResult ConfirmDeleteRole(string id)
+        public  IActionResult DeleteRole(string id, DeleteRoleViewModel model)
         {
             var role = roleManager.FindByIdAsync(id).Result;
             if (role != null)
@@ -227,25 +314,39 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 {
                     foreach (var error in result.Errors)
                     {
-                        ModelState.AddModelError(string.Empty, error.Description);
+                        ModelState.AddModelError("", "Failed To Delete Role");
                     }
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Role NoT Found.");
+                ModelState.AddModelError("", "Role Not Found");
             }
-            return View("DeleteRole", new DeleteRoleViewModel { RoleId = id });
+            return View("DeleteRole", id);
         }
 
-        
+
         #endregion
 
         #region UserRole
 
-        public IActionResult UserRoleList()
+        public async Task<IActionResult> UserRoleList()
         {
-            return View();
+            var roles = roleManager.Roles.ToList();
+            var roleViewModels = new List<UserRoleViewModel>();
+
+            foreach (var role in roles)
+            {
+                var usersInRole = await userManager.GetUsersInRoleAsync(role.Name);
+                var viewModel = new UserRoleViewModel
+                {
+                    RoleName = role.Name,
+                    Users = usersInRole.Select(u => u.UserName).ToList()
+                };
+                roleViewModels.Add(viewModel);
+            }
+
+            return View(roleViewModels);
         }
 
         [HttpGet]
@@ -254,7 +355,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             var users = userManager.Users.ToList();
             var roles = roleManager.Roles.ToList();
 
-            var userRoleViewModel = new UserRoleViewModel
+            var userRoleViewModel = new UserRole
             {
                 Users = new SelectList(users, "Id", "UserName"),
                 Roles = new SelectList(roles, "Id", "Name")
@@ -263,7 +364,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserRole(UserRoleViewModel userRoleViewModel)
+        public async Task<IActionResult> CreateUserRole(UserRole userRoleViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -272,22 +373,36 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
                 if (user != null && role != null)
                 {
-                    var result = await userManager.AddToRoleAsync(user, role.Name);
+                    var isInRole = await userManager.IsInRoleAsync(user, role.Name);
 
-                    if (result.Succeeded)
+                    if (!isInRole)
                     {
-                        return RedirectToAction(nameof(UserRoleList));
+                        var result = await userManager.AddToRoleAsync(user, role.Name);
+
+                        if (result.Succeeded)
+                        {
+                            //var timeOut = TimeSpan.FromSeconds(30);
+                            //userManager.RemoveFromRoleAsync(user, role.Name, timeOut);
+                            return RedirectToAction(nameof(UserRoleList));
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Failed to assign role to user.");
+                        }
                     }
                     else
                     {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError(string.Empty, error.Description);
-                        }
+                        ModelState.AddModelError("", "User is already in the selected role.");
                     }
+
                 }
-                
+                else
+                {
+                    ModelState.AddModelError("", "User is already in the selected role.");
+                }
+
             }
+            ModelState.AddModelError("", "Is Already Taken");
             userRoleViewModel.Users = new SelectList(userManager.Users.ToList(), "Id", "UserName");
             userRoleViewModel.Roles = new SelectList(roleManager.Roles.ToList(), "Id", "Name");
 

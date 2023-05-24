@@ -45,7 +45,6 @@ namespace DemoTraveler.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var user = new ApplicationUser
                 {
                     FirstName = model.FirstName,
@@ -60,49 +59,122 @@ namespace DemoTraveler.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Login", "Account");
                 }
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError("", error.Description);
-                    return View(model);
+                    foreach (var error in result.Errors)
+                    {
+                        string errorstrinf = error.Code;
+                        if (error.Code == "InvalidEmail")
+                        {
+                            ModelState.AddModelError("", "Invalid Email");
+                        }
+                        else
+                        if (error.Code == "PasswordRequiresDigit")
+                        {
+                            ModelState.AddModelError("", "The password must contain at least one digit.");
+                        }
+                        else if (error.Code == "PasswordRequiresNonAlphanumeric")
+                        {
+                            ModelState.AddModelError("", "The password must contain at least one special character.");
+                        }
+                        else if (error.Code == "PasswordRequiresUpper")
+                        {
+                            ModelState.AddModelError("", "The password must contain at least one uppercase letter.");
+                        }
+                        else if (error.Code == "PasswordRequiresLower")
+                        {
+                            ModelState.AddModelError("", "The password must contain at least one lowercase letter.");
+                        }
+                        else
+                        {
+                            // Handle other error codes as needed
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
                 }
-
             }
             return View(model);
         }
-
         [HttpGet]
         public IActionResult Login()
         {
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await _signInManager.PasswordSignInAsync(model.Email,
-                    model.Password, true, false);
-
-                if (result.Succeeded)
+            
+                if (ModelState.IsValid)
                 {
                     var user = await _userManager.FindByEmailAsync(model.Email);
-
                     if (user != null)
                     {
-                        string userId = user.Id;
-                        string email = user.Email;
-                        _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
+                        var result = await _signInManager.PasswordSignInAsync(user,
+                        model.Password, false, true);
+
+                        if (result.Succeeded)
+                        {
+                            string userId = user.Id;
+                            string email = user.Email;
+                            _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
+                            return RedirectToAction("Index","Home");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("Email", "Falid");
+                        }
+
                     }
-                    return RedirectToAction("Index", "Home");
+                    else
+                    {
+                        ModelState.AddModelError("Email", "Rama");
+                    }
+
                 }
-                ModelState.AddModelError("", "Invalid User or Password");
-            }
+         
+           
             return View(model);
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Login(LoginViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var result = await _signInManager.PasswordSignInAsync(model.Email,
+        //            model.Password, true, false);
+
+        //        if (result.Succeeded)
+        //        {
+        //            var user = await _userManager.FindByEmailAsync(model.Email);
+
+        //            if (user != null)
+        //            {
+        //                string userId = user.Id;
+        //                string email = user.Email;
+        //                _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
+        //            }
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        ModelState.AddModelError("", "Invalid User or Password");
+        //    }
+        //    return View(model);
+        //}
 
 
         public async Task<IActionResult> logout()
