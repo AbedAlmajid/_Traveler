@@ -1,8 +1,8 @@
 ﻿@using System.Globalization
 
 
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html >
+<html >
 <head>
     <title>@ViewBag.Title - Travel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,26 +15,40 @@
     {
         <link href="~/Dashboard/css/styles.css" rel="stylesheet">
     }
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"  />
 </head>
 <body>
     <div class="header">
-        <div class="container">
             <div class="row">
-                <div class="col-md-5">
-                    <div class="logo">
-                        <h1><a asp-action="index" asp-controller="Dashboard">TravelER Dashboard</a></h1>
+                <div class="col-md-6" >
+                    <div class="logo text-center">
+                        <h1 class="m-2 text-primary">
+                            <span style="color:white">
+                                TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#27374D" class="bi bi-airplane" viewBox="0 0 16 16">
+                                    <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
+                                </svg>ER
+                            </span>
+                        </h1>
                     </div>
                 </div>
-                <div class="col-md-push-6">
-                    <div class="navbar navbar-inverse" role="banner">
+                <div class="col-md-6">
+                    <div class="navbar navbar-inverse text-center" role="banner">
                         <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome @User.Identity.Name!<b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Localizer["Welcome"] @User.Identity.Name <b class="caret"></b></a>
                                     <ul class="dropdown-menu animated fadeInUp">
-                                        <li><a asp-action="UserProfile" asp-controller="Dashboard">@Localizer["Profile"]</a></li>
-                                        <li><a asp-action="Logout" asp-controller="Account" asp-area="">@Localizer["Logout"]</a></li>
+                                        <li>
+                                            <a asp-action="UserProfile" asp-controller="Dashboard">
+                                                <i class="bi bi-person-square"></i>@Localizer["Profile"]
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Logout" asp-controller="Account" asp-area="">
+                                                <i class="fa-right-from-bracket"></i>@Localizer["Logout"]
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </li>
                             </ul>
@@ -42,16 +56,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 
     <div class="page-content">
-        <div class="row">
+        <div class="row" style="direction : ltr">
+
+
             <div class="col-md-2">
                 <div class="sidebar content-box" style="display: block;">
                     <ul class="nav">
 
                         <li class="current"><a asp-action="Index" asp-controller="Home" asp-area=""><i class="glyphicon glyphicon-home"></i>@Localizer["Home Page"]</a></li>
+                        <li><a asp-action="MyProfile" asp-controller="Account"><i class="glyphicon glyphicon-calendar"></i>@Localizer["My profile"]</a></li>
                         <li><a asp-action="Index" asp-controller="Travels"><i class="glyphicon glyphicon-calendar"></i>@Localizer["Travel"]</a></li>
                         <li><a asp-action="Index" asp-controller="HomeImages"><i class="glyphicon glyphicon-record"></i>@Localizer["HomeImages"]</a></li>
                         <li><a asp-action="Index" asp-controller="Packages"><i class="glyphicon glyphicon-pencil"></i>@Localizer["Packages"]</a></li>
@@ -76,7 +93,9 @@
                                 <span class="caret pull-right"></span>
                             </a>
                             <ul>
-                                <li><a asp-action="UserList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Users"]</a></li>
+                                <li><a asp-action="UserListAdmin" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Administrator"]</a></li>
+                                <li><a asp-action="UserListAirCompany" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Air Company"]</a></li>
+                                <li><a asp-action="UserListCustomer" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Customers"]</a></li>
                                 <li><a asp-action="RoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Roles"]</a></li>
                                 <li><a asp-action="UserRoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["User Role"]</a></li>
                                 <li><a asp-action="Logout" asp-controller="Account" asp-area="">@Localizer["Logout"]</a></li>

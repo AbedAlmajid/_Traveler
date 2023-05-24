@@ -126,6 +126,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="dir" xml:space="preserve">
+    <value>ltr</value>
+  </data>
   <data name="Home Page" xml:space="preserve">
     <value>Home Page</value>
   </data>

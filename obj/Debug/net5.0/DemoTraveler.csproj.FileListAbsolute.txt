@@ -608,7 +608,6 @@ C:\Users\ABOOD ALAMAYREH\Source\Repos\_Traveler\obj\Debug\net5.0\DemoTraveler.ge
 C:\Users\ABOOD ALAMAYREH\Source\Repos\_Traveler\obj\Debug\net5.0\DemoTraveler.csproj.AssemblyReference.cache
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\testhost.dll
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\testhost.exe
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\appsettings.json
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\DemoTraveler.StaticWebAssets.xml
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\bin\Debug\net5.0\DemoTraveler.exe
@@ -851,7 +850,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Ra
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\AboutUs\Details.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\AboutUs\Edit.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\AboutUs\Index.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Account\ResetPassWord.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\FlightTypes\Create.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\FlightTypes\Delete.cshtml.g.cs
@@ -874,7 +872,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Ra
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Partners\Edit.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Partners\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Shared\_AdminLayout.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Shared\_SelectLanguagePartial.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Tickets\Create.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Tickets\Delete.cshtml.g.cs
@@ -891,13 +888,7 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Ra
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Details.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Edit.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Travels\Index.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\UserTickets\Create.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\UserTickets\Delete.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\UserTickets\Details.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\UserTickets\Edit.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\UserTickets\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\CreateRole.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\CreateUser.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\CreateUserRole.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\DeleteRole.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\EditRole.cshtml.g.cs
@@ -905,7 +896,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Ra
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\RoleList.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserDelete.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserDetails.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserList.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserRoleList.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\_ViewImports.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\_ViewStart.cshtml.g.cs
@@ -971,3 +961,24 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\De
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.genruntimeconfig.cache
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Customer\Views\UserTickets\MyTicket.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.csproj.AssemblyReference.cache
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserListAdmin.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserListAirCompany.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\CreateUserAdmin.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserListCustomer.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\Razor\Areas\AirCompany\Views\Account\MyProfile.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Dashboard.Index.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Dashboard.Index.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Shared._AirCompanyLayout.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Shared._AirCompanyLayout.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Account.MyProfile.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Account.MyProfile.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Index.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Index.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Delete.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Delete.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Details.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Details.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Edit.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Edit.en.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Create.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\obj\Debug\net5.0\DemoTraveler.Resources.Areas.AirCompany.Views.Packages.Create.en.resources

@@ -41,10 +41,9 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             if (!String.IsNullOrEmpty(toCountry))
             {
                 tickets = tickets.Where(t => t.ToCountry.Contains(toCountry));
-            }
-
-            var ticket = await _context.Tickets.Where(t => t.ApplicationUserId == loggedInUser.Id).ToListAsync();
-            return View(ticket);
+            }  
+            var ticketUser = await _context.Tickets.Where(t => t.ApplicationUserId == loggedInUser.Id).ToListAsync();
+            return View(tickets);
         }
 
         public async Task<IActionResult> Details(int? id)

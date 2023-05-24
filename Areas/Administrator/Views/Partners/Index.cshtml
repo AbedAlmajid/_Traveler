@@ -9,17 +9,43 @@
 
 @if (Model.Any())
 {
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <a asp-action="Create" class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
+                Add Partner
+            </a>
+        </div>
+        <br />
+        <div class="col-md-6 align-content-end">
+            <form asp-action="Index" method="get" class="form-inline align-self-end" style="text-align: right">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name="partnerName" class="form-control"
+                           placeholder="Search By Partner Name :"
+                           value="@ViewData["CurrentFilter"]" />
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" value="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg> Search</button>
+            </form>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PartnerImg)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.PartnerName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.PartnerJop)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PartnerImg)
                 </th>
                 <th></th>
             </tr>
@@ -29,13 +55,13 @@
             {
                 <tr>
                     <td>
+                        <img width="120px" src="..\@Url.Content(item.PartnerImg)" alt="package-place">
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.PartnerName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PartnerJop)
-                    </td>
-                    <td>
-                        <img width="120px" src="..\@Url.Content(item.PartnerImg)" alt="package-place">
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.PartnerId" class="btn btn-warning">
@@ -60,24 +86,37 @@
             }
         </tbody>
     </table>
-    <a asp-action="Create" class="btn btn-success">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-        </svg>
-        Add Partner
-    </a>
 }
 else
 {
-    <div Class="alert alert info">
-        <b>No Partner Avalible Click To Create New One</b>
+    <div class="row">
+        <div class="col-md-6 ">
+            <a asp-action="Create" class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
+                Add Travel
+            </a>
+        </div>
+        <div class="col-md-6 align-content-end">
+            <form asp-action="Index" method="get" class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name="travelName" class="form-control"
+                           placeholder="Search By Travel Name :"
+                           value="@ViewData["CurrentFilter"]" />
+                </div>
+                <button type="submit" class="btn btn-primary mb-2" value="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg> Search
+                </button>
+            </form>
+        </div>
     </div>
-    <a asp-action="Create" class="btn btn-success">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-        </svg>
-        Add Partner
-    </a>
+
+    <div Class="alert alert info">
+        <b>No Partner Avalible for @ViewData["CurrentFilter"]</b>
+    </div>
 }
 
 

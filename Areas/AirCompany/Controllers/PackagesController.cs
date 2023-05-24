@@ -29,13 +29,13 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         {
             //return View(await _context.Travels.ToListAsync());
             ViewData["CurrentFilter"] = CountryName;
-            var travels = from p in _context.Packages
+            var package = from p in _context.Packages
                           select p;
             if (!String.IsNullOrEmpty(CountryName))
             {
-                travels = travels.Where(t => t.CountryName.Contains(CountryName));
+                package = package.Where(t => t.CountryName.Contains(CountryName));
             }
-            return View(travels);
+            return View(package);
         }
 
         // GET: AirCompany/Packages

@@ -126,6 +126,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
   </data>
+  <data name="dir" xml:space="preserve">
+    <value>rtl</value>
+  </data>
   <data name="Home Page" xml:space="preserve">
     <value>الصفحة الرئيسية</value>
   </data>

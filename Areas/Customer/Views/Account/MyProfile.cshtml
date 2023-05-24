@@ -3,12 +3,16 @@
 @{
     ViewData["Title"] = "Profile";
     Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
-} 
+}
 
 <h2>My Profile</h2>
-
-<p>First Name: @Model.FirstName</p>
-<p>Last Name: @Model.LastName</p>
-<p>Birth Day: @Model.BirthDay.Date.ToString("dd/MM/yyyy")</p>
-<p>Email: @Model.Email</p>
-<p>Phone Number: @Model.PhoneNumber</p>
+<hr />
+<p>First Name: <b> @Model.FirstName</b></p>
+<br />
+<p>Last Name: <b>@Model.LastName</b></p>
+<br />
+<p>Birth Day: <b>@Model.BirthDay.Date.ToString("dd/MM/yyyy")</b></p>
+<br />
+<p>Email:  <b>@Model.Email </b> </p>
+<br />
+<p>Phone Number: <b>@Model.PhoneNumber</b></p>

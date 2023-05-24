@@ -25,9 +25,17 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         // GET: Administrator/Partners
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string partnerName)
         {
-            return View(await _context.Partners.ToListAsync());
+            //return View(await _context.Travels.ToListAsync());
+            ViewData["CurrentFilter"] = partnerName;
+            var partners = from t in _context.Partners
+                          select t;
+            if (!String.IsNullOrEmpty(partnerName))
+            {
+                partners = partners.Where(t => t.PartnerName.Contains(partnerName));
+            }
+            return View(partners);
         }
 
         // GET: Administrator/Partners/Details/5

@@ -5,73 +5,121 @@
     Layout = "~/Areas/AirCompany/Views/Shared/_AirCompanyLayout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1 style="direction:@Localizer["dir"]">@Localizer["Edit"]</h1>
 
-<h4>Package</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PackageId" />
-            <div class="form-group">
-                <label asp-for="CountryImg" class="control-label"></label>
-                <input asp-for="CountryImg" type="file" class="form-control" />
-                <span asp-validation-for="CountryImg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryName" class="control-label"></label>
-                <input asp-for="CountryName" class="form-control" />
-                <span asp-validation-for="CountryName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Person" class="control-label"></label>
-                <input asp-for="Person" class="form-control" />
-                <span asp-validation-for="Person" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryDesc" class="control-label"></label>
-                <textarea asp-for="CountryDesc" class="form-control"></textarea>
-                <span asp-validation-for="CountryDesc" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BrandName" class="control-label"></label>
-                <input asp-for="BrandName" class="form-control" />
-                <span asp-validation-for="BrandName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HotelStars" class="control-label"></label>
-                <input asp-for="HotelStars" class="form-control" />
-                <span asp-validation-for="HotelStars" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepartDate" class="control-label"></label>
-                <input asp-for="DepartDate" class="form-control" />
-                <span asp-validation-for="DepartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReturnDate" class="control-label"></label>
-                <input asp-for="ReturnDate" class="form-control" />
-                <span asp-validation-for="ReturnDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<h4 style="direction:@Localizer["dir"]">@Localizer["Package"]</h4>
+
+
+    <div class="row">
+        <div>
+            <form asp-action="Edit" enctype="multipart/form-data" class="col-md-6" style="direction:@Localizer["dir"]">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="PackageId" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="CountryImg" class="control-label">@Localizer["Country Image"]</label>
+                                <input asp-for="CountryImg" type="file" class="form-control" />
+                                <span asp-validation-for="CountryImg" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="CountryName" class="control-label">@Localizer["Country Name"]</label>
+                                <input asp-for="CountryName" class="form-control" />
+                                <span asp-validation-for="CountryName" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Duration" class="control-label">@Localizer["Duration"]</label>
+                                <input asp-for="Duration" class="form-control" />
+                                <span asp-validation-for="Duration" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Person" class="control-label">@Localizer["Person"]</label>
+                                <input asp-for="Person" class="form-control" />
+                                <span asp-validation-for="Person" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="CountryDesc" class="control-label">@Localizer["Country Description"]</label>
+                                <textarea asp-for="CountryDesc" class="form-control"></textarea>
+                                <span asp-validation-for="CountryDesc" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="BrandName" class="control-label">@Localizer["Brand Name"]</label>
+                                <input asp-for="BrandName" class="form-control" />
+                                <span asp-validation-for="BrandName" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label">@Localizer["Price"]</label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="HotelStars" class="control-label">@Localizer["Hotel Stars"]</label>
+                                <input asp-for="HotelStars" class="form-control" />
+                                <span asp-validation-for="HotelStars" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="DepartDate" class="control-label">@Localizer["Departure Date"]</label>
+                                <input asp-for="DepartDate" class="form-control" />
+                                <span asp-validation-for="DepartDate" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="ReturnDate" class="control-label">@Localizer["Return Date"]</label>
+                                <input asp-for="ReturnDate" class="form-control" />
+                                <span asp-validation-for="ReturnDate" class="text-danger"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
+                                <a asp-action="Index" class="btn btn-warning">@Localizer["Back to List"]</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 

@@ -1,4 +1,5 @@
 ﻿using DemoTraveler.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
+    //[Authorize]
     public class DashboardController : Controller
     {
 
@@ -18,6 +20,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         {
             return View();
         }
+       
 
     }
 }

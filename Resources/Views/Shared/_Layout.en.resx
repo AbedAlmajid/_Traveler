@@ -156,6 +156,9 @@
   <data name="Destination" xml:space="preserve">
     <value>Destination</value>
   </data>
+  <data name="dir" xml:space="preserve">
+    <value>ltr</value>
+  </data>
   <data name="Discover Amazing Places With Us" xml:space="preserve">
     <value>Discover Amazing Places With Us</value>
   </data>

@@ -1,0 +1,45 @@
+﻿using DemoTraveler.Data;
+using DemoTraveler.Models;
+using DemoTraveler.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DemoTraveler.Areas.AirCompany.Controllers
+{
+    public class AccountController : Controller
+    {
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public AccountController(UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [Area("AirCompany")]
+        public async Task<IActionResult> MyProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var userProfile = new ApplicationUserViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                BirthDay = user.BirthDay,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email
+            };
+
+            return View(userProfile);
+        }
+    }
+}

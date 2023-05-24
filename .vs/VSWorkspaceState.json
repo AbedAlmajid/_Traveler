@@ -2,15 +2,17 @@
   "ExpandedNodes": [
     "",
     "\\Areas",
-    "\\Areas\\Administrator",
-    "\\Areas\\Administrator\\Controllers",
     "\\Areas\\Customer",
     "\\Areas\\Customer\\Views",
-    "\\Areas\\Customer\\Views\\UserTickets",
-    "\\Data",
-    "\\Models",
-    "\\Models\\ViewModels"
+    "\\Areas\\Customer\\Views\\Shared",
+    "\\Resources",
+    "\\Resources\\Areas",
+    "\\Resources\\Areas\\Administrator",
+    "\\Resources\\Areas\\Administrator\\Views",
+    "\\Resources\\Areas\\Administrator\\Views\\Shared",
+    "\\Resources\\Views",
+    "\\Resources\\Views\\Shared"
   ],
-  "SelectedNode": "\\Views\\Home\\Ticket.cshtml",
+  "SelectedNode": "\\Data\\AppDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

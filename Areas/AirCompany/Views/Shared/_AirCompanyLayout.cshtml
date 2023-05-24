@@ -1,82 +1,210 @@
-﻿
+﻿@using System.Globalization
+
 <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>@ViewBag.Title - Travel</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-                    <link href="~/Dashboard/css/styles.css" rel="stylesheet">
-                </head>
-                <body>
-                    <div class="header">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="logo">
-                                        <h1><a asp-action="index" asp-controller="Dashboard">Travels Dashboard</a></h1>
-                                    </div>
-                                </div>
-                                <div class="col-md-push-6">
-                                    <div class="navbar navbar-inverse" role="banner">
-                                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                                            <ul class="nav navbar-nav">
-                                                <li class="dropdown">
-                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome @User.Identity.Name !<b class="caret"></b></a>
-                                                    <ul class="dropdown-menu animated fadeInUp">
-                                                        <li><a asp-action="UserProfile" asp-controller="Dashboard">Profile</a></li>
-                                                        <li><a asp-action="Logout" asp-controller="Account" asp-area="">Logout</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<html>
+<head>
+    <title>@ViewBag.Title - Travel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Dashboard/css/styles.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="logo text-center">
+                    <h1 class="m-2 text-primary">
+                        <span style="color:white">
+                            TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#27374D" class="bi bi-airplane" viewBox="0 0 16 16">
+                                <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
+                            </svg>ER
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="navbar navbar-inverse text-center" role="banner">
+                    <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Localizer["Welcome"] @User.Identity.Name <b class="caret"></b></a>
+                                <ul class="dropdown-menu animated fadeInUp">
+                                    <li>
+                                        <a asp-action="MyProfile" asp-controller="Account">
+                                            <i class="bi bi-person-square"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                                            </svg> @Localizer["Profile"]
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Logout" asp-controller="Account" asp-area="">
+                                            <i class="fa-right-from-bracket"></i>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                                <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                            </svg> @Localizer["Logout"]
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
+    {
+        <div class="page-content">
+            <div class="row">
+
+                <div class="col-md-10">
+                    <div class="content-box-large">
+                        @RenderBody()
                     </div>
+                </div>
 
-                    <div class="page-content">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="sidebar content-box" style="display: block;">
-                                    <ul class="nav">
-                                        <li class="current"><a asp-action="Index" asp-controller="Home" asp-area=""><i class="glyphicon glyphicon-home"></i>Home Page</a></li>
-                                        <li><a asp-action="EditProfile" asp-controller="Account" asp-area=""><i class="glyphicon glyphicon-calendar"></i> My Profile </a></li>
-                                        <li><a asp-action="Index" asp-controller="Packages"><i class="glyphicon glyphicon-stats"></i>Packages</a></li>
-                                        <li><a asp-action="Index" asp-controller="Tickets"><i class="glyphicon glyphicon-list"></i> Tickets  </a></li>
-                                        <li><a asp-action="Index" asp-controller="Travels"><i class="glyphicon glyphicon-record"></i> Travels </a></li>
-
-
-                                        <li class="submenu">
-                                            <a href="#">
-                                                <i class="glyphicon glyphicon-list"></i> Pages
-                                                <span class="caret pull-right"></span>
-                                            </a>
-
-                                            <ul>
-                                                <li><a asp-action="Logout" asp-controller="Account" asp-area="">Logout</a></li>
-                                                <li><a asp-action="ResetPassword" asp-controller="Account">Reset Password</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="content-box-large">
-                                    @RenderBody()
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-md-2">
+                    <div class="sidebar content-box" style="display: block; direction:rtl">
+                        <ul class="nav">
+                            <li class="current">
+                                <a asp-action="Index" asp-controller="Home" asp-area="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+                                    </svg>
+                                    @Localizer["Home Page"] 
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="MyProfile" asp-controller="Account">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg> @Localizer["Profile"]
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Packages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                                        <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                    </svg> @Localizer["Packages"]
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Tickets">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13Z" />
+                                    </svg>
+                                    @Localizer["Tickets"] 
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Travels">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-airplane-fill" viewBox="0 0 16 16">
+                                        <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                    </svg> @Localizer["Travels"] 
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Logout" asp-controller="Account" asp-area="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                    </svg> @Localizer["Logout"]  
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
 
-                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
-                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
-                    <script src="https://code.jquery.com/jquery.js"></script>
-                    <script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>
-                    <script src="~/Dashboard/js/custom.js"></script>
+
+            </div>
+        </div>
+    }
+
+    else
+    {
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="sidebar content-box" style="display: block;">
+                        <ul class="nav">
+                            <li class="current">
+                                <a asp-action="Index" asp-controller="Home" asp-area="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+                                    </svg>
+                                    Home Page
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="MyProfile" asp-controller="Account">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                    </svg> My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Packages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                                        <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                    </svg> Packages
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Tickets">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13Z" />
+                                    </svg> Tickets
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Travels">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane-fill" viewBox="0 0 16 16">
+                                        <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                    </svg> Travels
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-action="Logout" asp-controller="Account" asp-area="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                    </svg> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="content-box-large">
+                        @RenderBody()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
 
 
-                </body>
-            </html>            
+
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Dashboard/js/custom.js"></script>
+
+
+</body>
+</html>            

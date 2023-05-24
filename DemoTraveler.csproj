@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Administrator\Views\Account\MyProfile.cshtml" />
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css" />
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map" />
     <Content Remove="C:\Users\ABOOD ALAMAYREH\.nuget\packages\bootstrap\4.5.3\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css" />
@@ -31,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Administrator\Views\Account\MyProfile.cshtml" />
     <None Include="Areas\Customer\Views\Account\MyProfile.cshtml" />
     <None Include="wwwroot\Dashboard\vendors\bootstrap-wysihtml5\.settings\.gitignore" />
     <None Include="wwwroot\vendor\datepicker\daterangepicker.js" />

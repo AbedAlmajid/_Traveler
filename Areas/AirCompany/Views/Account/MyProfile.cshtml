@@ -1,0 +1,40 @@
+﻿@using System.Globalization
+
+@model ApplicationUserViewModel
+@{
+    ViewData["Title"] = "MyProfile";
+    Layout = "~/Areas/AirCompany/Views/Shared/_AirCompanyLayout.cshtml";
+}
+
+
+
+<div class="row" style="direction:@Localizer["dir"]">
+
+
+    <h2>@Localizer["My Informatins"]</h2>
+    <br />
+
+    <table class="table table-hover">
+        <tr>
+            <td>@Localizer["First Name"]:</td>
+            <td><b>@Model.FirstName</b></td>
+        </tr>
+        <tr>
+            <td>@Localizer["Last Name"]:</td>
+            <td><b>@Model.LastName</b></td>
+        </tr>
+        <tr>
+            <td>@Localizer["Birth Day"]:</td>
+            <td><b>@Model.BirthDay.Date.ToString("dd/MM/yyyy")</b></td>
+        </tr>
+        <tr>
+            <td>@Localizer["Email"]:</td>
+            <td><b>@Model.Email</b></td>
+        </tr>
+        <tr>
+            <td>@Localizer["Phone Number"]:</td>
+            <td><b>@Model.PhoneNumber</b></td>
+        </tr>
+    </table>
+
+</div>

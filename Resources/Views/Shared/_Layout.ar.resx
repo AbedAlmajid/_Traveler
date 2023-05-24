@@ -159,6 +159,9 @@
   <data name="Destination" xml:space="preserve">
     <value>وجهة</value>
   </data>
+  <data name="dir" xml:space="preserve">
+    <value>rtl</value>
+  </data>
   <data name="Discover Amazing Places With Us" xml:space="preserve">
     <value>اكتشف أماكن مذهلة معنا</value>
   </data>

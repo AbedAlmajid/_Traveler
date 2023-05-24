@@ -37,6 +37,7 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+
             return View();
         }
 
@@ -52,14 +53,48 @@ namespace DemoTraveler.Controllers
                     Gender = model.Gender,
                     BirthDay = model.BirthDay,
                     Email = model.Email,
-                    UserName = model.FirstName + model.LastName,
+                    UserName = model.Email,
                     PhoneNumber = model.PhoneNumber
-                };
+                  
+                
+            };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await _signInManager.SignInAsync(user, isPersistent: false);
+                   
+
+                    var userId = await _userManager.FindByIdAsync(user.Id);
+                    var role = "Customer";
+
+                    if (userId != null && role != null)
+                    {
+                        var isInRole = await _userManager.IsInRoleAsync(userId, "Customer");
+
+                        if (!isInRole)
+                        {
+                            var resultRole = await _userManager.AddToRoleAsync(userId, "Customer");
+
+                            if (result.Succeeded)
+                            {
+                                return RedirectToAction("Login", "Account");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Failed to assign AirCompany to user.");
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "User is already in the selected role.");
+                        }
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "User is already in the selected role.");
+                    }
+                    
                     return RedirectToAction("Login", "Account");
                 }
                 else
@@ -109,7 +144,6 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             
@@ -126,17 +160,18 @@ namespace DemoTraveler.Controllers
                             string userId = user.Id;
                             string email = user.Email;
                             _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
-                            return RedirectToAction("Index","Home");
+                            _httpContextAccessor.HttpContext.Session.SetString("UserName", user.FirstName + " " + user.LastName);
+                        return RedirectToAction("Index","Home");
                         }
                         else
                         {
-                            ModelState.AddModelError("Email", "Falid");
+                            ModelState.AddModelError("Email", "Email or password is incorrect");
                         }
 
                     }
                     else
                     {
-                        ModelState.AddModelError("Email", "Rama");
+                        ModelState.AddModelError("Email", "Email is not found");
                     }
 
                 }

@@ -1,0 +1,18 @@
+﻿@model ApplicationUserViewModel
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>My Profile</h2>
+<hr />
+<p>First Name: <b> @Model.FirstName</b></p>
+<br />
+<p>Last Name: <b>@Model.LastName</b></p>
+<br />
+<p>Birth Day: <b>@Model.BirthDay.Date.ToString("dd/MM/yyyy")</b></p>
+<br />
+<p>Email:  <b>@Model.Email </b> </p>
+<br />
+<p>Phone Number: <b>@Model.PhoneNumber</b></p>
