@@ -88,6 +88,23 @@ namespace DemoTraveler.Controllers
             return View(tickets);
         }
 
+        public IActionResult UserTicket()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            string userId = userManager.GetUserId(User);
+            if (userId == null)
+            {
+                return NotFound();
+            }
+            var userTicket = db.UserTickets.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
+                Include(t => t.Booking).
+                Include(t => t.Ticket).ToList();
+            return View(userTicket);
+        }
         
 
 
@@ -95,25 +112,71 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Booking(int Id)
         {
-            var ticket = db.Tickets.Where(x => x.TicketId == Id).SingleOrDefault();
-            var model = new BookingViewModel
+            if (!User.Identity.IsAuthenticated)
             {
-                TicketId = ticket.TicketId
-            };
+                return Unauthorized();
+            }
 
-            ViewData["TicketId"] = new SelectList(db.Tickets, "TicketId", "ToCountry");
-            return View();
+            string userId = userManager.GetUserId(User);
+
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            var ticket = db.Tickets.FirstOrDefault(t => t.TicketId == Id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+            var bookingViewModel = new BookingViewModel
+            {
+                UserId = userId,
+                TicketId = ticket.TicketId,
+                BrandName = ticket.BrandName,
+                FromCountry = ticket.FromCountry,
+                ToCountry = ticket.ToCountry,
+                FromAirport = ticket.FromAirport,
+                ToAirport = ticket.ToAirport,
+                DepartTime = ticket.DepartTime,
+                ArriveTime = ticket.ArriveTime,
+                DepartDate = ticket.DepartDate,
+                FlightDuration = ticket.FlightDuration,
+                Weight = ticket.Weight,
+                Price = ticket.Price,
+                TravelId = ticket.TravelId,
+                TicketTypeId = ticket.TicketTypeId,
+                FlightTypeId = ticket.FlightTypeId,
+
+            };
+            return View(bookingViewModel);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Booking(BookingViewModel booking, TicketViewModel ticket, UserTicketViewModel userTicket)
+        public async Task<IActionResult> Booking(BookingViewModel booking, int Id)
         {
-           
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            string userId = userManager.GetUserId(User);
+
+            if (userId == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                    
+            
             if (ModelState.IsValid)
             {
+                
                 Booking bb = new Booking
                 {
+                    UserId = userId,
+                    TicketId  = Id,
                     FirstName = booking.FirstName,
                     LastName = booking.LastName,
                     NationalNumber = booking.NationalNumber,
@@ -126,37 +189,26 @@ namespace DemoTraveler.Controllers
                     CreationDate = DateTime.Now,
                     ModificationDate = DateTime.Now
                 };
-                try
-                {
-                    db.Bookings.Add(bb);
-                    await db.SaveChangesAsync();
-                }
-                catch (DbUpdateException)
-                {
-                    ModelState.AddModelError(string.Empty, "Error occurred while saving the booking.");
-                    return View(booking);
-                }
+                  db.Bookings.Add(bb);
+                 await db.SaveChangesAsync();
 
+                    UserTicket userTicket = new UserTicket
+                    {
+                        ApplicationUserId = userId,
+                        TicketId = Id,
+                        BookingId = bb.BookingId
+                    };
 
-                ApplicationUser user = await userManager.GetUserAsync(User);
+                    db.UserTickets.Add(userTicket);
+                    db.SaveChanges();
 
-                UserTicket userTickete = new UserTicket
-                {
-                    ApplicationUserId = user.UserName,
-                    TicketId = ticket.TicketId,
-                    BookingId = bb.BookingId
-                };
-
-                db.UserTickets.Add(userTickete);
-                db.SaveChanges();
-
-                return RedirectToAction("Payment", new { Id = bb.BookingId , userTicket.UserTicketId });
-
+                    return RedirectToAction("Payment", new { Id = bb.BookingId });
             }
             else
             {
-                ModelState.AddModelError("", "Booking Is Not Valid Now");
+                ModelState.AddModelError("Address", "Booking Is Not Valid Now");
                 return View(booking);
+            }
             }
         }
 

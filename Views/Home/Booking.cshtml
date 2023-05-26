@@ -16,10 +16,23 @@
     <div class="container pt-5">
         <div class="card card-4">
             <div class="card-body">
-                <h2 class="title">Booking Ticket</h2>
+                <h2 class="title">Book Ticket: @Model.ToCountry</h2>
+                <h2 class="title">@User.Identity.Name</h2>
+                @Html.ValidationSummary()
                 <form asp-action="Booking" method="POST">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row row-space">
+                        <input asp-for="UserId" class="input--style-4" type="hidden" />
+                        <input asp-for="TicketId" class="input--style-4" type="hidden" />
+                        <input asp-for="BrandName" class="input--style-4" type="hidden" />
+                        <input asp-for="FromCountry" class="input--style-4" type="hidden" />
+                        <input asp-for="ToCountry" class="input--style-4" type="hidden" />
+                        <input asp-for="FromAirport" class="input--style-4" type="hidden" />
+                        <input asp-for="ToAirport" class="input--style-4" type="hidden" />
+                        <input asp-for="DepartTime" class="input--style-4" type="hidden" />
+                        <input asp-for="ArriveTime" class="input--style-4" type="hidden" />
+                        <input asp-for="DepartDate" class="input--style-4" type="hidden" />
+                        <input asp-for="FlightDuration" class="input--style-4" type="hidden" />
                         <div class="col-6">
                             <div class="input-group">
                                 <label asp-for="FirstName" class="label"></label>
@@ -47,7 +60,7 @@
                         <div class="col-8">
                             <div class="input-group">
                                 <label asp-for="PassportNumber" class="label"></label>
-                                <input asp-for="PassportNumber" type="num" class="input--style-4">
+                                <input asp-for="PassportNumber" type="number" class="input--style-4">
                                 <span asp-validation-for="PassportNumber" class="text-danger"></span>
                             </div>
                         </div>
@@ -61,7 +74,7 @@
                         <div class="col-8">
                             <div class="input-group">
                                 <label class="label" asp-for="ZipCode"></label>
-                                <input asp-for="ZipCode" type="num" class="input--style-4" />
+                                <input asp-for="ZipCode" type="number" class="input--style-4" />
                                 <span asp-validation-for="ZipCode" class="text-danger"></span>
                             </div>
                         </div>
@@ -73,12 +86,12 @@
                             </div>
                         </div>
                         @*<div class="col-8">
-                            <div class="input-group">
-                                <label class="label" asp-for="TicketId">To Country</label>
-                                <select asp-for="TicketId" class="input--style-4" asp-items="ViewBag.TicketId" type="number"></select>
-                                <span asp-validation-for="TicketId" class="text-danger"></span>
-                            </div>
-                        </div>*@
+                    <div class="input-group">
+                        <label class="label" asp-for="TicketId">To Country</label>
+                        <select asp-for="TicketId" class="input--style-4" asp-items="ViewBag.TicketId" type="number"></select>
+                        <span asp-validation-for="TicketId" class="text-danger"></span>
+                    </div>
+                </div>*@
                     </div>
                     <div class="p-t-15">
                         <button class="btn btn-primary" type="submit">Submit</button>

@@ -81,7 +81,7 @@ namespace DemoTraveler.Controllers
                             }
                             else
                             {
-                                ModelState.AddModelError("", "Failed to assign AirCompany to user.");
+                                ModelState.AddModelError("", "Failed to assign Customer to user.");
                             }
                         }
                         else
@@ -126,11 +126,13 @@ namespace DemoTraveler.Controllers
                         else
                         {
                             // Handle other error codes as needed
-                            ModelState.AddModelError("", error.Description);
+                            ModelState.AddModelError("", "Email Or Password Is Not Valid");
                         }
                     }
                 }
+                ModelState.AddModelError("", "Email Or Password Is Not Valid");
             }
+            ModelState.AddModelError("", "Email Or Password Is Not Valid");
             return View(model);
         }
         [HttpGet]
@@ -144,46 +146,39 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            
-                if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
                 {
-                    var user = await _userManager.FindByEmailAsync(model.Email);
-                    if (user != null)
+                    var result = await _signInManager.PasswordSignInAsync(user,
+                    model.Password, false, true);
+
+                    if (result.Succeeded)
                     {
-                        var result = await _signInManager.PasswordSignInAsync(user,
-                        model.Password, false, true);
-
-                        if (result.Succeeded)
-                        {
-                            string userId = user.Id;
-                            string email = user.Email;
-                            _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
-                            _httpContextAccessor.HttpContext.Session.SetString("UserName", user.FirstName + " " + user.LastName);
-                        return RedirectToAction("Index","Home");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("Email", "Email or password is incorrect");
-                        }
-
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        ModelState.AddModelError("Email", "Email is not found");
+                        ModelState.AddModelError("Email", "Falid");
                     }
 
                 }
-         
-           
+                else
+                {
+                    ModelState.AddModelError("Email", "Email Is Not Valid !");
+                }
+
+            }
+
             return View(model);
         }
 
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
+        
 
 
         //[HttpPost]

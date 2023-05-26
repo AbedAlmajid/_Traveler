@@ -40,7 +40,11 @@ namespace DemoTraveler.Models
         [Display(Name = "Passport Number")]
         public string PassportNumber { get; set; }
 
-        public UserTicket UserTicket { get; set; }
+        public string UserId { get; set; }
+
+        public int TicketId { get; set; }
+
+        public ICollection<UserTicket> UserTicket { get; set; }
 
         public virtual ICollection<Payment> Payments { get; set; }
     }

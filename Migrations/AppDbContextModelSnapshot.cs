@@ -157,9 +157,6 @@ namespace DemoTraveler.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<int>("UserType")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -218,6 +215,12 @@ namespace DemoTraveler.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ZipCode")
                         .IsRequired()
@@ -642,11 +645,9 @@ namespace DemoTraveler.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.HasIndex("BookingId")
-                        .IsUnique();
+                    b.HasIndex("BookingId");
 
-                    b.HasIndex("TicketId")
-                        .IsUnique();
+                    b.HasIndex("TicketId");
 
                     b.ToTable("UserTickets");
                 });
@@ -837,14 +838,14 @@ namespace DemoTraveler.Migrations
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("DemoTraveler.Models.Booking", "Booking")
-                        .WithOne("UserTicket")
-                        .HasForeignKey("DemoTraveler.Models.UserTicket", "BookingId")
+                        .WithMany("UserTicket")
+                        .HasForeignKey("BookingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DemoTraveler.Models.Ticket", "Ticket")
-                        .WithOne("UserTicket")
-                        .HasForeignKey("DemoTraveler.Models.UserTicket", "TicketId")
+                        .WithMany("UserTicket")
+                        .HasForeignKey("TicketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

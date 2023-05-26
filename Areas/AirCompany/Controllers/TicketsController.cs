@@ -30,19 +30,25 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(string toCountry)
+        public IActionResult Index(string toCountry)
         {
-            ViewData["CurrentFilter"] = toCountry;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return NotFound();
+            }
 
-            var loggedInUser = await _userManager.GetUserAsync(HttpContext.User);
-            var tickets = from t in _context.Tickets
-                          select t;
+            string loggedInUser = _userManager.GetUserId(User);
+            if (loggedInUser == null)
+            {
+                return NotFound();
+            }
+            ViewData["CurrentFilter"] = toCountry;
+            var tickets = from t in _context.Tickets.Where(t => t.ApplicationUser.Id == loggedInUser) select t;
 
             if (!String.IsNullOrEmpty(toCountry))
             {
                 tickets = tickets.Where(t => t.ToCountry.Contains(toCountry));
-            }  
-            var ticketUser = await _context.Tickets.Where(t => t.ApplicationUserId == loggedInUser.Id).ToListAsync();
+            }
             return View(tickets);
         }
 
@@ -80,14 +86,23 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(TicketViewModel ticket, int userId)
+        public async Task<IActionResult> Create(TicketViewModel ticket)
         {
+            string userId = _userManager.GetUserId(User);
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
+               
+
                 string imgName = UploadNewImage(ticket);
 
                 Ticket tt = new Ticket
                 {
+                    ApplicationUserId = userId,
                     FlyBrand = imgName,
                     BrandName = ticket.BrandName,
                     FromCountry = ticket.FromCountry,

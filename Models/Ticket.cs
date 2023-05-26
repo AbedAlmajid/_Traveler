@@ -71,7 +71,7 @@ namespace DemoTraveler.Models
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
-        public UserTicket UserTicket { get; set; }
+        public ICollection<UserTicket> UserTicket { get; set; }
 
     }
 }
