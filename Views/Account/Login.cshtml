@@ -10,41 +10,40 @@
         margin-right: auto;
         margin-left: auto;
     }
-</style>
 
+ 
+</style>
 <link href="~/css/LoginStyle.css" rel="stylesheet" />
 
 <div class="page-wrapper bg-gra-02 p-t-50 p-b-100 font-poppins mt-2 container-fluid">
     <div class="wrapper wrapper--w680">
         <div class="card card-6">
             <div class="card-body">
-                <h2 class="title">Traveler Log In</h2>
+                <h2 class="title">@Localizer["Login"]</h2>
                 <form asp-action="Login" method="post">
                     <div class="row row-space">
                         <div class="col-12">
-
                             <div class="input-group">
-                                <label asp-for="Email" class="label"></label>
+                                <label asp-for="Email" class="label">@Localizer["Email"]</label>
                                 <input asp-for="Email" class="input--style-4" type="email" name="Email">
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group">
-                                <label asp-for="Password" class="label">Password</label>
+                                <label asp-for="Password" class="label">@Localizer["Password"]</label>
                                 <input asp-for="Password" class="input--style-4" type="password" name="Password">
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
                     <div class="p-t-15">
-                        <button class="btn btn-primary w-50 p-3 center-block" type="submit" asp-action="login">Login</button>
+                        <button class="btn btn-primary w-50 p-3 center-block" type="submit" asp-action="login">@Localizer["Login"]</button>
                     </div>
-
                 </form>
                 <label class="w-50 p-3 center-block text-center">
-                    Don't Have Account ?! please
-                    <a asp-action="Register" asp-controller="Account" style="color:blue; font-weight:bold">Register</a>
+                    @Localizer["Don't Have Account ?! please"]
+                    <a asp-action="Register" asp-controller="Account" style="color:blue; font-weight:bold">@Localizer["Register"]</a>
                 </label>
             </div>
         </div>

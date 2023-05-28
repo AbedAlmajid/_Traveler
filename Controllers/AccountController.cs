@@ -37,12 +37,11 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, UserRoleViewModel userRoleViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -50,22 +49,20 @@ namespace DemoTraveler.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    BirthDay = model.BirthDay.Date,
                     Gender = model.Gender,
-                    BirthDay = model.BirthDay,
                     Email = model.Email,
-                    UserName = model.Email,
+                    UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
-                  
-                
-            };
+                };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                   
 
                     var userId = await _userManager.FindByIdAsync(user.Id);
-                    var role = "Customer";
+                    var role = "AirCompany";
 
                     if (userId != null && role != null)
                     {
@@ -77,7 +74,7 @@ namespace DemoTraveler.Controllers
 
                             if (result.Succeeded)
                             {
-                                return RedirectToAction("Login", "Account");
+                                return RedirectToAction("Login" ,"Account");
                             }
                             else
                             {
@@ -94,47 +91,18 @@ namespace DemoTraveler.Controllers
                     {
                         ModelState.AddModelError("", "User is already in the selected role.");
                     }
-                    
                     return RedirectToAction("Login", "Account");
                 }
-                else
+                foreach (var error in result.Errors)
                 {
-                    foreach (var error in result.Errors)
-                    {
-                        string errorstrinf = error.Code;
-                        if (error.Code == "InvalidEmail")
-                        {
-                            ModelState.AddModelError("", "Invalid Email");
-                        }
-                        else
-                        if (error.Code == "PasswordRequiresDigit")
-                        {
-                            ModelState.AddModelError("", "The password must contain at least one digit.");
-                        }
-                        else if (error.Code == "PasswordRequiresNonAlphanumeric")
-                        {
-                            ModelState.AddModelError("", "The password must contain at least one special character.");
-                        }
-                        else if (error.Code == "PasswordRequiresUpper")
-                        {
-                            ModelState.AddModelError("", "The password must contain at least one uppercase letter.");
-                        }
-                        else if (error.Code == "PasswordRequiresLower")
-                        {
-                            ModelState.AddModelError("", "The password must contain at least one lowercase letter.");
-                        }
-                        else
-                        {
-                            // Handle other error codes as needed
-                            ModelState.AddModelError("", "Email Or Password Is Not Valid");
-                        }
-                    }
+                    ModelState.AddModelError("", error.Description);
+                    return View(model);
                 }
-                ModelState.AddModelError("", "Email Or Password Is Not Valid");
             }
-            ModelState.AddModelError("", "Email Or Password Is Not Valid");
             return View(model);
         }
+
+
         [HttpGet]
         public IActionResult Login()
         {

@@ -12,6 +12,12 @@
   
 }*/
 
+body {
+        background-image: url("../img/Ticket.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+
 .section {
     max-width: 100%;
 /*    margin: 25px auto;

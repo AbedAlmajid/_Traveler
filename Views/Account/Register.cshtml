@@ -1,8 +1,8 @@
 ﻿@model RegisterViewModel
 
-@{ 
-    ViewData["Title"] = "Register"; 
- }
+@{
+    ViewData["Title"] = "Register";
+}
 <style>
     .center-block {
         display: block;
@@ -13,24 +13,24 @@
 
 
 <link href="~/css/LoginStyle.css" rel="stylesheet" />
-<div class="container-fluid py-5" dir="ltr">
+<div class="container-fluid py-5" dir="ltr" style="background-image: url('file:///C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Travel\wwwroot\img\Login.jpg');">
     <div class="container pt-5">
         <div class="card card-4">
             <div class="card-body p-4">
-                <h2 class="title">Traveler Registration Form</h2>
+                <h2 class="title">@Localizer["Registration"]</h2>
                 <form asp-action="Register" asp-controller="Account" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="row row-space">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="FirstName" class="label"></label>
+                                <label asp-for="FirstName" class="label">@Localizer["First Name"]</label>
                                 <input asp-for="FirstName" class="input--style-4" type="text" name="FirstName">
                                 <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="LastName" class="label"></label>
+                                <label asp-for="LastName" class="label">@Localizer["Last Name"]</label>
                                 <input asp-for="LastName" class="input--style-4" type="text" name="LastName">
                                 <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
@@ -39,44 +39,42 @@
                     <div class="row row-space">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="BirthDay" class="label"></label>
-                                <input asp-for="BirthDay" class="input--style-4 " name="BirthDay">
+                                <label asp-for="BirthDay" class="label">@Localizer["Birth Day"]</label>
+                                <input asp-for="BirthDay" type="date" class="input--style-4" name="BirthDay" format="dd/MM/yyyy">
                                 <span asp-validation-for="BirthDay" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="Gender" class="label"> </label>
+                                <label asp-for="Gender" class="label">@Localizer["Gender"]</label>
 
                                 <div class="input-group mt-4">
                                     <label class="radio-container m-r-45">
-                                        Male
+                                        @Localizer["Male"]
                                         <input asp-for="Gender" type="radio" value="true">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-container">
-                                        Female
+                                        @Localizer["Female"]
                                         <input asp-for="Gender" type="radio" value="false">
                                         <span class="checkmark"></span>
                                     </label>
-
                                 </div>
                                 <span asp-validation-for="Gender" class="text-danger"></span>
                             </div>
-                            
                         </div>
                     </div>
                     <div class="row row-space">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="Email" class="label">Email</label>
+                                <label asp-for="Email" class="label">@Localizer["Email"]</label>
                                 <input asp-for="Email" class="input--style-4" type="email" name="Email">
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label class="label" asp-for="PhoneNumber"></label>
+                                <label class="label" asp-for="PhoneNumber">@Localizer["Phone Number"]</label>
                                 <input asp-for="PhoneNumber" class="input--style-4" type="number" name="PhoneNumber">
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                             </div>
@@ -85,7 +83,7 @@
                     <div class="row row-space">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label asp-for="Password" class="label">Password</label>
+                                <label asp-for="Password" class="label">@Localizer["Password"]</label>
                                 <input asp-for="Password" class="input--style-4" type="password" name="Password">
                                 <span asp-validation-for="Password" class="text-danger"></span>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -93,7 +91,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-group">
-                                <label class="label" asp-for="ConfirmPassword"></label>
+                                <label class="label" asp-for="ConfirmPassword">@Localizer["Confirm Password"]</label>
                                 <input asp-for="ConfirmPassword" class="input--style-4" type="password" name="ConfirmPassword">
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
@@ -101,19 +99,17 @@
                     </div>
 
                     <div class="p-t-15">
-                        <button class="btn btn-primary w-50 p-3 center-block" type="submit">Register</button>
+                        <button class="btn btn-primary w-50 p-3 center-block" type="submit">@Localizer["Register"]</button>
                     </div>
                     <label class="w-50 p-3 center-block text-center">
-                        Have Account ?! please
-                        <a asp-action="Login" asp-controller="Account" style="color:blue; font-weight:bold">login</a>
+                        @Localizer["Have Account ?! please"]
+                        <a asp-action="Login" asp-controller="Account" style="color:blue; font-weight:bold">@Localizer["login"]</a>
                     </label>
-
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 
 
 

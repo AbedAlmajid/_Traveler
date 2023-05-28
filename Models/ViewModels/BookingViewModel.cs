@@ -40,6 +40,8 @@ namespace DemoTraveler.Models.ViewModels
 
         public bool Status { get; set; } = false;
 
+
+
         [Required(ErrorMessage = "please Enter Brand Name!")]
         [Display(Name = "Brand Name")]
         public string BrandName { get; set; }

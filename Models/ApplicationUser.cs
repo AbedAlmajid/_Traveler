@@ -20,6 +20,7 @@ namespace DemoTraveler.Models
 
         [Required(ErrorMessage = "Enter Your Birth Day!")]
         [Display(Name = "Birth Day")]
+        [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
 
         [Required(ErrorMessage = "Select Your Gender!")]

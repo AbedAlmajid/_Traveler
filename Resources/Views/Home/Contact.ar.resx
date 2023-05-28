@@ -123,6 +123,9 @@
   <data name="Contact" xml:space="preserve">
     <value>التواصل</value>
   </data>
+  <data name="Contact For Any Query" xml:space="preserve">
+    <value>اتصل للحصول على أي استفسار</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>الايميل</value>
   </data>

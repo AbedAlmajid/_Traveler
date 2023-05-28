@@ -68,7 +68,7 @@
                     <ul class="nav">
 
                         <li class="current"><a asp-action="Index" asp-controller="Home" asp-area=""><i class="glyphicon glyphicon-home"></i>@Localizer["Home Page"]</a></li>
-                        <li><a asp-action="MyProfile" asp-controller="Account"><i class="glyphicon glyphicon-calendar"></i>@Localizer["My profile"]</a></li>
+                        @*<li><a asp-action="MyProfile" asp-controller="Account"><i class="glyphicon glyphicon-calendar"></i>@Localizer["Profile"]</a></li>*@
                         <li><a asp-action="Index" asp-controller="Travels"><i class="glyphicon glyphicon-calendar"></i>@Localizer["Travel"]</a></li>
                         <li><a asp-action="Index" asp-controller="HomeImages"><i class="glyphicon glyphicon-record"></i>@Localizer["HomeImages"]</a></li>
                         <li><a asp-action="Index" asp-controller="Packages"><i class="glyphicon glyphicon-pencil"></i>@Localizer["Packages"]</a></li>
@@ -98,7 +98,14 @@
                                 <li><a asp-action="UserListCustomer" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Customers"]</a></li>
                                 <li><a asp-action="RoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["Roles"]</a></li>
                                 <li><a asp-action="UserRoleList" asp-controller="User"><i class="glyphicon glyphicon-tasks"></i>@Localizer["User Role"]</a></li>
-                                <li><a asp-action="Logout" asp-controller="Account" asp-area="">@Localizer["Logout"]</a></li>
+                                <li>
+                                    <a asp-action="Logout" asp-controller="Account" asp-area="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+                                            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                        </svg> @Localizer["Logout"]
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

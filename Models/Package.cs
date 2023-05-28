@@ -52,5 +52,10 @@ namespace DemoTraveler.Models
         [Display(Name = "Return Date")]
         public DateTime ReturnDate { get; set; }
 
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public ICollection<UserPackage> UserPackage { get; set; }
+
     }
 }

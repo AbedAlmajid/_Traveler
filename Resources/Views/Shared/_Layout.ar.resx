@@ -126,6 +126,9 @@
   <data name="All Rights Reserved" xml:space="preserve">
     <value>كل الحقوق محفوظة</value>
   </data>
+  <data name="Best available: Suggesting that the tickets offered are of the highest quality or most favorable" xml:space="preserve">
+    <value>أفضل ما هو متاح: الإيحاء بأن التذاكر المعروضة هي من أعلى مستويات الجودة أو الأكثر ملاءمة</value>
+  </data>
   <data name="Best Services" xml:space="preserve">
     <value>أفضل الخدمات</value>
   </data>
@@ -177,6 +180,12 @@
   <data name="Explore Top Destination" xml:space="preserve">
     <value>اكتشف أفضل وجهة</value>
   </data>
+  <data name="Flexible: Signifying the availability of various options and choices" xml:space="preserve">
+    <value>مرنة: للدلالة على توافر الخيارات والاختيارات المتنوعة</value>
+  </data>
+  <data name="Follow Us" xml:space="preserve">
+    <value>تابعنا</value>
+  </data>
   <data name="Guides" xml:space="preserve">
     <value>خطوط إرشاد</value>
   </data>
@@ -198,7 +207,7 @@
   <data name="Our Services" xml:space="preserve">
     <value>خدماتنا</value>
   </data>
-  <data name="PACKAGES" xml:space="preserve">
+  <data name="Packages" xml:space="preserve">
     <value>الحزم</value>
   </data>
   <data name="Pages" xml:space="preserve">

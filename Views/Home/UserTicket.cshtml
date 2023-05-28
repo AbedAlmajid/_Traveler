@@ -4,79 +4,86 @@
     ViewData["Title"] = "Ticket";
 }
 
-<h1>User Ticket</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-            </th>
-            <th>
-                My Ticket
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+<div class="container-fluid py-5" style="min-height:900px" dir="ltr">
+    <div class="container pt-5">
+        @if (Model.Any())
         {
-            <tr>
-                <td>
-                   Name : @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
-                   @Html.DisplayFor(modelItem => item.ApplicationUser.LastName)
-                </td>
-                <td>
-                    BrandName :  @Html.DisplayFor(modelItem => item.Ticket.BrandName)
-                    <br />
-                    From :       @Html.DisplayFor(modelItem => item.Ticket.FromCountry)
-                    <br />
-                    To :         @Html.DisplayFor(modelItem => item.Ticket.ToCountry)
-                    <br />
-                    From Airport:@Html.DisplayFor(modelItem => item.Ticket.FromAirport)
-                    <br />
-                    To Airport : @Html.DisplayFor(modelItem => item.Ticket.ToAirport)
-                    <br />
-                    Depart Time :@Html.DisplayFor(modelItem => item.Ticket.DepartTime)
-                    <br />
-                    Arrive Time: @Html.DisplayFor(modelItem => item.Ticket.ArriveTime)
-                    <br />
-                    Depart Date: @Html.DisplayFor(modelItem => item.Ticket.DepartDate)
-                    <br />
-               Flight Duration : @Html.DisplayFor(modelItem => item.Ticket.FlightDuration)
-                    <br />
-                    Weight :     @Html.DisplayFor(modelItem => item.Ticket.Weight)
-                    <br />
-                    Price :      @Html.DisplayFor(modelItem => item.Ticket.Price)
-                    <br />
-                    Flight Type: @Html.DisplayFor(modelItem => item.Ticket.FlightType)
-                    <br />
-                    Ticket Type: @Html.DisplayFor(modelItem => item.Ticket.TicketType)
-                </td>
-                <td>
-                    NationalNumber : @Html.DisplayFor(modelItem => item.Booking.NationalNumber)
-                    <br />
-                    PassportNumber : @Html.DisplayFor(modelItem => item.Booking.PassportNumber)
-                    <br />
-                    Address :        @Html.DisplayFor(modelItem => item.Booking.Address)
-                    <br />
-                    ZipCode :        @Html.DisplayFor(modelItem => item.Booking.ZipCode)
-                    <br />
-                    Status :         @Html.DisplayFor(modelItem => item.Booking.Status)
-                    <br />
-                    PhoneNumber :      @Html.DisplayFor(modelItem => item.Booking.PhoneNumber)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.UserTicketId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.UserTicketId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.UserTicketId">Delete</a>
-                </td>
-            </tr>
+            <h1>My Ticket</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            My Ticket
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Booking)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                Name : @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
+                                @Html.DisplayFor(modelItem => item.ApplicationUser.LastName)
+                            </td>
+                            <td>
+                                BrandName :  @Html.DisplayFor(modelItem => item.Ticket.BrandName)
+                                <br />
+                                From :       @Html.DisplayFor(modelItem => item.Ticket.FromCountry)
+                                <br />
+                                To :         @Html.DisplayFor(modelItem => item.Ticket.ToCountry)
+                                <br />
+                                From Airport:@Html.DisplayFor(modelItem => item.Ticket.FromAirport)
+                                <br />
+                                To Airport : @Html.DisplayFor(modelItem => item.Ticket.ToAirport)
+                                <br />
+                                Depart Time :@Html.DisplayFor(modelItem => item.Ticket.DepartTime)
+                                <br />
+                                Arrive Time: @Html.DisplayFor(modelItem => item.Ticket.ArriveTime)
+                                <br />
+                                Depart Date: @Html.DisplayFor(modelItem => item.Ticket.DepartDate)
+                                <br />
+                                Flight Duration : @Html.DisplayFor(modelItem => item.Ticket.FlightDuration)
+                                <br />
+                                Weight :     @Html.DisplayFor(modelItem => item.Ticket.Weight)
+                                <br />
+                                Price :      @Html.DisplayFor(modelItem => item.Ticket.Price)
+                                <br />
+                                Flight Type: @Html.DisplayFor(modelItem => item.Ticket.FlightType)
+                                <br />
+                                Ticket Type: @Html.DisplayFor(modelItem => item.Ticket.TicketType)
+                            </td>
+                            <td>
+                                NationalNumber : @Html.DisplayFor(modelItem => item.Booking.NationalNumber)
+                                <br />
+                                PassportNumber : @Html.DisplayFor(modelItem => item.Booking.PassportNumber)
+                                <br />
+                                Address :        @Html.DisplayFor(modelItem => item.Booking.Address)
+                                <br />
+                                ZipCode :        @Html.DisplayFor(modelItem => item.Booking.ZipCode)
+                                <br />
+                                Status :         @Html.DisplayFor(modelItem => item.Booking.Status)
+                                <br />
+                                PhoneNumber :      @Html.DisplayFor(modelItem => item.Booking.PhoneNumber)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-    </tbody>
-</table>
+        else
+        {
+            <p> No Ticket Available </p>
+            <label class="form-group">Click Book Now for Booking Ticket</label>
+            <br />
+            <a  class="btn btn-primary" asp-action="Destination" asp-controller="Home" >Book Now</a>
+        }
+
+    </div>
+    </div>

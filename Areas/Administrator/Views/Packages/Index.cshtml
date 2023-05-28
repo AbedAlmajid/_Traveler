@@ -58,12 +58,6 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HotelStars)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DepartDate)
-                </th>
                 <th></th>
             </tr>
         </thead>
@@ -91,12 +85,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.HotelStars)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DepartDate)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.PackageId" class="btn btn-warning">

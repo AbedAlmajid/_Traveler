@@ -12,7 +12,7 @@
     var requestCulture = Context.Features.Get<IRequestCultureFeature>();
 }
 
-<div class="container-fluid py-5">
+<div class="container-fluid py-5" dir="ltr" !important >
     <div class="container pt-5 pb-3">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Localizer["Destination"]</h6>
@@ -30,7 +30,7 @@
             {
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img class="img-fluid" src="..\@Url.Content(item.TravelImg)" alt="Image"></a>
+                        <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img src="..\@Url.Content(item.TravelImg)" alt="Image" height="220" width="350"></a>
 
                         <a class="destination-overlay text-white text-decoration-none" asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId">
                             <h5 class="text-white">@Localizer[item.TravelName]</h5>

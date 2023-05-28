@@ -29,13 +29,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="~/css/main.css" rel="stylesheet" media="all">
-    @*<link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">*@
-    @*<link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />*@
-    @*<link href="~/Dashboard/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
+
     @if (CultureInfo.CurrentCulture.Name.StartsWith("ar"))
     {
         <link href="~/css/RTLStyle.css" rel="stylesheet" />
-        @*<link href="~/css/style.css" rel="stylesheet" />*@
     }
     else
     {
@@ -45,8 +42,7 @@
 </head>
 
 <body>
-
-    <div class="container-fluid bg-light pt-2 d-none d-lg-block " dir="ltr">
+    <div class="container-fluid bg-light pt-2 d-none d-lg-block" dir="ltr">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center mb-2 mb-lg-0">
@@ -105,17 +101,33 @@
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav m-auto py-0">
                         <ul class="nav navbar-nav">
-                            <li><a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a></li>
-
                             <li>
-                                <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
+                                <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active" style="font-size:larger;">
+                                    @Localizer["Home"]
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
+                                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
+                                    </svg>
+                                </a>
                             </li>
                             <li>
-                                <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
+                                <a asp-action="Service" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">@Localizer["Services"]
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+                                        <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                                    </svg></a>
+                            </li>
+                            <li>
+                                <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">@Localizer["Tour Packages"]
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
+                                        <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                                    </svg></a>
 
                             </li>
                             <li>
-                                <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
+                                <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">@Localizer["Contact"]
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                                    </svg></a>
                             </li>
                             <li>
                                 @if (signInManager.IsSignedIn(User))
@@ -123,11 +135,14 @@
                                     if (User.IsInRole("Administrator"))
                                     {
                                         <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@User.Identity.Name</a>
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">@User.Identity.Name
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-break-fill" viewBox="0 0 16 16">
+                                                    <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V9H2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM2 12h12v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                                                </svg></a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">
+                                                <a asp-action="Destination" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
+                                                <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                                     </svg> @Localizer["Dashboard"]
@@ -145,17 +160,21 @@
                                     else if (User.IsInRole("AirCompany"))
                                     {
                                         <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@User.Identity.Name</a>
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">@User.Identity.Name
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-break-fill" viewBox="0 0 16 16">
+                                                    <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V9H2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM2 12h12v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                                                </svg></a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="UserTicket" asp-controller="Home" class="dropdown-item">@Localizer["My Ticket"]</a>
-                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">
+                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
+                                                <a asp-action="UserTicket" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["My Ticket"]</a>
+                                                <a asp-action="UserPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["My Package"]</a>
+                                                <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                                     </svg>@Localizer["Dashboard"]
                                                 </a>
-                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">
+                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
                                                         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
@@ -168,17 +187,21 @@
                                     else if (User.IsInRole("Customer"))
                                     {
                                         <div class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>@User.Identity.Name</strong>!</a>
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;"><strong>@User.Identity.Name</strong>
+                                                                                                                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-break-fill" viewBox="0 0 16 16">
+                                                                                                                                              <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V9H2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM2 12h12v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                                                                                                                                          </svg>!</a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                <a asp-action="UserTicket" asp-controller="Home" class="dropdown-item">@Localizer["My Ticket"]</a>
-                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item">
+                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
+                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
+                                                <a asp-action="UserTicket" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["My Ticket"]</a>
+                                                <a asp-action="UserPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["My Package"]</a>
+                                                <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                                     </svg> @Localizer["Dashboard"]
                                                 </a>
-                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item">
+                                                <a asp-action="Logout" asp-controller="Account" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                                         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
                                                         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
@@ -193,16 +216,19 @@
                                 else
                                 {
                                     <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">@Localizer["Pages"]
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-break-fill" viewBox="0 0 16 16">
+                                                <path d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V9H2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM2 12h12v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                                            </svg></a>
                                         <div class="dropdown-menu border-0 rounded-0 m-0">
-                                            <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                            <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                            <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">
+                                            <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
+                                            <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
+                                            <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item" style="font-size:larger;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                                                 </svg> @Localizer["Dashboard"]
                                             </a>
-                                            <a asp-action="Login" asp-controller="Account" class="dropdown-item">
+                                            <a asp-action="Login" asp-controller="Account" class="dropdown-item" style="font-size:larger;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
                                                     <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
@@ -220,111 +246,11 @@
             </nav>
         </div>
     </div>
-    @*  }*@
-    @*else
-        {
-            <div class="container-fluid position-relative nav-bar p-0">
-                <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-                    <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                            <div class="navbar-nav m-auto py-0">
-                                <ul class="nav navbar-nav">
-
-
-                                    <li>
-                                        <a asp-action="Service" asp-controller="Home" class="nav-item nav-link">@Localizer["Services"]</a>
-                                    </li>
-                                    <li>
-                                        <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link">@Localizer["Tour Packages"]</a>
-
-                                    </li>
-                                    <li>
-                                        <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">@Localizer["Contact"]</a>
-                                    </li>
-                                    <li>
-                                        @if (signInManager.IsSignedIn(User))
-                                        {
-                                            if (User.IsInRole("Admin"))
-                                            {
-                                                <div class="nav-item dropdown">
-                                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                        <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                        <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                        <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                        <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                                    </div>
-                                                </div>
-                                            }
-                                            else if (User.IsInRole("AirCompany"))
-                                            {
-                                                <div class="nav-item dropdown">
-                                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                        <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                        <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                        <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                        <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                                    </div>
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                <div class="nav-item dropdown">
-                                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                                    <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                        <a asp-action="Travel" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                        <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                        <a asp-action="Logout" asp-controller="Account" class="dropdown-item">@Localizer["Logout"]</a>
-                                                        <a asp-action="Index" asp-controller="AirCompany" asp-area="AirCompany" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                                    </div>
-                                                </div>
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            <div class="nav-item dropdown">
-                                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@Localizer["Pages"]</a>
-                                                <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                    <a asp-action="Destination" asp-controller="Home" class="dropdown-item">@Localizer["Destination"]</a>
-                                                    <a asp-action="Client" asp-controller="Home" class="dropdown-item">@Localizer["Clients"]</a>
-                                                    <a asp-action="Login" asp-controller="Account" class="dropdown-item">@Localizer["Login"] / @Localizer["Register"]</a>
-                                                    <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item">@Localizer["Dashboard"]</a>
-                                                </div>
-                                            </div>
-                                        }
-                                    </li>
-                                    <li>
-                                        <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">@Localizer["Home"]</a>
-                                    </li>
-                                </ul>
-                                <a asp-action="Index" asp-controller="Home" class="navbar-brand">
-                                    <h1 class="m-0 text-primary">
-                                        <span class="text-dark mr-5 mt-4">
-                                            TRAVEL<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
-                                                <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Zm.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1c-.213 0-.458.158-.678.599Z" />
-                                            </svg>
-                                        </span>ER
-                                    </h1>
-                                </a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-
-        }*@
-
-
-
     <!-- Navbar End -->
     <div>
         @RenderBody()
     </div>
 
-
-    <!-- Registration Start -->
     @*<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
             <div class="container py-5">
                 <div class="row align-items-center">
@@ -443,18 +369,16 @@
                 </div>
             </div>
         </div>*@
-    <!--<!-- Blog End
-    <!-- Footer Start -->
-    @if (CultureInfo.CurrentCulture.Name.StartsWith("en"))
-    {
+
         <div class="footer container-fluid bg-dark text-white-50">
             <div class="row pt-5">
                 <div class="col-lg-3 col-md-6 mb-5">
                     <a href="" class="navbar-brand">
                         <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
                     </a>
-                    <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                    <p>@Localizer["Best available: Suggesting that the tickets offered are of the highest quality or most favorable"]</p>
+                    <p>@Localizer["Flexible: Signifying the availability of various options and choices"]</p>
+                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">@Localizer["Follow Us"]</h6>
                     <div class="d-flex justify-content-start">
                         <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -496,69 +420,11 @@
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="footer container-fluid bg-dark text-white-50">
-            <div class="row pt-5">
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
-                        @Localizer["CONTACT US"]
-                    </h5>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
-                    <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#">@Localizer["About"]<i class="fa fa-angle-left mr-2"></i> </a>
-                        <a class="text-white-50 mb-2" href="#">@Localizer["Destination"]<i class="fa fa-angle-left mr-2"></i>  </a>
-                        <a class="text-white-50 mb-2" href="#">@Localizer["Services"]<i class="fa fa-angle-left mr-2"></i>  </a>
-                        <a class="text-white-50 mb-2" href="#">@Localizer["Pakages"]<i class="fa fa-angle-left mr-2"></i> </a>
-                        <a class="text-white-50 mb-2" href="#">@Localizer["Guides"]<i class="fa fa-angle-left mr-2"></i>  </a>
-                        <a class="text-white-50 mb-2" href="#">@Localizer["Testimonial"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home">@Localizer["Blog"]<i class="fa fa-angle-left mr-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home">@Localizer["About"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home">@Localizer["Destination"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home">@Localizer["Services"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home">@Localizer["Packages"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home">@Localizer["Guides"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home">@Localizer["Testimonial"]<i class="fa fa-angle-left mr-2"></i></a>
-                        <a class="text-white-50" asp-action="Service" asp-controller="Home">@Localizer["Blog"]<i class="fa fa-angle-left mr-2"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5" dir="ltr">
-                    <a href="" class="navbar-brand">
-                        <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                    </a>
-                    <p>Sed ipsum clita tempor ipsum ipsum amet sit ipsum lorem amet labore rebum lorem ipsum dolor. No sed vero lorem dolor dolor</p>
-                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                    <div class="d-flex justify-content-start">
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
-    <!-- Footer End -->
-    <!-- Back to Top -->
+  
+   
 
 
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    @*<script src="~/Dashboard/bootstrap/js/bootstrap.min.js"></script>*@
-
-
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
@@ -567,12 +433,7 @@
     <script src="~/lib/tempusdominus/js/moment.min.js"></script>
     <script src="~/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="~/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    @*<script src="~/mail/contact.js"></script>*@
     <script src="~/js/main.js"></script>
-    @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>*@
-    <!--OPTIONAL: Add the following scripts for enabling Client Side validation.-->
 
 </body>
 

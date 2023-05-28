@@ -1,9 +1,9 @@
 ﻿
 body {
-    background-image: url("../img/04582830-6d93-4e7e-8909-8ddfa8d04818_409b40a6-42b1-494a-b3a3-2adce5bd2733_Egypt.jpg");
+    background-image: url("../img/cd6dc9a9-55ce-4bc0-804d-11a255870893_859932cb-7009-4b53-83a3-43cea9cb9918_London.jpg");
     /*  background: linear-gradient(50deg, #f3c680, rgba(161, 227, 226, 1));*/
-   background-position:center;
-   background-size:cover;
+    background-position: center;
+    background-size: cover;
 }
 /*-------------------- Buttons --------------------*/
 .submitbtn {

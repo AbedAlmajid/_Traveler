@@ -18,7 +18,6 @@
         background-size: cover;
     }
 </style>
-<link href="~/css/CardStyle.css" rel="stylesheet" />
 <link href="~/css/TicketStyle.css" rel="stylesheet" />
 
 @if (signInManager.IsSignedIn(User))
@@ -136,13 +135,15 @@
                                                 </div>
 
                                             </div>
-
-
-                                            <div class="delay-frame">
-                                                <div class="welc">
-                                                    <a asp-action="Booking" asp-controller="Home" asp-route-Id="@item.TicketId" class="btn btn-primary col-md-12">Book Now</a>
+                                            @if (User.IsInRole("Customer"))
+                                            {
+                                                <div class="delay-frame">
+                                                    <div class="welc">
+                                                        <a asp-action="Booking" asp-controller="Home" asp-route-Id="@item.TicketId" class="btn btn-primary col-md-12">Book Now</a>
+                                                    </div>
                                                 </div>
-                                            </div>
+
+                                            }
                                         </div>
                                     </div>
                                 </div>

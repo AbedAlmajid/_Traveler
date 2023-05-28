@@ -27,8 +27,8 @@ namespace DemoTraveler.Models.ViewModels
         [Required(ErrorMessage = "Select Your Gender!")]
         public bool Gender { get; set; }
 
-        [Required(ErrorMessage = "Enter User Email !")]
-        [EmailAddress]
+        [Required(ErrorMessage = "Enter Email !")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
 
 

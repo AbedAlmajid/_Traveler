@@ -1,8 +1,6 @@
 ﻿
 body {
     background-image: url("../img/Login.jpg");
-    /*  background: linear-gradient(50deg, #f3c680, rgba(161, 227, 226, 1));*/
     background-position: center;
     background-size: cover;
 }
-

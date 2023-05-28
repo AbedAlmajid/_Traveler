@@ -12,8 +12,8 @@
             {
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="package-item bg-white mb-2">
-                        <a asp-action="Booking" asp-controller="Home">
-                            <img class="img-fluid" src=../@Url.Content(item.CountryImg) width="400" alt="">
+                        <a asp-action="BookingPackage" asp-controller="Home" asp-route-Id="@item.PackageId">
+                            <img src=../@Url.Content(item.CountryImg) width="350" height="200" />
                         </a>
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
@@ -21,7 +21,7 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>@Localizer[item.Duration.ToString()] DAYS</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@Localizer[item.Person.ToString()]</small>
                             </div>
-                            <a class="h5 text-decoration-none">@Localizer[item.CountryDesc]</a>
+                            <a class="h6 text-decoration-none">@Localizer[item.CountryDesc]</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>@Localizer[item.HotelStars.ToString()]<small>(250)</small></h6>
@@ -32,9 +32,6 @@
                     </div>
                 </div>
             }
-
-
         </div>
     </div>
 </div>
-<!-- Packages End -->

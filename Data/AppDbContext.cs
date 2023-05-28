@@ -21,6 +21,7 @@ namespace DemoTraveler.Data
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<AboutUs> AboutUs { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<BookingPackage> BookingPackages { get; set; }
         public DbSet<Airline> Airlines { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketType> TicketTypes { get; set; }
@@ -29,6 +30,7 @@ namespace DemoTraveler.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Partner> Partners { get; set; }
         public DbSet<UserTicket> UserTickets { get; set; }
+        public DbSet<UserPackage> UserPackages { get; set; }
 
     }
 }

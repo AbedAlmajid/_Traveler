@@ -36,8 +36,9 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
 
-        #region User
+        #region User Admin
 
+        [HttpGet]
         public async Task<IActionResult> UserListAdmin()
         {
             var adminRole = await roleManager.FindByNameAsync("Administrator");
@@ -49,7 +50,6 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
             return View(adminUser);
         }
-
 
         [HttpGet]
         public IActionResult CreateUserAdmin()
@@ -117,6 +117,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult UserDetails(string id)
         {
             var user = userManager.FindByIdAsync(id).Result;
@@ -134,7 +135,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditUser(string id)
+        public IActionResult EditUserAdmin(string id)
         {
             var user = userManager.FindByIdAsync(id).Result;
             if (user == null)
@@ -152,7 +153,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditUser(RegisterViewModel model)
+        public IActionResult EditUserAdmin(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -186,7 +187,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpGet]
-        public IActionResult UserDelete(string id)
+        public IActionResult UserAdminDelete(string id)
         {
             if (id == null)
             {
@@ -206,7 +207,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UserDelete(string id, RegisterViewModel model)
+        public async Task<IActionResult> UserAdminDelete(string id, RegisterViewModel model)
         {
             var user = await userManager.FindByIdAsync(id);
 
@@ -237,6 +238,10 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
         #endregion
 
+
+        #region User AirCompany
+
+        [HttpGet]
         public async Task<IActionResult> UserListAirCompany()
         {
             var airCompanyRole = await roleManager.FindByNameAsync("AirCompany");
@@ -247,18 +252,6 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             var airCompanyUser = await userManager.GetUsersInRoleAsync(airCompanyRole.Name);
 
             return View(airCompanyUser);
-        }
-
-        public async Task<IActionResult> UserListCustomer()
-        {
-            var CustomerRole = await roleManager.FindByNameAsync("Customer");
-            if (CustomerRole == null)
-            {
-                return NotFound();
-            }
-            var customerUser = await userManager.GetUsersInRoleAsync(CustomerRole.Name);
-
-            return View(customerUser);
         }
 
         [HttpGet]
@@ -326,6 +319,202 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             }
             return View(model);
         }
+
+
+        [HttpGet]
+        public IActionResult EditUserAirCompany(string id)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var userEdit = new RegisterViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
+        }
+
+        [HttpPost]
+        public IActionResult EditUserAirCompany(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = userManager.FindByIdAsync(model.Id).Result;
+
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.PhoneNumber = model.PhoneNumber;
+
+
+                    var result = userManager.UpdateAsync(user).Result;
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction(nameof(UserListAirCompany));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Failed to update profile.");
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult UserAirCompanyDelete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userEdit = new ApplicationUser
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserAirCompanyDelete(string id, RegisterViewModel model)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                var userTickets = db.UserTickets.Where(ut => ut.ApplicationUserId == user.Id);
+                db.UserTickets.RemoveRange(userTickets);
+                await db.SaveChangesAsync();
+
+                var result = await userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(UserListAdmin));
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Failed To Delete User");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("UserDelete", id);
+        }
+
+        #endregion
+
+
+
+
+        #region User Customer
+
+        #endregion
+        [HttpGet]
+        public async Task<IActionResult> UserListCustomer()
+        {
+            var CustomerRole = await roleManager.FindByNameAsync("Customer");
+            if (CustomerRole == null)
+            {
+                return NotFound();
+            }
+            var customerUser = await userManager.GetUsersInRoleAsync(CustomerRole.Name);
+
+            return View(customerUser);
+        }
+
+
+        [HttpGet]
+        public IActionResult CreateUserCustomer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUserCustomer(RegisterViewModel model, UserRoleViewModel userRoleViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    UserName = model.FirstName + "" + model.LastName,
+                    PhoneNumber = model.PhoneNumber
+                };
+
+                var result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+
+                    var userId = await userManager.FindByIdAsync(user.Id);
+                    var role = "AirCompany";
+
+                    if (userId != null && role != null)
+                    {
+                        var isInRole = await userManager.IsInRoleAsync(userId, "Customer");
+
+                        if (!isInRole)
+                        {
+                            var resultRole = await userManager.AddToRoleAsync(userId, "Customer");
+
+                            if (result.Succeeded)
+                            {
+                                return RedirectToAction(nameof(UserListCustomer));
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Failed to assign Customer to user.");
+                            }
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "User is already in the selected role.");
+                        }
+
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "User is already in the selected role.");
+                    }
+                    return RedirectToAction(nameof(UserListCustomer));
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+
+
+
+
+
+
         #region Role
 
         public IActionResult RoleList()

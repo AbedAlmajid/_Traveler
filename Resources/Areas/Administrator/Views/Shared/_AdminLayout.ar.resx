@@ -120,8 +120,20 @@
   <data name="About Us" xml:space="preserve">
     <value>معلومات </value>
   </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>مدير</value>
+  </data>
+  <data name="Air Company" xml:space="preserve">
+    <value>شركة الطيران</value>
+  </data>
   <data name="Clients" xml:space="preserve">
     <value>العملاء</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>التواصل</value>
+  </data>
+  <data name="Customers" xml:space="preserve">
+    <value>عملاء</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>لوحة التحكم</value>
@@ -153,6 +165,9 @@
   <data name="Reset Password" xml:space="preserve">
     <value>اعادة كلمة السر</value>
   </data>
+  <data name="Roles" xml:space="preserve">
+    <value>الأدوار</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>بحث</value>
   </data>
@@ -161,5 +176,11 @@
   </data>
   <data name="Travel" xml:space="preserve">
     <value>الرحلة</value>
+  </data>
+  <data name="User Role" xml:space="preserve">
+    <value>دور المستخدم</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>المستخدمون</value>
   </data>
 </root>

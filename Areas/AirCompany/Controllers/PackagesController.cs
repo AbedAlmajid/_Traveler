@@ -10,6 +10,7 @@ using DemoTraveler.Models;
 using Microsoft.AspNetCore.Hosting;
 using DemoTraveler.Models.ViewModels;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace DemoTraveler.Areas.AirCompany.Controllers
 {
@@ -18,11 +19,13 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
-
-        public PackagesController(AppDbContext context , IWebHostEnvironment hostEnvironment)
+        private UserManager<ApplicationUser> _userManager;
+        public PackagesController(AppDbContext context , IWebHostEnvironment hostEnvironment,
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
+            _userManager = userManager;
         }
 
         public IActionResult Index(string CountryName)
@@ -79,12 +82,14 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
                 return View(package);
             }
 
+            var userId = _userManager.GetUserId(User);
             if (ModelState.IsValid)
             {
                 string imgName = UploadNewImage(package);
 
                 Package pp = new Package
                 {
+                    ApplicationUserId = userId,
                     CountryImg = imgName,
                     CountryName = package.CountryName,
                     Duration = package.Duration,

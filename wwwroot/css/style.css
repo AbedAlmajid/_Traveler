@@ -9569,7 +9569,7 @@ h6,
 }
 
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/carousel-2.jpg), no-repeat center center;
+  background: linear-gradient(rgba(0, 33, 255, 0.71), rgba(0, 0, 0, 0.82)), url(../img/carousel-2.jpg), no-repeat center center;
   background-size: cover;
 }
 
@@ -9748,7 +9748,7 @@ h6,
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: #4c3ff0;
+    background-image: url("../img/Ticket.jpg");
 }
 
 .blog-date::after {

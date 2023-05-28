@@ -65,7 +65,6 @@
     <Folder Include="Areas\Administrator\Views\Models\" />
     <Folder Include="Areas\Customer\Models\" />
     <Folder Include="Resources\Views\Shared\Components\Client\" />
-    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

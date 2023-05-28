@@ -4,14 +4,16 @@
     "\\Areas",
     "\\Areas\\AirCompany",
     "\\Areas\\AirCompany\\Views",
-    "\\Areas\\AirCompany\\Views\\Travels",
-    "\\Controllers",
-    "\\Models",
-    "\\Models\\ViewModels",
+    "\\Areas\\AirCompany\\Views\\Account",
+    "\\Data",
     "\\Views",
     "\\Views\\Home",
-    "\\Views\\Shared"
+    "\\Views\\Shared",
+    "\\Views\\Shared\\Components",
+    "\\wwwroot",
+    "\\wwwroot\\css",
+    "\\wwwroot\\mail"
   ],
-  "SelectedNode": "\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\Views\\Account\\Register.cshtml",
   "PreviewInSolutionExplorer": false
 }

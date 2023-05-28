@@ -11,16 +11,12 @@ using System.Threading.Tasks;
 
 namespace DemoTraveler.Areas.Administrator.Controllers
 {
-    //[Authorize]
     public class DashboardController : Controller
     {
-
         [Area("Administrator")]
         public IActionResult Index()
         {
             return View();
         }
-       
-
     }
 }

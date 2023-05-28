@@ -120,6 +120,9 @@
   <data name="ALGERIA" xml:space="preserve">
     <value>الجزائر</value>
   </data>
+  <data name="CANADA" xml:space="preserve">
+    <value>كندا</value>
+  </data>
   <data name="Destination" xml:space="preserve">
     <value>وجهة</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="LEBANON" xml:space="preserve">
     <value>لبنان</value>
+  </data>
+  <data name="MALDIVE" xml:space="preserve">
+    <value>جزر المالديف</value>
   </data>
   <data name="MALDIVES" xml:space="preserve">
     <value>جزر المالديف</value>
