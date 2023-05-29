@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <Compile Remove="Areas\Administrator\Models\**" />
+    <Compile Remove="Resources\Views\Shared\Components\Client\**" />
     <Content Remove="Areas\Administrator\Models\**" />
+    <Content Remove="Resources\Views\Shared\Components\Client\**" />
     <EmbeddedResource Remove="Areas\Administrator\Models\**" />
+    <EmbeddedResource Remove="Resources\Views\Shared\Components\Client\**" />
     <None Remove="Areas\Administrator\Models\**" />
+    <None Remove="Resources\Views\Shared\Components\Client\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,7 +68,6 @@
   <ItemGroup>
     <Folder Include="Areas\Administrator\Views\Models\" />
     <Folder Include="Areas\Customer\Models\" />
-    <Folder Include="Resources\Views\Shared\Components\Client\" />
   </ItemGroup>
 
   <ItemGroup>

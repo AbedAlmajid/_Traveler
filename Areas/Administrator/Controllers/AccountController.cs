@@ -29,7 +29,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                BirthDay = user.BirthDay,
+                CountryName = user.CountryName,
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email
             };

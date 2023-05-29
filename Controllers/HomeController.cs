@@ -83,54 +83,18 @@ namespace DemoTraveler.Controllers
         [HttpGet]
         public IActionResult Ticket(int Id)
         {
-            var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).
+            if (User.IsInRole("Customer"))
+            {
+                var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).
                 Include(x => x.Travel).
                 Include(x => x.TicketType).
                 Include(x => x.FlightType).ToList();
-            return View(tickets);
+                return View(tickets);
+            }
+            ModelState.AddModelError("", "You are not Customer Account");
+            return RedirectToAction("Login", "Account");
+
         }
-
-
-        [HttpGet]
-        public IActionResult UserTicket()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            string userId = userManager.GetUserId(User);
-            if (userId == null)
-            {
-                return NotFound();
-            }
-            var userTicket = db.UserTickets.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
-                Include(t => t.Booking).
-                Include(t => t.Ticket).ToList();
-            return View(userTicket);
-        }
-
-        [HttpGet]
-        public IActionResult UserPackage()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            string userId = userManager.GetUserId(User);
-            if (userId == null)
-            {
-                return NotFound();
-            }
-            var userTicket = db.UserPackages.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
-                Include(t => t.BookingPackage).
-                Include(t => t.Package).ToList();
-            return View(userTicket);
-        }
-
-
-
 
         [HttpGet]
         public IActionResult Booking(int Id)
@@ -139,6 +103,8 @@ namespace DemoTraveler.Controllers
             {
                 return View("Login" , "Account");
             }
+
+            
 
             string userId = userManager.GetUserId(User);
 
@@ -250,33 +216,37 @@ namespace DemoTraveler.Controllers
             {
                 return Unauthorized();
             }
+            if (User.IsInRole("Customer"))
+            {
+                string userId = userManager.GetUserId(User);
 
-            string userId = userManager.GetUserId(User);
-
-            if (userId == null)
-            {
-                return NotFound();
+                if (userId == null)
+                {
+                    return NotFound();
+                }
+                var package = db.Packages.FirstOrDefault(t => t.PackageId == Id);
+                if (package == null)
+                {
+                    return NotFound();
+                }
+                BookingPackageViewModel bookingPackageViewModel = new BookingPackageViewModel
+                {
+                    UserId = userId,
+                    PackageId = Id,
+                    BrandName = package.BrandName,
+                    CountryName = package.CountryName,
+                    Duration = package.Duration,
+                    Person = package.Person,
+                    CountryDesc = package.CountryDesc,
+                    Price = package.Price,
+                    HotelStars = package.HotelStars,
+                    DepartDate = package.DepartDate,
+                    ReturnDate = package.ReturnDate
+                };
+                return View(bookingPackageViewModel);
             }
-            var package = db.Packages.FirstOrDefault(t => t.PackageId == Id);
-            if (package == null)
-            {
-                return NotFound();
-            }
-            BookingPackageViewModel bookingPackageViewModel = new BookingPackageViewModel
-            {
-                UserId = userId,
-                PackageId = Id,
-                BrandName = package.BrandName,
-                CountryName = package.CountryName,
-                Duration = package.Duration,
-                Person = package.Person,
-                CountryDesc = package.CountryDesc,
-                Price = package.Price,
-                HotelStars = package.HotelStars,
-                DepartDate = package.DepartDate,
-                ReturnDate = package.ReturnDate
-            };
-            return View(bookingPackageViewModel);
+            return RedirectToAction("Login", "Account");
+            
         }
 
         [HttpPost]
@@ -321,7 +291,7 @@ namespace DemoTraveler.Controllers
                     db.UserPackages.Add(userPackage);
                     db.SaveChanges();
 
-                    return RedirectToAction("Payment", new { Id = bb.BookingPackageId });
+                    return RedirectToAction("PaymentPackage", new { Id = bb.BookingPackageId });
                 }
                 else
                 {
@@ -330,6 +300,45 @@ namespace DemoTraveler.Controllers
                 }
             }
         }
+
+
+
+        [HttpGet]
+        public IActionResult PaymentPackage(int Id)
+        {
+            PaymentPackageViewModel model = new PaymentPackageViewModel
+            {
+                BookingPackageId = Id
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PaymentPackage(PaymentPackageViewModel payment)
+        {
+            if (ModelState.IsValid)
+            {
+
+                PaymentPackage cc = new PaymentPackage
+                {
+                    CardNumber = payment.CardNumber,
+                    CardHolder = payment.CardHolder,
+                    ExpirationDate = payment.ExpirationDate,
+                    CCV = payment.CCV
+                };
+
+                db.Add(cc);
+                var package = db.BookingPackages.Where(x => x.BookingPackageId == payment.BookingPackageId).SingleOrDefault();
+                package.Status = true;
+                db.BookingPackages.Update(package);
+                await db.SaveChangesAsync();
+                ViewBag.ShowModel = true;
+                return RedirectToAction("Index", "Home");
+            }
+            return View(payment);
+        }
+
+
 
 
 
@@ -348,7 +357,7 @@ namespace DemoTraveler.Controllers
         {
             if (ModelState.IsValid)
             {
-               
+
                 Payment cc = new Payment
                 {
                     CardNumber = payment.CardNumber,
@@ -363,13 +372,10 @@ namespace DemoTraveler.Controllers
                 db.Bookings.Update(ticket);
                 await db.SaveChangesAsync();
                 ViewBag.ShowModel = true;
-                return RedirectToAction("Index" , "Home");
+                return RedirectToAction("Index", "Home");
             }
             return View(payment);
         }
-
-        
-
 
 
         [HttpPost]
@@ -386,13 +392,21 @@ namespace DemoTraveler.Controllers
             return LocalRedirect(returnUrl);
         }
 
+
+
         public IActionResult SearchTravel(string txtName)
         {
             string selectedTravel = Request.Form["txtName"];
             ViewData["TravelId"] = new SelectList(db.Travels, "TravelId", "Travel");
             var travel = db.Travels.Where(t => t.TravelName.Contains(txtName)).ToList();
+            if (txtName == null)
+            {
+                return View(travel);
+            }
             return View(travel);
         }
+
+
 
     }
 

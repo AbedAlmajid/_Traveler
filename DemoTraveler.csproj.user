@@ -19,6 +19,6 @@
     <_SelectedScaffolderID>IdentityScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Identity</_SelectedScaffolderCategoryPath>
     <ShowAllFiles>false</ShowAllFiles>
-    <WebStackScaffolding_LayoutPageFile>~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml</WebStackScaffolding_LayoutPageFile>
+    <WebStackScaffolding_LayoutPageFile>~/Areas/Administrator/Views/Shared/_AdminLayout.cshtml</WebStackScaffolding_LayoutPageFile>
   </PropertyGroup>
 </Project>

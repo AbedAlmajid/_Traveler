@@ -44,6 +44,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label asp-for="CountryName" class="control-label"></label>
+                        <input asp-for="CountryName" class="form-control" />
+                        <span asp-validation-for="CountryName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label asp-for="Password" class="control-label"></label>
                         <input asp-for="Password" class="form-control" />
                         <span asp-validation-for="Password" class="text-danger"></span>

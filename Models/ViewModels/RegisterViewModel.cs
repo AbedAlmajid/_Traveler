@@ -18,11 +18,9 @@ namespace DemoTraveler.Models.ViewModels
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Enter Your Birth Day!")]
-        [Display(Name = "Birth Day")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{dd/MM/yyyy}")]
-        public DateTime BirthDay { get; set; }
+        [Display(Name = "Country Name")]
+        [Required(ErrorMessage = "Enter Country Name")]
+        public string CountryName { get; set; }
 
         [Required(ErrorMessage = "Select Your Gender!")]
         public bool Gender { get; set; }

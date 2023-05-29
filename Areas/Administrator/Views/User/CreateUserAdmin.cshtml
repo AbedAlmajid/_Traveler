@@ -30,18 +30,19 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label asp-for="CountryName" class="control-label"></label>
+                        <input asp-for="CountryName" class="form-control" />
+                        <span asp-validation-for="CountryName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label asp-for="Email" class="control-label"></label>
                         <input asp-for="Email" class="form-control" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label asp-for="PhoneNumber" class="control-label"></label>
-                        <input asp-for="PhoneNumber" type="number" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="Password" class="control-label"></label>
@@ -55,24 +56,24 @@
                         <input asp-for="ConfirmPassword" class="form-control" />
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                     </div>
-
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="control-label"></label>
+                            <input asp-for="PhoneNumber" type="number" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-12">
                     <input type="submit" value="Create" class="btn btn-primary" style="width:100%" />
                     <div class="mt-2">
-                       <b><a asp-action="UserList">Back to List</a></b> 
+                        <b><a asp-action="UserList">Back to List</a></b>
                     </div>
 
 
                 </div>
             </div>
-            
-            
-            
-            
-            
-            
-            
+
         </form>
     </div>
 </div>

@@ -153,6 +153,15 @@
   <data name="QATAR" xml:space="preserve">
     <value>قطر</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Travel" xml:space="preserve">
+    <value>رحلة</value>
+  </data>
+  <data name="Tunisia" xml:space="preserve">
+    <value>تونس</value>
+  </data>
   <data name="TURKEY" xml:space="preserve">
     <value>تركيا</value>
   </data>

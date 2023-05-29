@@ -22,7 +22,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         private SignInManager<ApplicationUser> signInManager;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        public UserController(AppDbContext _db ,
+        public UserController(AppDbContext _db,
             UserManager<ApplicationUser> _userManager,
             RoleManager<IdentityRole> _roleManager,
             SignInManager<ApplicationUser> _signInManager,
@@ -36,7 +36,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
 
-        #region User Admin
+        #region Admin
 
         [HttpGet]
         public async Task<IActionResult> UserListAdmin()
@@ -66,16 +66,24 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    CountryName = model.CountryName,
+                    Gender = model.Gender,
                     Email = model.Email,
                     UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
 
+                var userExists = await userManager.FindByEmailAsync(model.Email);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email address is already registered.");
+                    return View(model);
+                }
+
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-
                     var userId = await userManager.FindByIdAsync(user.Id);
                     var role = "Administrator";
 
@@ -87,13 +95,13 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                         {
                             var resultRole = await userManager.AddToRoleAsync(userId, "Administrator");
 
-                            if (result.Succeeded)
+                            if (resultRole.Succeeded)
                             {
                                 return RedirectToAction(nameof(UserListAdmin));
                             }
                             else
                             {
-                                ModelState.AddModelError("", "Failed to assign role to user.");
+                                ModelState.AddModelError("", "Failed to assign Administrator to user.");
                             }
                         }
                         else
@@ -118,7 +126,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
         [HttpGet]
-        public IActionResult UserDetails(string id)
+        public IActionResult DetailsUserAdmin(string id)
         {
             var user = userManager.FindByIdAsync(id).Result;
 
@@ -147,7 +155,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                CountryName = user.CountryName
             };
             return View(userEdit);
         }
@@ -155,7 +164,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         [HttpPost]
         public IActionResult EditUserAdmin(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 var user = userManager.FindByIdAsync(model.Id).Result;
 
@@ -165,6 +174,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                     user.LastName = model.LastName;
                     user.Email = model.Email;
                     user.PhoneNumber = model.PhoneNumber;
+                    user.CountryName = model.CountryName;
 
 
                     var result = userManager.UpdateAsync(user).Result;
@@ -238,8 +248,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
         #endregion
 
-
-        #region User AirCompany
+        #region AirCompany
 
         [HttpGet]
         public async Task<IActionResult> UserListAirCompany()
@@ -269,16 +278,24 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    CountryName = model.CountryName,
+                    Gender = model.Gender,
                     Email = model.Email,
                     UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
 
+                var userExists = await userManager.FindByEmailAsync(model.Email);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email address is already registered.");
+                    return View(model);
+                }
+
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-
                     var userId = await userManager.FindByIdAsync(user.Id);
                     var role = "AirCompany";
 
@@ -290,7 +307,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                         {
                             var resultRole = await userManager.AddToRoleAsync(userId, "AirCompany");
 
-                            if (result.Succeeded)
+                            if (resultRole.Succeeded)
                             {
                                 return RedirectToAction(nameof(UserListAirCompany));
                             }
@@ -320,7 +337,6 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(model);
         }
 
-
         [HttpGet]
         public IActionResult EditUserAirCompany(string id)
         {
@@ -334,7 +350,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                CountryName = user.CountryName,
             };
             return View(userEdit);
         }
@@ -352,6 +369,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                     user.LastName = model.LastName;
                     user.Email = model.Email;
                     user.PhoneNumber = model.PhoneNumber;
+                    user.CountryName = model.CountryName;
 
 
                     var result = userManager.UpdateAsync(user).Result;
@@ -388,7 +406,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                CountryName = user.CountryName
             };
             return View(userEdit);
         }
@@ -408,7 +427,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction(nameof(UserListAdmin));
+                    return RedirectToAction(nameof(UserListAirCompany));
                 }
                 else
                 {
@@ -424,12 +443,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
         #endregion
 
+        #region Customer
 
-
-
-        #region User Customer
-
-        #endregion
         [HttpGet]
         public async Task<IActionResult> UserListCustomer()
         {
@@ -459,18 +474,26 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
+                    CountryName = model.CountryName,
+                    Gender = model.Gender,
                     Email = model.Email,
                     UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
 
+                var userExists = await userManager.FindByEmailAsync(model.Email);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email address is already registered.");
+                    return View(model);
+                }
+
                 var result = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-
                     var userId = await userManager.FindByIdAsync(user.Id);
-                    var role = "AirCompany";
+                    var role = "Customer";
 
                     if (userId != null && role != null)
                     {
@@ -480,7 +503,7 @@ namespace DemoTraveler.Areas.Administrator.Controllers
                         {
                             var resultRole = await userManager.AddToRoleAsync(userId, "Customer");
 
-                            if (result.Succeeded)
+                            if (resultRole.Succeeded)
                             {
                                 return RedirectToAction(nameof(UserListCustomer));
                             }
@@ -511,9 +534,108 @@ namespace DemoTraveler.Areas.Administrator.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult EditUserCustomer(string id)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var userEdit = new RegisterViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
+        }
+
+        [HttpPost]
+        public IActionResult EditUserCustomer(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = userManager.FindByIdAsync(model.Id).Result;
+
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.Email = model.Email;
+                    user.PhoneNumber = model.PhoneNumber;
+                    user.CountryName = model.CountryName;
 
 
+                    var result = userManager.UpdateAsync(user).Result;
 
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction(nameof(UserListCustomer));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Failed to update profile.");
+                    }
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult UserCustomerDelete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userEdit = new ApplicationUser
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UserCustomerDelete(string id, RegisterViewModel model)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                var userTickets = db.UserTickets.Where(ut => ut.ApplicationUserId == user.Id);
+                db.UserTickets.RemoveRange(userTickets);
+                await db.SaveChangesAsync();
+
+                var result = await userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction(nameof(UserListCustomer));
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Failed To Delete User");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "User Not Found");
+            }
+            return View("UserDelete", id);
+        }
+        #endregion
 
         #region Role
 
@@ -664,67 +786,6 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(roleViewModels);
         }
 
-        [HttpGet]
-        public IActionResult CreateUserRole()
-        {
-            var users = userManager.Users.ToList();
-            var roles = roleManager.Roles.ToList();
-
-            var userRoleViewModel = new UserRole
-            {
-                Users = new SelectList(users, "Id", "UserName"),
-                Roles = new SelectList(roles, "Id", "Name")
-            };
-            return View(userRoleViewModel);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateUserRole(UserRole userRoleViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await userManager.FindByIdAsync(userRoleViewModel.UserId);
-                var role = await roleManager.FindByIdAsync(userRoleViewModel.RoleId);
-
-                if (user != null && role != null)
-                {
-                    var isInRole = await userManager.IsInRoleAsync(user, role.Name);
-
-                    if (!isInRole)
-                    {
-                        var result = await userManager.AddToRoleAsync(user, role.Name);
-
-                        if (result.Succeeded)
-                        {
-                            //var timeOut = TimeSpan.FromSeconds(30);
-                            //userManager.RemoveFromRoleAsync(user, role.Name, timeOut);
-                            return RedirectToAction(nameof(UserRoleList));
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Failed to assign role to user.");
-                        }
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "User is already in the selected role.");
-                    }
-
-                }
-                else
-                {
-                    ModelState.AddModelError("", "User is already in the selected role.");
-                }
-
-            }
-            ModelState.AddModelError("", "Is Already Taken");
-            userRoleViewModel.Users = new SelectList(userManager.Users.ToList(), "Id", "UserName");
-            userRoleViewModel.Roles = new SelectList(roleManager.Roles.ToList(), "Id", "Name");
-
-            return View("UserRoleList", userRoleViewModel);
-
-
-        }
         #endregion
 
 

@@ -28,6 +28,7 @@ namespace DemoTraveler.Data
         public DbSet<FlightType> FlightTypes { get; set; }
         public DbSet<Package> Packages { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<PaymentPackage> PaymentPackages { get; set; }
         public DbSet<Partner> Partners { get; set; }
         public DbSet<UserTicket> UserTickets { get; set; }
         public DbSet<UserPackage> UserPackages { get; set; }

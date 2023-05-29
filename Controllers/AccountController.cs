@@ -49,20 +49,26 @@ namespace DemoTraveler.Controllers
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    BirthDay = model.BirthDay.Date,
+                    CountryName = model.CountryName,
                     Gender = model.Gender,
                     Email = model.Email,
                     UserName = model.FirstName + "" + model.LastName,
                     PhoneNumber = model.PhoneNumber
                 };
 
+                var userExists = await _userManager.FindByEmailAsync(model.Email);
+                if (userExists != null)
+                {
+                    ModelState.AddModelError(string.Empty, "Email address is already registered.");
+                    return View(model);
+                }
+
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-
                     var userId = await _userManager.FindByIdAsync(user.Id);
-                    var role = "AirCompany";
+                    var role = "Customer";
 
                     if (userId != null && role != null)
                     {
@@ -72,7 +78,7 @@ namespace DemoTraveler.Controllers
                         {
                             var resultRole = await _userManager.AddToRoleAsync(userId, "Customer");
 
-                            if (result.Succeeded)
+                            if (resultRole.Succeeded)
                             {
                                 return RedirectToAction("Login" ,"Account");
                             }
@@ -132,9 +138,8 @@ namespace DemoTraveler.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("Email", "Falid");
+                        ModelState.AddModelError("Email", "Password or Email is not valid");
                     }
-
                 }
                 else
                 {
@@ -146,77 +151,12 @@ namespace DemoTraveler.Controllers
             return View(model);
         }
 
-        
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> Login(LoginViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var result = await _signInManager.PasswordSignInAsync(model.Email,
-        //            model.Password, true, false);
-
-        //        if (result.Succeeded)
-        //        {
-        //            var user = await _userManager.FindByEmailAsync(model.Email);
-
-        //            if (user != null)
-        //            {
-        //                string userId = user.Id;
-        //                string email = user.Email;
-        //                _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id);
-        //            }
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        ModelState.AddModelError("", "Invalid User or Password");
-        //    }
-        //    return View(model);
-        //}
-
-
         public async Task<IActionResult> logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
-
-
-
-
-        [HttpGet]
-        public IActionResult EditProfile()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> EditProfile(EditProfileViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.GetUserAsync(User);
-
-                user.UserName = model.UserName;
-                var result = await _userManager.UpdateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Profile");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-            }
-
-            return View(model);
-        }
         #endregion
 
-       
     }
 }

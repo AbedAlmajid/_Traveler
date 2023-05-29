@@ -18,14 +18,14 @@
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>@Localizer[item.CountryName]</small>
-                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>@Localizer[item.Duration.ToString()] DAYS</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>@Localizer[item.Duration.ToString()] @Localizer["Days"]</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@Localizer[item.Person.ToString()]</small>
                             </div>
                             <a class="h6 text-decoration-none">@Localizer[item.CountryDesc]</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>@Localizer[item.HotelStars.ToString()]<small>(250)</small></h6>
-                                    <h5 class="m-0">@Localizer["$"]@Localizer[item.Price.ToString()]</h5><h5 class="m-0">@Localizer[item.BrandName] </h5>
+                                    <h5 class="m-0">@Localizer[item.BrandName]</h5><h5 class="m-0">@Localizer["$"]@Localizer[item.Price.ToString()] </h5>
                                 </div>
                             </div>
                         </div>

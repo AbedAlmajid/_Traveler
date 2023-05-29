@@ -42,6 +42,7 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
             {
                 return NotFound();
             }
+
             ViewData["CurrentFilter"] = toCountry;
             var tickets = from t in _context.Tickets.Where(t => t.ApplicationUser.Id == loggedInUser) select t;
 

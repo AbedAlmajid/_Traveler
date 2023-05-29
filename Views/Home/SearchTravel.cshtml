@@ -17,9 +17,31 @@
             <br />
             <br />
             <div>
-                @await Component.InvokeAsync("SearchTravel")
+                <div class="container-fluid booking mt-5 pb-5">
+                    <div class="container pb-5">
+                        <div class="bg-light shadow" style="padding: 30px;">
+                            <form method="post" action="@Url.Action("SearchTravel", "Home")">
+                                <div class="row align-items-center" style="min-height: 60px;">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="mb-3 mb-md-0">
+                                                    <div class="date" id="date1" data-target-input="nearest">
+                                                        <input type="text" id="travelName" name="txtName" class="form-control p-4" placeholder=@Localizer["Destination Name"] />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">@Localizer["Search"]</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
             <div class="row">
                 @foreach (var item in Model)
                 {
@@ -40,7 +62,66 @@
 }
 else
 {
-    <p>No Tickets Available For This Country Now</p>
-}
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Localizer["Destination"]</h6>
+                <h1>@Localizer["Explore Top Destination"]</h1>
+            </div>
 
-@*@await Component.InvokeAsync("Package")*@
+            <br />
+            <br />
+            <br />
+            <div>
+                <div class="container-fluid booking mt-5 pb-5">
+                    <div class="container pb-5">
+                        <div class="bg-light shadow" style="padding: 30px;">
+                            <form method="post" action="@Url.Action("SearchTravel", "Home")">
+                                <div class="row align-items-center" style="min-height: 60px;">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <div class="mb-3 mb-md-0">
+                                                    <div class="date" id="date1" data-target-input="nearest">
+                                                        <input type="text" id="travelName" name="txtName" class="form-control p-4" placeholder=@Localizer["Destination Name"] />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">@Localizer["Search"]</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-4 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img class="img-fluid" src="..\@Url.Content(item.TravelImg)" alt="Image"></a>
+
+                            <a class="destination-overlay text-white text-decoration-none" asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId">
+                                <h5 class="text-white">@Localizer[item.TravelName]</h5>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid py-5" style="min-height:900px">
+        <div class="container pt-3">
+            <h3>@Localizer["No Tickets Available For This Country Now"]</h3>
+        </div>
+    </div>
+}

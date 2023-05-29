@@ -30,9 +30,18 @@ namespace DemoTraveler.Areas.AirCompany.Controllers
 
         public IActionResult Index(string CountryName)
         {
-            //return View(await _context.Travels.ToListAsync());
+            if (!User.Identity.IsAuthenticated)
+            {
+                return NotFound();
+            }
+            string loggedUser = _userManager.GetUserId(User);
+            if (loggedUser == null)
+            {
+                return NotFound();
+            }
+
             ViewData["CurrentFilter"] = CountryName;
-            var package = from p in _context.Packages
+            var package = from p in _context.Packages.Where(p => p.ApplicationUser.Id == loggedUser)
                           select p;
             if (!String.IsNullOrEmpty(CountryName))
             {

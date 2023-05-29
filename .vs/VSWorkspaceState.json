@@ -1,19 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Areas",
-    "\\Areas\\AirCompany",
-    "\\Areas\\AirCompany\\Views",
-    "\\Areas\\AirCompany\\Views\\Account",
-    "\\Data",
+    "\\Migrations",
+    "\\Models",
+    "\\Models\\ViewModels",
+    "\\Resources",
+    "\\Resources\\Views",
+    "\\Resources\\Views\\Home",
     "\\Views",
-    "\\Views\\Home",
     "\\Views\\Shared",
     "\\Views\\Shared\\Components",
-    "\\wwwroot",
-    "\\wwwroot\\css",
-    "\\wwwroot\\mail"
+    "\\Views\\Shared\\Components\\SearchTravel"
   ],
-  "SelectedNode": "\\Views\\Account\\Register.cshtml",
+  "SelectedNode": "\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

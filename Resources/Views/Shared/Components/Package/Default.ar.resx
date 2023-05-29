@@ -126,6 +126,9 @@
   <data name="Canada" xml:space="preserve">
     <value>كندا</value>
   </data>
+  <data name="Days" xml:space="preserve">
+    <value>ايام</value>
+  </data>
   <data name="Destination" xml:space="preserve">
     <value>وجهة</value>
   </data>
