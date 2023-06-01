@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Payment Package";
+    bool paymentSuccess = TempData.ContainsKey("PaymentSuccess") && (bool)TempData["PaymentSuccess"];
 }
 
 <link href="~/css/CardStyle.css" rel="stylesheet" />
@@ -137,10 +138,24 @@
                     <span asp-validation-for="CCV" class="text-danger"></span>
                 </fieldset>
                 <button type="submit" class="submitbtn" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>submit</button>
+                <p>@Localizer["To confirm your booking :"]</p><a asp-action="UserPackage" asp-controller="Customer" asp-area="Customer">
+                    <b class="text-info">Click Here</b>
+                </a>
             </form>
         </div>
     </div>
 </div>
+
+@{
+    if (ViewBag.ShowModel == true)
+    {
+        <script>
+            $(function () {
+                $('#myModal').modal('show');
+            });
+        </script>
+    }
+}
 
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
@@ -153,16 +168,14 @@
                 <p>@Localizer["Payment completed successfully"]</p>
             </div>
             <div class="modal-footer">
-                <button asp-action="Index" asp-controller="Home" type="button" class="btn btn-primary">@Localizer["Save changes"]</button>
+                <a asp-action="Index" asp-controller="Home" type="button" class="btn btn-primary">@Localizer["Save changes"]</a>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
 <script>
+
     $('.input-cart-number').on('keyup change', function () {
         $t = $(this);
         if ($t.val().length > 3) {

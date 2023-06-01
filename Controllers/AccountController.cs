@@ -120,7 +120,6 @@ namespace DemoTraveler.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
 
@@ -147,7 +146,6 @@ namespace DemoTraveler.Controllers
                 }
 
             }
-
             return View(model);
         }
 

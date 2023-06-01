@@ -1,17 +1,19 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Migrations",
-    "\\Models",
-    "\\Models\\ViewModels",
-    "\\Resources",
-    "\\Resources\\Views",
-    "\\Resources\\Views\\Home",
+    "\\Areas",
+    "\\Areas\\Administrator",
+    "\\Areas\\Administrator\\Views",
+    "\\Areas\\Administrator\\Views\\Travels",
+    "\\Controllers",
     "\\Views",
+    "\\Views\\Account",
+    "\\Views\\Home",
     "\\Views\\Shared",
     "\\Views\\Shared\\Components",
-    "\\Views\\Shared\\Components\\SearchTravel"
+    "\\Views\\Shared\\Components\\Package",
+    "\\Views\\Shared\\Components\\Travel"
   ],
-  "SelectedNode": "\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\Views\\Account\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }

@@ -31,21 +31,6 @@ namespace DemoTraveler.Controllers
             return View();
         }
 
-        public IActionResult Destination()
-        {
-            return View();
-        }
-
-        public IActionResult TourPackage()
-        {
-            return View();
-        }
-
-        public IActionResult Service()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Contact()
         {
@@ -75,36 +60,24 @@ namespace DemoTraveler.Controllers
             return View();
         }
 
-        public IActionResult Client()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Ticket(int Id)
         {
-            if (User.IsInRole("Customer"))
-            {
                 var tickets = db.Tickets.Where(x => x.Travel.TravelId == Id).
                 Include(x => x.Travel).
                 Include(x => x.TicketType).
                 Include(x => x.FlightType).ToList();
                 return View(tickets);
-            }
-            ModelState.AddModelError("", "You are not Customer Account");
-            return RedirectToAction("Login", "Account");
-
         }
 
         [HttpGet]
         public IActionResult Booking(int Id)
         {
+
             if (!User.Identity.IsAuthenticated)
             {
-                return View("Login" , "Account");
+                return RedirectToAction("Login", "Account");
             }
-
-            
 
             string userId = userManager.GetUserId(User);
 
@@ -199,9 +172,6 @@ namespace DemoTraveler.Controllers
             }
         }
 
-
-
-
         [HttpGet]
         public IActionResult Package(int Id)
         {
@@ -214,8 +184,9 @@ namespace DemoTraveler.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return Unauthorized();
+                return RedirectToAction("Login", "Account");
             }
+
             if (User.IsInRole("Customer"))
             {
                 string userId = userManager.GetUserId(User);
@@ -246,16 +217,12 @@ namespace DemoTraveler.Controllers
                 return View(bookingPackageViewModel);
             }
             return RedirectToAction("Login", "Account");
-            
         }
 
         [HttpPost]
         public async Task<IActionResult> BookingPackage(BookingPackageViewModel booking, int Id)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             string userId = userManager.GetUserId(User);
 
             if (userId == null)
@@ -329,10 +296,18 @@ namespace DemoTraveler.Controllers
 
                 db.Add(cc);
                 var package = db.BookingPackages.Where(x => x.BookingPackageId == payment.BookingPackageId).SingleOrDefault();
-                package.Status = true;
-                db.BookingPackages.Update(package);
-                await db.SaveChangesAsync();
-                ViewBag.ShowModel = true;
+                if (package == null)
+                {
+                    ModelState.AddModelError(string.Empty , "Choose your Destination First");
+                }
+                else
+                {
+                    package.Status = true;
+                    db.BookingPackages.Update(package);
+                    await db.SaveChangesAsync();
+                    ViewBag.ShowModel = true;
+                }
+                ViewBag.ShowModel = false;
                 return RedirectToAction("Index", "Home");
             }
             return View(payment);
@@ -372,7 +347,6 @@ namespace DemoTraveler.Controllers
                 db.Bookings.Update(ticket);
                 await db.SaveChangesAsync();
                 ViewBag.ShowModel = true;
-                return RedirectToAction("Index", "Home");
             }
             return View(payment);
         }
@@ -388,7 +362,6 @@ namespace DemoTraveler.Controllers
                 {
                     Expires = DateTimeOffset.UtcNow.AddYears(1)
                 });
-
             return LocalRedirect(returnUrl);
         }
 
@@ -406,7 +379,20 @@ namespace DemoTraveler.Controllers
             return View(travel);
         }
 
+        public IActionResult Destination()
+        {
+            return View();
+        }
 
+        public IActionResult TourPackage()
+        {
+            return View();
+        }
+
+        public IActionResult Service()
+        {
+            return View();
+        }
 
     }
 

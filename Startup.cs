@@ -32,7 +32,7 @@ namespace DemoTraveler
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLocalization(options =>
@@ -52,10 +52,7 @@ namespace DemoTraveler
                 {
                     OnRedirectToLogin = ctx =>
                     {
-                        // set a message to show in the view
                         ctx.Response.Headers.Append("X-RedirectReason", "SessionTimeout");
-
-                        // redirect to the login page
                         ctx.Response.Redirect(ctx.RedirectUri);
                         return Task.CompletedTask;
                     }
@@ -79,10 +76,13 @@ namespace DemoTraveler
 
             services.AddRazorPages();
 
+
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Traveler"));
             });
+
 
             services.Configure<IdentityOptions>(Configuration.GetSection(nameof(IdentityOptions)));
 
@@ -94,7 +94,7 @@ namespace DemoTraveler
             
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -104,7 +104,6 @@ namespace DemoTraveler
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();

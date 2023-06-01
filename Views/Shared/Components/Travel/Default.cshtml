@@ -52,7 +52,7 @@
             {
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img src="..\@Url.Content(item.TravelImg)" alt="Image" height="220" width="350"></a>
+                        <a asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId"><img class="img-fluid" src="..\@Url.Content(item.TravelImg)" alt="Image" height="220" width="500"></a>
 
                         <a class="destination-overlay text-white text-decoration-none" asp-action="Ticket" asp-controller="Home" asp-route-Id="@item.TravelId">
                             <h5 class="text-white">@Localizer[item.TravelName]</h5>

@@ -1390,7 +1390,6 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Home\Ticket.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Home\TourPackage.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\Components\AboutUs\Default.cshtml.g.cs
-C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\Components\Client\Default.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\Components\HomeImage\Default.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\Components\Package\Default.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Views\Shared\Components\Partner\Default.cshtml.g.cs
@@ -1419,3 +1418,11 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserCustomerDelete.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\UserAirCompanyDelete.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.csproj.AssemblyReference.cache
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Areas.Customer.Views.Shared._CustomerLayout.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Areas.Customer.Views.Account.MyProfile.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Areas.Customer.Views.Customer.UserPackage.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Areas.Customer.Views.Customer.UserTicket.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Areas.Customer.Views.Customer.Index.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Delete.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Details.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Index.cshtml.g.cs

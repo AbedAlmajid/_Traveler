@@ -120,6 +120,9 @@
   <data name="Birth Day" xml:space="preserve">
     <value>يوم الميلاد</value>
   </data>
+  <data name="Country Name" xml:space="preserve">
+    <value>اسم الدولة</value>
+  </data>
   <data name="dir" xml:space="preserve">
     <value>rtl</value>
   </data>

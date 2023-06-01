@@ -70,9 +70,6 @@
                         <i class="text-primary  align-self-lg-end">
                             <partial name="_SelectLanguagePartial" />
                         </i>
-
-
-
                     </div>
                 </div>
             </div>
@@ -105,18 +102,18 @@
                             <li>
                                 <a asp-action="Service" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">
                                     @Localizer["Services"]
-                                   </a>
+                                </a>
                             </li>
                             <li>
                                 <a asp-action="TourPackage" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">
                                     @Localizer["Tour Packages"]
-                                   </a>
+                                </a>
 
                             </li>
                             <li>
                                 <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link" style="font-size:larger;">
                                     @Localizer["Contact"]
-                                 </a>
+                                </a>
                             </li>
                             <li>
                                 @if (signInManager.IsSignedIn(User))
@@ -126,12 +123,15 @@
                                         <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">
                                                 @User.Identity.Name
-                                                </a>
+                                            </a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                                 <a asp-action="Destination" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
                                                 <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item" style="font-size:larger;">
-                                                     @Localizer["Dashboard"]
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                                    </svg>
+                                                    @Localizer["Dashboard"]
                                                 </a>
                                                 <a asp-action="Logout" asp-controller="Account" class="dropdown-item">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -149,7 +149,7 @@
                                         <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">
                                                 @User.Identity.Name
-                                               </a>
+                                            </a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                                 <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
                                                 <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
@@ -176,12 +176,22 @@
 
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">
                                                 <strong>@User.Identity.Name</strong>
-                                             </a>
+                                            </a>
                                             <div class="dropdown-menu border-0 rounded-0 m-0">
-                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
-                                                <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
-                                                <a asp-action="UserTicket" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">@Localizer["My Ticket"]</a>
-                                                <a asp-action="UserPackage" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">@Localizer["My Package"]</a>
+                                                <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-airplane-fill" viewBox="0 0 16 16">
+                                                        <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849Z" />
+                                                    </svg> @Localizer["Destination"]</a>
+                                                <a asp-action="UserTicket" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-fill" viewBox="0 0 16 16">
+                                                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13Z" />
+                                                    </svg> @Localizer["My Ticket"]
+                                                </a>
+                                                <a asp-action="UserPackage" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-boxes" viewBox="0 0 16 16">
+                                                        <path d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434L7.752.066ZM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567L4.25 7.504ZM7.5 9.933l-2.75 1.571v3.134l2.75-1.571V9.933Zm1 3.134 2.75 1.571v-3.134L8.5 9.933v3.134Zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567-2.742 1.567Zm2.242-2.433V3.504L8.5 5.076V8.21l2.75-1.572ZM7.5 8.21V5.076L4.75 3.504v3.134L7.5 8.21ZM5.258 2.643 8 4.21l2.742-1.567L8 1.076 5.258 2.643ZM15 9.933l-2.75 1.571v3.134L15 13.067V9.933ZM3.75 14.638v-3.134L1 9.933v3.134l2.75 1.571Z" />
+                                                    </svg> @Localizer["My Package"]
+                                                </a>
                                                 <a asp-action="Index" asp-controller="Customer" asp-area="Customer" class="dropdown-item" style="font-size:larger;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -205,13 +215,9 @@
                                     <div class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="font-size:larger;">
                                             @Localizer["Pages"]
-                                           </a>
+                                        </a>
                                         <div class="dropdown-menu border-0 rounded-0 m-0">
                                             <a asp-action="TourPackage" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Destination"]</a>
-                                            <a asp-action="Client" asp-controller="Home" class="dropdown-item" style="font-size:larger;">@Localizer["Clients"]</a>
-                                            <a asp-action="Index" asp-controller="Dashboard" asp-area="Administrator" class="dropdown-item" style="font-size:larger;">
-                                                @Localizer["Dashboard"]
-                                            </a>
                                             <a asp-action="Login" asp-controller="Account" class="dropdown-item" style="font-size:larger;">
                                                 @Localizer["Login"] / @Localizer["Register"]
                                             </a>
@@ -226,182 +232,61 @@
             </nav>
         </div>
     </div>
-    <!-- Navbar End -->
+
     <div>
         @RenderBody()
     </div>
 
-    @*<div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-            <div class="container py-5">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-5 mb-lg-0">
-                        <div class="mb-4">
-                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer</h6>
-                            <h1 class="text-white"><span class="text-primary">30% OFF</span> For Honeymoon</h1>
-                        </div>
-                        <p class="text-white">
-                            Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                            ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                            dolor
-                        </p>
-                        <ul class="list-inline text-white m-0">
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="card border-0">
-                            <div class="card-header bg-primary text-center p-4">
-                                <h1 class="text-white m-0">Sign Up Now</h1>
-                            </div>
-                            <div class="card-body rounded-bottom bg-white p-5">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control p-4" placeholder="Your name" required="required" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="custom-select px-4" style="height: 47px;">
-                                            <option selected>Select a destination</option>
-                                            <option value="1">destination 1</option>
-                                            <option value="2">destination 1</option>
-                                            <option value="3">destination 1</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+    <div class="footer container-fluid bg-dark text-white-50">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                </a>
+                <p>@Localizer["Best available: Suggesting that the tickets offered are of the highest quality or most favorable"]</p>
+                <p>@Localizer["Flexible: Signifying the availability of various options and choices"]</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">@Localizer["Follow Us"]</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Destination" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Contact" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Contact"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Login" asp-controller="Account"><i class="fa fa-angle-right mr-2"></i>@Localizer["Login"] / @Localizer["Register"]</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Destination" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
+                    <a class="text-white-50 mb-2"  asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
+                    <a class="text-white-50 mb-2" asp-action="PaymentPackage" asp-controller="Home"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Contact"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Login" asp-controller="Account"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Login"] / @Localizer["Register"]</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
+                    @Localizer["CONTACT US"]
+                </h5>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
+                <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
             </div>
         </div>
+    </div>
 
-        <div class="container-fluid py-5">
-            <div class="container pt-5 pb-3">
-                <div class="text-center mb-3 pb-3">
-                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
-                    <h1>Latest From Our Blog</h1>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="blog-item">
-                            <div class="position-relative">
-                                <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                                <div class="blog-date">
-                                    <h6 class="font-weight-bold mb-n1">01</h6>
-                                    <small class="text-white text-uppercase">Jan</small>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4">
-                                <div class="d-flex mb-2">
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                    <span class="text-primary px-2">|</span>
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                </div>
-                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="blog-item">
-                            <div class="position-relative">
-                                <img class="img-fluid w-100" src="img/blog-2.jpg" alt="">
-                                <div class="blog-date">
-                                    <h6 class="font-weight-bold mb-n1">01</h6>
-                                    <small class="text-white text-uppercase">Jan</small>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4">
-                                <div class="d-flex mb-2">
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                    <span class="text-primary px-2">|</span>
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                </div>
-                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                        <div class="blog-item">
-                            <div class="position-relative">
-                                <img class="img-fluid w-100" src="img/blog-3.jpg" alt="">
-                                <div class="blog-date">
-                                    <h6 class="font-weight-bold mb-n1">01</h6>
-                                    <small class="text-white text-uppercase">Jan</small>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4">
-                                <div class="d-flex mb-2">
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                    <span class="text-primary px-2">|</span>
-                                    <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                </div>
-                                <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
 
-        <div class="footer container-fluid bg-dark text-white-50">
-            <div class="row pt-5">
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <a href="" class="navbar-brand">
-                        <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
-                    </a>
-                    <p>@Localizer["Best available: Suggesting that the tickets offered are of the highest quality or most favorable"]</p>
-                    <p>@Localizer["Flexible: Signifying the availability of various options and choices"]</p>
-                    <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">@Localizer["Follow Us"]</h6>
-                    <div class="d-flex justify-content-start">
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["Our Services"]</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Travel" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Guide" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Testimonial" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
-                        <a class="text-white-50" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">@Localizer["USEFULL LINKS"]</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
-                        <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
-                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Pakages"]</a>
-                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Guides"] </a>
-                        <a class="text-white-50 mb-2" href="#"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Testimonial"]</a>
-                        <a class="text-white-50 mb-2" asp-action="Payment" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Blog"]</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">
-                        @Localizer["CONTACT US"]
-                    </h5>
-                    <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, Amman, JORDAN</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
-                    <p><i class="fa fa-envelope mr-2"></i>aamaged@gmail.com</p>
-                </div>
-            </div>
-        </div>
-  
-   
 
 
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>

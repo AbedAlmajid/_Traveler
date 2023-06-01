@@ -1,5 +1,6 @@
 ﻿using DemoTraveler.Data;
 using DemoTraveler.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace DemoTraveler.Areas.Customer.Controllers
 {
+
+    [Area("Customer")]
     public class CustomerController : Controller
     {
         private readonly AppDbContext db;
@@ -21,7 +24,6 @@ namespace DemoTraveler.Areas.Customer.Controllers
         }
 
 
-        [Area("Customer")]
         public IActionResult Index()
         {
             return View();
@@ -29,7 +31,6 @@ namespace DemoTraveler.Areas.Customer.Controllers
 
 
         [HttpGet]
-        [Area("Customer")]
         public IActionResult UserTicket()
         {
             if (!User.Identity.IsAuthenticated)
@@ -42,14 +43,15 @@ namespace DemoTraveler.Areas.Customer.Controllers
             {
                 return NotFound();
             }
-            var userTicket = db.UserTickets.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
-                Include(t => t.Booking).
-                Include(t => t.Ticket).ToList();
+            var userTicket = db.UserTickets.Where(u => u.ApplicationUser.Id == userId).Include(a => a.ApplicationUser).
+                Include(b => b.Booking).
+                Include(t => t.Ticket).ThenInclude(tt => tt.TicketType).
+                Include(t => t.Ticket).ThenInclude(ft => ft.FlightType).
+                ToList();
             return View(userTicket);
         }
 
         [HttpGet]
-        [Area("Customer")]
         public IActionResult UserPackage()
         {
             if (!User.Identity.IsAuthenticated)

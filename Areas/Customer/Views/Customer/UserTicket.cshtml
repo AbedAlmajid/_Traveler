@@ -4,20 +4,18 @@
     Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
 }
 
-
-
-<div class="container-fluid py-5" style="min-height:900px" dir="ltr">
+<div class="container-fluid py-5" style="min-height:900px"dir="@Localizer["rtd"]">
     <div class="container pt-5">
         @if (Model.Any())
         {
-            <h1>My Ticket</h1>
+            <h1>@Localizer["My Ticket"]</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>
                         </th>
                         <th>
-                            My Ticket
+                            @Localizer["My Ticket"]
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Booking)
@@ -30,48 +28,59 @@
                     {
                         <tr>
                             <td>
-                                Name : @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
+                                @Localizer["Name"]: @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
                                 @Html.DisplayFor(modelItem => item.ApplicationUser.LastName)
                             </td>
                             <td>
-                                BrandName :  @Html.DisplayFor(modelItem => item.Ticket.BrandName)
+                                @Localizer["Brand Name"]: @Html.DisplayFor(modelItem => item.Ticket.BrandName)
                                 <br />
-                                From :       @Html.DisplayFor(modelItem => item.Ticket.FromCountry)
+                                @Localizer["From"]: @Html.DisplayFor(modelItem => item.Ticket.FromCountry)
                                 <br />
-                                To :         @Html.DisplayFor(modelItem => item.Ticket.ToCountry)
+                                @Localizer["To"]: @Html.DisplayFor(modelItem => item.Ticket.ToCountry)
                                 <br />
-                                From Airport:@Html.DisplayFor(modelItem => item.Ticket.FromAirport)
+                                @Localizer["From Airport"]:@Html.DisplayFor(modelItem => item.Ticket.FromAirport)
                                 <br />
-                                To Airport : @Html.DisplayFor(modelItem => item.Ticket.ToAirport)
+                                @Localizer["To Airport"] : @Html.DisplayFor(modelItem => item.Ticket.ToAirport)
                                 <br />
-                                Depart Time :@Html.DisplayFor(modelItem => item.Ticket.DepartTime)
+                                @Localizer["Depart Time"] :@Html.DisplayFor(modelItem => item.Ticket.DepartTime)
                                 <br />
-                                Arrive Time: @Html.DisplayFor(modelItem => item.Ticket.ArriveTime)
+                                @Localizer["Arrive Time"]: @Html.DisplayFor(modelItem => item.Ticket.ArriveTime)
                                 <br />
-                                Depart Date: @Html.DisplayFor(modelItem => item.Ticket.DepartDate)
+                                @Localizer["Depart Date"]: @Html.DisplayFor(modelItem => item.Ticket.DepartDate)
                                 <br />
-                                Flight Duration : @Html.DisplayFor(modelItem => item.Ticket.FlightDuration)
+                                @Localizer["Flight Duration"]: @Html.DisplayFor(modelItem => item.Ticket.FlightDuration)
                                 <br />
-                                Weight :     @Html.DisplayFor(modelItem => item.Ticket.Weight)
+                                @Localizer["Weight"] : @Html.DisplayFor(modelItem => item.Ticket.Weight) KG
                                 <br />
-                                Price :      @Html.DisplayFor(modelItem => item.Ticket.Price)
+                                @Localizer["Price"] : @Html.DisplayFor(modelItem => item.Ticket.Price)
                                 <br />
-                                Flight Type: @Html.DisplayFor(modelItem => item.Ticket.FlightType)
+                                @Localizer["Flight Type"]: @Html.DisplayFor(modelItem => item.Ticket.FlightType.TypeFlight)
                                 <br />
-                                Ticket Type: @Html.DisplayFor(modelItem => item.Ticket.TicketType)
+                                @Localizer["Ticket Type"]: @Html.DisplayFor(modelItem => item.Ticket.TicketType.TypeTicket)
                             </td>
                             <td>
-                                NationalNumber : @Html.DisplayFor(modelItem => item.Booking.NationalNumber)
+                                @Localizer["Passenger Name"] : @Html.DisplayFor(modelItem => item.Booking.FirstName) @Html.DisplayFor(modelItem => item.Booking.LastName)
                                 <br />
-                                PassportNumber : @Html.DisplayFor(modelItem => item.Booking.PassportNumber)
+                                @Localizer["National Number"] : @Html.DisplayFor(modelItem => item.Booking.NationalNumber)
                                 <br />
-                                Address :        @Html.DisplayFor(modelItem => item.Booking.Address)
+                                @Localizer["Passport Number"] : @Html.DisplayFor(modelItem => item.Booking.PassportNumber)
                                 <br />
-                                ZipCode :        @Html.DisplayFor(modelItem => item.Booking.ZipCode)
+                                @Localizer["Address"] : @Html.DisplayFor(modelItem => item.Booking.Address)
                                 <br />
-                                Status :         @Html.DisplayFor(modelItem => item.Booking.Status)
+                                @Localizer["ZipCode"] : @Html.DisplayFor(modelItem => item.Booking.ZipCode)
                                 <br />
-                                PhoneNumber :      @Html.DisplayFor(modelItem => item.Booking.PhoneNumber)
+                                @Localizer["PhoneNumber"] : @Html.DisplayFor(modelItem => item.Booking.PhoneNumber)
+                                <br />
+                                @Localizer["Payment status"]
+                                @if (item.Booking.Status == true)
+                                {
+                                    <h3 class="text-primary">@Localizer["Payment is Done"]</h3>
+                                }
+                                else
+                                {
+                                    <h3 class="text-danger">@Localizer["Payment is Not Done"]</h3>
+                                    <a asp-action="Payment" asp-controller="Home" asp-route-Id="@item.BookingId" asp-area="" class="btn btn-success">@Localizer["Payment"]</a>
+                                }
                             </td>
                         </tr>
                     }
@@ -80,13 +89,13 @@
         }
         else
         {
-            <h1>My Ticket</h1>
+            <h1>@Localizer["My Ticket"]</h1>
             <br />
             <br />
-            <p> No Ticket Available </p>
-            <label class="form-group">Click Book Now for Booking Ticket</label>
+            <p>@Localizer["No Ticket Available"]</p>
+            <label class="form-group">@Localizer["Click Book Now for Booking Ticket"]</label>
             <br />
-            <a asp-action="Destination" asp-controller="Home" asp-area="" class="btn btn-primary">Book Now</a>
+            <a asp-action="Destination" asp-controller="Home" asp-area="" class="btn btn-primary">@Localizer["Book Now"]</a>
         }
 
     </div>

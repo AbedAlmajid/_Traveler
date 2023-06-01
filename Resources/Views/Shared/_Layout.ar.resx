@@ -201,6 +201,12 @@
   <data name="Logout" xml:space="preserve">
     <value>تسجيل الخروج</value>
   </data>
+  <data name="My Package" xml:space="preserve">
+    <value>رحلتي</value>
+  </data>
+  <data name="My Ticket" xml:space="preserve">
+    <value>تذكرتي</value>
+  </data>
   <data name="NEWS LETTER" xml:space="preserve">
     <value>رسالة الأخبار</value>
   </data>

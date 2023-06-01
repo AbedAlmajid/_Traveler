@@ -4,23 +4,23 @@
     Layout = "~/Areas/Customer/Views/Shared/_CustomerLayout.cshtml";
 }
 
-<div class="container-fluid py-5" style="min-height:900px" dir="ltr">
+<div class="container-fluid py-5" style="min-height:900px" dir="@Localizer["rtd"]">
     <div class="container pt-5">
         @if (Model.Any())
         {
-            <h1>My Package</h1>
+            <h1>@Localizer["My Package"]</h1>
             <hr />
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>
-                            User Name
+                            @Localizer["User Name"]
                         </th>
                         <th>
-                            Booking Package
+                            @Localizer["Booking Package"]
                         </th>
                         <th>
-                            The Package
+                            @Localizer["The Package"]
                         </th>
                         <th></th>
                     </tr>
@@ -33,10 +33,10 @@
                                 @Html.DisplayFor(modelItem => item.ApplicationUser.FirstName)
                             </td>
                             <td>
-                                @Localizer["Passenger Name"] : @Html.DisplayFor(modelItem => item.BookingPackage.FirstName)
+                                @Localizer["Passenger Name"]: @Html.DisplayFor(modelItem => item.BookingPackage.FirstName)
                                 @Html.DisplayFor(modelItem => item.BookingPackage.LastName)
                                 <br />
-                                @Localizer["National Number"] : @Html.DisplayFor(modelItem => item.BookingPackage.NationalNumber)
+                                @Localizer["National Number"]: @Html.DisplayFor(modelItem => item.BookingPackage.NationalNumber)
                                 <br />
                                 @Localizer["Passport Number"] @Html.DisplayFor(modelItem => item.BookingPackage.PassportNumber)
                                 <br />
@@ -49,34 +49,34 @@
                                 @Localizer["Payment status"]
                                 @if (item.BookingPackage.Status == true)
                                 {
-                                    <h3 class="text-primary">Payment is Done</h3>
+                                    <h3 class="text-primary">@Localizer["Payment is Done"]</h3>
                                 }
                                 else
                                 {
-                                    <h3 class="text-danger">Payment is Not Done</h3>
+                                    <h3 class="text-danger">@Localizer["Payment is Not Done"]</h3>
                                     <a asp-action="PaymentPackage" asp-controller="Home" asp-route-Id=@item.BookingPackageId asp-area="" class="btn btn-success">@Localizer["Payment"]</a>
                                 }
                                 <br />
                                 <br />
                             </td>
                             <td>
-                                @Localizer["Company Name"] :  @Html.DisplayFor(modelItem => item.Package.BrandName)
+                                @Localizer["Company Name"]: @Html.DisplayFor(modelItem => item.Package.BrandName)
                                 <br />
-                                @Localizer["Destination Name"] : @Html.DisplayFor(modelItem => item.Package.CountryName)
+                                @Localizer["Destination Name"]: @Html.DisplayFor(modelItem => item.Package.CountryName)
                                 <br />
-                                @Localizer["Duration"] : @Html.DisplayFor(modelItem => item.Package.Duration) Days
+                                @Localizer["Duration"]: @Html.DisplayFor(modelItem => item.Package.Duration) @Localizer["Days"]
                                 <br />
-                                @Localizer["Persons"] : @Html.DisplayFor(modelItem => item.Package.Person)
+                                @Localizer["Persons"]: @Html.DisplayFor(modelItem => item.Package.Person)
                                 <br />
-                                @Localizer["Description"] :  @Html.DisplayFor(modelItem => item.Package.CountryDesc)
+                                @Localizer["Description"]: @Html.DisplayFor(modelItem => item.Package.CountryDesc)
                                 <br />
-                                @Localizer["Price"] :   $ @Html.DisplayFor(modelItem => item.Package.Price)
+                                @Localizer["Price"]: $ @Html.DisplayFor(modelItem => item.Package.Price)
                                 <br />
-                                @Localizer["Hotel stars"] : @Html.DisplayFor(modelItem => item.Package.HotelStars)
+                                @Localizer["Hotel stars"]: @Html.DisplayFor(modelItem => item.Package.HotelStars)
                                 <br />
-                                @Localizer["Depart Date"] :  @Html.DisplayFor(modelItem => item.Package.DepartDate)
+                                @Localizer["Depart Date"]: @Html.DisplayFor(modelItem => item.Package.DepartDate)
                                 <br />
-                                @Localizer["Return Date"] : @Html.DisplayFor(modelItem => item.Package.ReturnDate)
+                                @Localizer["Return Date"]: @Html.DisplayFor(modelItem => item.Package.ReturnDate)
                             </td>
                         </tr>
                     }
@@ -85,16 +85,14 @@
         }
         else
         {
-            <h1>My Package</h1>
+            <h1>@Localizer["My Package"]</h1>
             <br />
             <br />
 
-            <p> No Package Available </p>
-            <label class="form-group">Click Book Now for Booking Package</label>
+            <p>@Localizer["No Package Available"]</p>
+            <label class="form-group">@Localizer["Click Book Now for Booking Package"]</label>
             <br />
-            <a asp-action="Destination" asp-controller="Home" asp-area="" class="btn btn-primary">Book Now</a>
+            <a asp-action="Destination" asp-controller="Home" asp-area="" class="btn btn-primary">@Localizer["Book Now"]</a>
         }
-
-
     </div>
 </div>
