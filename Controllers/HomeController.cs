@@ -55,11 +55,6 @@ namespace DemoTraveler.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult AboutUs()
-        {
-            return View();
-        }
-
         [HttpGet]
         public IActionResult Ticket(int Id)
         {
@@ -299,6 +294,7 @@ namespace DemoTraveler.Controllers
                 if (package == null)
                 {
                     ModelState.AddModelError(string.Empty , "Choose your Destination First");
+                    return View(payment);
                 }
                 else
                 {
@@ -307,9 +303,9 @@ namespace DemoTraveler.Controllers
                     await db.SaveChangesAsync();
                     ViewBag.ShowModel = true;
                 }
-                ViewBag.ShowModel = false;
-                return RedirectToAction("Index", "Home");
+                return View(payment);
             }
+            ViewBag.ShowModal = false;
             return View(payment);
         }
 
@@ -390,6 +386,11 @@ namespace DemoTraveler.Controllers
         }
 
         public IActionResult Service()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
         {
             return View();
         }

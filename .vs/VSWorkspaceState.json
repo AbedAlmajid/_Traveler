@@ -1,19 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Areas",
-    "\\Areas\\Administrator",
-    "\\Areas\\Administrator\\Views",
-    "\\Areas\\Administrator\\Views\\Travels",
+    "\\Areas\\Customer\\Controllers",
+    "\\Areas\\Customer\\Views",
+    "\\Areas\\Customer\\Views\\Customer",
     "\\Controllers",
     "\\Views",
-    "\\Views\\Account",
     "\\Views\\Home",
     "\\Views\\Shared",
     "\\Views\\Shared\\Components",
-    "\\Views\\Shared\\Components\\Package",
-    "\\Views\\Shared\\Components\\Travel"
+    "\\Views\\Shared\\Components\\AboutUs"
   ],
-  "SelectedNode": "\\Views\\Account\\Login.cshtml",
+  "SelectedNode": "\\Views\\Home\\Service.cshtml",
   "PreviewInSolutionExplorer": false
 }

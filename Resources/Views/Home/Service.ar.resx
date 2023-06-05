@@ -117,97 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$" xml:space="preserve">
-    <value>د.أ</value>
+  <data name="Book tickets at the best prices and for various destinations" xml:space="preserve">
+    <value>حجز التذاكر بأفضل الأسعار ولوجهات مختلفة</value>
   </data>
-  <data name="ALGERIA" xml:space="preserve">
-    <value>الجزائر</value>
+  <data name="COMING SOON" xml:space="preserve">
+    <value>قريباً</value>
   </data>
-  <data name="Beautiful alpine landscapes, Swiss watches, precision engineering, chocolate, cheese, banking, efficient public transport, and multiculturalism." xml:space="preserve">
-    <value>مناظر طبيعية خلابة في جبال الألب ، وساعات سويسرية ، وهندسة دقيقة ، وشوكولاتة ، وجبن ، وأعمال مصرفية ، ووسائل نقل عام فعالة ، وتعدد ثقافي</value>
+  <data name="Home" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
   </data>
-  <data name="Canada" xml:space="preserve">
-    <value>كندا</value>
+  <data name="Hotel Booking" xml:space="preserve">
+    <value>حجز الفندق</value>
   </data>
-  <data name="Days" xml:space="preserve">
-    <value>ايام</value>
+  <data name="Services" xml:space="preserve">
+    <value>خدمات</value>
   </data>
-  <data name="Destination" xml:space="preserve">
-    <value>وجهة</value>
+  <data name="Ticket Booking" xml:space="preserve">
+    <value>حجز تذكره</value>
   </data>
-  <data name="Dubai" xml:space="preserve">
-    <value>دبي</value>
+  <data name="Tours &amp; Travel Services" xml:space="preserve">
+    <value>خدمات الجولات والسفر</value>
   </data>
-  <data name="Egypt" xml:space="preserve">
-    <value>مصر</value>
+  <data name="Travel Guide" xml:space="preserve">
+    <value>دليل السفر</value>
   </data>
-  <data name="Explore Top Destination" xml:space="preserve">
-    <value>اكتشف أفضل وجهة</value>
-  </data>
-  <data name="Fly Nas" xml:space="preserve">
-    <value>طيران ناس</value>
-  </data>
-  <data name="France" xml:space="preserve">
-    <value>فرنسا</value>
-  </data>
-  <data name="Germany" xml:space="preserve">
-    <value>المانيا</value>
-  </data>
-  <data name="Historic, cultural, Mediterranean, artistic, picturesque, culinary, Roman ruins, fashion, vineyards." xml:space="preserve">
-    <value>آثار تاريخية ، ثقافية ، متوسطية ، فنية ، خلابة ، طهي ، آثار رومانية ، أزياء ، كروم عنب.</value>
-  </data>
-  <data name="ITALY" xml:space="preserve">
-    <value>إيطاليا</value>
-  </data>
-  <data name="JORDAN" xml:space="preserve">
-    <value>الأردن</value>
-  </data>
-  <data name="LEBANON" xml:space="preserve">
-    <value>لبنان</value>
-  </data>
-  <data name="London" xml:space="preserve">
-    <value>لندن</value>
-  </data>
-  <data name="London is a vibrant global city known for its rich history, diverse culture, iconic landmarks, and bustling atmosphere." xml:space="preserve">
-    <value>لندن مدينة عالمية نابضة بالحياة تشتهر بتاريخها الثري وثقافتها المتنوعة ومعالمها المميزة وأجوائها الصاخبة.</value>
-  </data>
-  <data name="MALDIVES" xml:space="preserve">
-    <value>جزر المالديف</value>
-  </data>
-  <data name="MORROCOW" xml:space="preserve">
-    <value>المغرب</value>
-  </data>
-  <data name="North African nation known for its diverse culture, historic sites, beautiful coastline, and rich culinary traditions" xml:space="preserve">
-    <value>تشتهر بثقافتها المتنوعة ومواقعها التاريخية وساحلها الجميل وتقاليدها الغنية في الطهي</value>
-  </data>
-  <data name="Packages" xml:space="preserve">
-    <value>بكجات</value>
-  </data>
-  <data name="Perfect Tour Packages" xml:space="preserve">
-    <value>حزم جولة مثالية</value>
-  </data>
-  <data name="Qatar" xml:space="preserve">
-    <value>قطر</value>
-  </data>
-  <data name="Qatar: A small, wealthy Gulf nation with a booming economy, stunning architecture." xml:space="preserve">
-    <value>قطر: دولة خليجية صغيرة وثرية ذات اقتصاد مزدهر وهندسة معمارية مذهلة.</value>
-  </data>
-  <data name="Royal Jordan" xml:space="preserve">
-    <value>الملكية الأردنية</value>
-  </data>
-  <data name="Switzerland" xml:space="preserve">
-    <value>سويسرا</value>
-  </data>
-  <data name="Tunisia" xml:space="preserve">
-    <value>تونس</value>
-  </data>
-  <data name="TURKEY" xml:space="preserve">
-    <value>تركيا</value>
-  </data>
-  <data name="Turkey: A transcontinental nation bridging Europe and Asia, blending rich history, vibrant culture, and stunning landscapes." xml:space="preserve">
-    <value>تركيا: دولة عابرة للقارات تربط بين أوروبا وآسيا ، وتمزج بين التاريخ الغني والثقافة النابضة بالحياة والمناظر الطبيعية الخلابة.</value>
-  </data>
-  <data name="Vast, diverse, and scenic nation known for its natural beauty, multiculturalism, maple syrup, and ice hockey." xml:space="preserve">
-    <value>أمة شاسعة ومتنوعة وخلابة تشتهر بجمالها الطبيعي وتعدد الثقافات وشراب القيقب وهوكي الجليد.</value>
+  <data name="You're never alone when you book with TRAVELER. Our team is always available to assist you with any questions or issues you may have" xml:space="preserve">
+    <value>لن تكون وحيدًا أبدًا عندما تحجز مع TRAVELER. فريقنا متاح دائمًا لمساعدتك في أي أسئلة أو مشكلات قد تكون لديك</value>
   </data>
 </root>

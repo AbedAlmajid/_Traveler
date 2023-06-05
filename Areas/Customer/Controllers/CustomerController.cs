@@ -58,16 +58,19 @@ namespace DemoTraveler.Areas.Customer.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-
-            string userId = userManager.GetUserId(User);
-            if (userId == null)
+            if (User.IsInRole("Customer"))
             {
-                return NotFound();
+                string userId = userManager.GetUserId(User);
+                if (userId == null)
+                {
+                    return NotFound();
+                }
+                var userTicket = db.UserPackages.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
+                    Include(t => t.BookingPackage).
+                    Include(t => t.Package).ToList();
+                return View(userTicket);
             }
-            var userTicket = db.UserPackages.Where(u => u.ApplicationUser.Id == userId).Include(t => t.ApplicationUser).
-                Include(t => t.BookingPackage).
-                Include(t => t.Package).ToList();
-            return View(userTicket);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

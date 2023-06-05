@@ -1426,3 +1426,5 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Delete.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Details.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Index.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Views.Home.Service.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Views.Shared.Components.Partner.Default.ar.resources
