@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
-@using Microsoft.AspNetCore.Localization
 @using System.Globalization
 
 @model IEnumerable<HomeImage>
@@ -26,7 +25,7 @@
                         <div class="container" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">@Localizer["Tours & Travel"]</h4>
                             <h1 class="display-3 text-white mb-md-4">@Localizer["Discover Amazing Places With Us"]</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">@Localizer["Book Now"]</a>
+                            <a asp-action="TourPackage" asp-controller="Home" class="btn btn-primary py-md-3 px-md-5 mt-2">@Localizer["Book Now"]</a>
                         </div>
                     </div>
                 </div>

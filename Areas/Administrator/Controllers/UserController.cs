@@ -337,6 +337,24 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public IActionResult DetailsUserAirCompany(string id)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userDetail = new ApplicationUser
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.FirstName + " " + user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userDetail);
+        }
+
         [HttpGet]
         public IActionResult EditUserAirCompany(string id)
         {
@@ -535,6 +553,24 @@ namespace DemoTraveler.Areas.Administrator.Controllers
 
 
         [HttpGet]
+        public IActionResult DetailsUserCustomer(string id)
+        {
+            var user = userManager.FindByIdAsync(id).Result;
+
+            var userDetail = new ApplicationUser
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.FirstName + " " + user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(userDetail);
+        }
+
+
+        [HttpGet]
         public IActionResult EditUserCustomer(string id)
         {
             var user = userManager.FindByIdAsync(id).Result;
@@ -616,6 +652,8 @@ namespace DemoTraveler.Areas.Administrator.Controllers
             {
                 var userTickets = db.UserTickets.Where(ut => ut.ApplicationUserId == user.Id);
                 db.UserTickets.RemoveRange(userTickets);
+                var userPackages = db.UserPackages.Where(up => up.ApplicationUserId == user.Id);
+                db.UserPackages.RemoveRange(userPackages);
                 await db.SaveChangesAsync();
 
                 var result = await userManager.DeleteAsync(user);

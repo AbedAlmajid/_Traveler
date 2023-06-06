@@ -12,10 +12,11 @@
 <p>Email: @Model.Email</p>
 <p>Phone Number: @Model.PhoneNumber</p>
 
-<b>Are you sure you want to delete Customer ?</b>
-<form asp-action="UserAdminDelete" asp-controller="User" method="post">
+<h3>Are you sure you want to delete Customer ?</h3>
+<hr />
+<form asp-action="UserCustomerDelete" asp-controller="User" method="post">
     <input type="hidden" asp-for="Id" />
     <input type="submit" value="Delete" class="btn btn-danger" />
-    <a asp-action="UserList" asp-controller="User"
+    <a asp-action="UserListCustomer" asp-controller="User"
        class="btn btn-primary">Back To List</a>
 </form>

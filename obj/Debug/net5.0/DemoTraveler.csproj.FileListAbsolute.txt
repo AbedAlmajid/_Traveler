@@ -1428,3 +1428,5 @@ C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\Contacts\Index.cshtml.g.cs
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Views.Home.Service.ar.resources
 C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\DemoTraveler.Resources.Views.Shared.Components.Partner.Default.ar.resources
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\DetailsUserCustomer.cshtml.g.cs
+C:\Users\ABOOD ALAMAYREH\OneDrive\سطح المكتب\Traveler\obj\Debug\net5.0\Razor\Areas\Administrator\Views\User\DetailsUserAirCompany.cshtml.g.cs

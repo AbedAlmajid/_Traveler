@@ -52,8 +52,8 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+962 778484056</p>
                     </div>
                 </div>
-                <div class="col-md-6  ">
-                    <div class="d-inline-flex align-items-center" style="float: inline-end;">
+                <div class="col-md-6">
+                    <div class="d-inline-flex align-items-center" style="float: inline-end; float:right;">
                         <a class="text-primary px-2" href="">
                             <i class="fab fa-twitter"></i>
                         </a>
@@ -65,7 +65,6 @@
                         </a>
                         <a class="text-primary pl-2" href="">
                             <i class="fab fa-youtube"></i>
-
                         </a>
                         <i class="text-primary  align-self-lg-end">
                             <partial name="_SelectLanguagePartial" />
@@ -261,7 +260,10 @@
                     <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
                     <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
                     <a class="text-white-50 mb-2" asp-action="Contact" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Contact"]</a>
-                    <a class="text-white-50 mb-2" asp-action="Login" asp-controller="Account"><i class="fa fa-angle-right mr-2"></i>@Localizer["Login"] / @Localizer["Register"]</a>
+                    @if (!signInManager.IsSignedIn(User))
+                    {
+                        <a class="text-white-50 mb-2" asp-action="Login" asp-controller="Account"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Login"] / @Localizer["Register"]</a>
+                    }
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
@@ -269,10 +271,14 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" asp-action="AboutUs" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["About"]</a>
                     <a class="text-white-50 mb-2" asp-action="Destination" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Destination"]</a>
-                    <a class="text-white-50 mb-2"  asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
+                    <a class="text-white-50 mb-2" asp-action="Service" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>@Localizer["Services"]</a>
                     <a class="text-white-50 mb-2" asp-action="Package" asp-controller="Home"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Packages"]</a>
                     <a class="text-white-50 mb-2" asp-action="Contact" asp-controller="Home"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Contact"]</a>
+                    @if (!signInManager.IsSignedIn(User))
+                    {
                     <a class="text-white-50 mb-2" asp-action="Login" asp-controller="Account"> <i class="fa fa-angle-right mr-2"></i>@Localizer["Login"] / @Localizer["Register"]</a>
+                    }
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
