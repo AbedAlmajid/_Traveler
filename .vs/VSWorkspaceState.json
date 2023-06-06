@@ -1,11 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Areas",
+    "\\Areas\\Administrator",
+    "\\Areas\\Administrator\\Controllers",
+    "\\Resources",
+    "\\Resources\\Views",
+    "\\Resources\\Views\\Account",
     "\\Views",
-    "\\Views\\Shared",
-    "\\Views\\Shared\\Components",
-    "\\Views\\Shared\\Components\\HomeImage"
+    "\\Views\\Account"
   ],
-  "SelectedNode": "\\Views\\Shared\\_Layout.cshtml",
+  "SelectedNode": "\\Views\\Account\\Register.cshtml",
   "PreviewInSolutionExplorer": false
 }
